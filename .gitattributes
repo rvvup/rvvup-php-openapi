@@ -1,0 +1,2 @@
+# the dist directory is the bundle required for git direct imports
+dist/* binary
