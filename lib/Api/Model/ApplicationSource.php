@@ -54,6 +54,8 @@ class ApplicationSource
 
     public const DASHBOARD_PAYMENT_LINK = 'DASHBOARD_PAYMENT_LINK';
 
+    public const MAGENTO_CHECKOUT = 'MAGENTO_CHECKOUT';
+
     public const MAGENTO_MOTO = 'MAGENTO_MOTO';
 
     public const MAGENTO_PAYMENT_LINK = 'MAGENTO_PAYMENT_LINK';
@@ -78,6 +80,7 @@ class ApplicationSource
             self::MOTO,
             self::DASHBOARD_MOTO,
             self::DASHBOARD_PAYMENT_LINK,
+            self::MAGENTO_CHECKOUT,
             self::MAGENTO_MOTO,
             self::MAGENTO_PAYMENT_LINK,
             self::MAGENTO_AX_INVOICE,
