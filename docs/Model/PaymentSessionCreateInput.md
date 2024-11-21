@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **discount_total** | [**\Rvvup\Api\Model\MoneyInput**](MoneyInput.md) |  | [optional]
 **external_reference** | **string** | Your reference to identify the payment session. | [optional]
 **items** | [**\Rvvup\Api\Model\ItemInput[]**](ItemInput.md) | List of items that the customer is purchasing. | [optional]
+**metadata** | **array<string,string>** |  | [optional]
 **payment_capture_type** | [**\Rvvup\Api\Model\PaymentCaptureType**](PaymentCaptureType.md) |  | [optional]
 **payment_method** | [**\Rvvup\Api\Model\PaymentMethod**](PaymentMethod.md) |  |
 **requires_shipping** | **bool** | Whether the customer is required to provide a shipping address. | [optional] [default to false]
