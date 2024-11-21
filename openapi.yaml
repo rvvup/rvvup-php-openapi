@@ -3805,6 +3805,10 @@ components:
           example: null
           items:
             $ref: "#/components/schemas/ItemInput"
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
         paymentCaptureType:
           $ref: "#/components/schemas/PaymentCaptureType"
         paymentMethod:

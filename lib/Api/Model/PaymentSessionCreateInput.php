@@ -64,6 +64,7 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
         'discount_total' => '\Rvvup\Api\Model\MoneyInput',
         'external_reference' => 'string',
         'items' => '\Rvvup\Api\Model\ItemInput[]',
+        'metadata' => 'array<string,string>',
         'payment_capture_type' => '\Rvvup\Api\Model\PaymentCaptureType',
         'payment_method' => '\Rvvup\Api\Model\PaymentMethod',
         'requires_shipping' => 'bool',
@@ -87,6 +88,7 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
         'discount_total' => null,
         'external_reference' => null,
         'items' => null,
+        'metadata' => null,
         'payment_capture_type' => null,
         'payment_method' => null,
         'requires_shipping' => null,
@@ -108,6 +110,7 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
         'discount_total' => false,
         'external_reference' => false,
         'items' => false,
+        'metadata' => false,
         'payment_capture_type' => false,
         'payment_method' => false,
         'requires_shipping' => false,
@@ -209,6 +212,7 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
         'discount_total' => 'discountTotal',
         'external_reference' => 'externalReference',
         'items' => 'items',
+        'metadata' => 'metadata',
         'payment_capture_type' => 'paymentCaptureType',
         'payment_method' => 'paymentMethod',
         'requires_shipping' => 'requiresShipping',
@@ -230,6 +234,7 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
         'discount_total' => 'setDiscountTotal',
         'external_reference' => 'setExternalReference',
         'items' => 'setItems',
+        'metadata' => 'setMetadata',
         'payment_capture_type' => 'setPaymentCaptureType',
         'payment_method' => 'setPaymentMethod',
         'requires_shipping' => 'setRequiresShipping',
@@ -251,6 +256,7 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
         'discount_total' => 'getDiscountTotal',
         'external_reference' => 'getExternalReference',
         'items' => 'getItems',
+        'metadata' => 'getMetadata',
         'payment_capture_type' => 'getPaymentCaptureType',
         'payment_method' => 'getPaymentMethod',
         'requires_shipping' => 'getRequiresShipping',
@@ -323,6 +329,7 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('discount_total', $data ?? [], null);
         $this->setIfExists('external_reference', $data ?? [], null);
         $this->setIfExists('items', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('payment_capture_type', $data ?? [], null);
         $this->setIfExists('payment_method', $data ?? [], null);
         $this->setIfExists('requires_shipping', $data ?? [], false);
@@ -538,6 +545,33 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable items cannot be null');
         }
         $this->container['items'] = $items;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,string>|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,string>|null $metadata metadata
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }
