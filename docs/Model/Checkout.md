@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **source** | [**\Rvvup\Api\Model\ApplicationSource**](ApplicationSource.md) |  |
 **status** | [**\Rvvup\Api\Model\CheckoutStatus**](CheckoutStatus.md) |  |
 **success_url** | **string** | The URL to redirect the customer to after the checkout is completed successfully. | [optional]
+**token** | **string** | The checkout session token. |
 **updated_at** | **\DateTime** | The datetime when the checkout was last updated. |
 **url** | **string** | The URL to the hosted checkout page. |
 

@@ -2124,6 +2124,9 @@ components:
           type: string
           description: The URL to redirect the customer to after the checkout is completed
             successfully.
+        token:
+          type: string
+          description: The checkout session token.
         updatedAt:
           type: string
           format: date-time
@@ -2144,6 +2147,7 @@ components:
       - paymentSessionIds
       - source
       - status
+      - token
       - updatedAt
       - url
     CheckoutAmountType:

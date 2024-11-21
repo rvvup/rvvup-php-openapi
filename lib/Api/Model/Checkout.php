@@ -79,6 +79,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'source' => '\Rvvup\Api\Model\ApplicationSource',
         'status' => '\Rvvup\Api\Model\CheckoutStatus',
         'success_url' => 'string',
+        'token' => 'string',
         'updated_at' => '\DateTime',
         'url' => 'string'
     ];
@@ -111,6 +112,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'source' => null,
         'status' => null,
         'success_url' => null,
+        'token' => null,
         'updated_at' => 'date-time',
         'url' => null
     ];
@@ -141,6 +143,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'source' => false,
         'status' => false,
         'success_url' => false,
+        'token' => false,
         'updated_at' => false,
         'url' => false
     ];
@@ -251,6 +254,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'source' => 'source',
         'status' => 'status',
         'success_url' => 'successUrl',
+        'token' => 'token',
         'updated_at' => 'updatedAt',
         'url' => 'url'
     ];
@@ -281,6 +285,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'source' => 'setSource',
         'status' => 'setStatus',
         'success_url' => 'setSuccessUrl',
+        'token' => 'setToken',
         'updated_at' => 'setUpdatedAt',
         'url' => 'setUrl'
     ];
@@ -311,6 +316,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'source' => 'getSource',
         'status' => 'getStatus',
         'success_url' => 'getSuccessUrl',
+        'token' => 'getToken',
         'updated_at' => 'getUpdatedAt',
         'url' => 'getUrl'
     ];
@@ -392,6 +398,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('source', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('success_url', $data ?? [], null);
+        $this->setIfExists('token', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
     }
@@ -458,6 +465,9 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['token'] === null) {
+            $invalidProperties[] = "'token' can't be null";
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
@@ -1018,6 +1028,33 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable success_url cannot be null');
         }
         $this->container['success_url'] = $success_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets token
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->container['token'];
+    }
+
+    /**
+     * Sets token
+     *
+     * @param string $token The checkout session token.
+     *
+     * @return self
+     */
+    public function setToken($token)
+    {
+        if (is_null($token)) {
+            throw new \InvalidArgumentException('non-nullable token cannot be null');
+        }
+        $this->container['token'] = $token;
 
         return $this;
     }
