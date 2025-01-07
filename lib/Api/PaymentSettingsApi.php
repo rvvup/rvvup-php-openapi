@@ -137,7 +137,7 @@ class PaymentSettingsApi
      *
      * @throws \Rvvup\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Rvvup\Api\Model\PaymentMethodDetailsPage
+     * @return \Rvvup\Api\Model\PaymentSettings
      */
     public function getPaymentSettings($merchant_id, $payment_settings_context, $offset = null, $limit = null, $mpk = null, string $contentType = self::contentTypes['getPaymentSettings'][0])
     {
@@ -159,7 +159,7 @@ class PaymentSettingsApi
      *
      * @throws \Rvvup\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Rvvup\Api\Model\PaymentMethodDetailsPage, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Rvvup\Api\Model\PaymentSettings, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPaymentSettingsWithHttpInfo($merchant_id, $payment_settings_context, $offset = null, $limit = null, $mpk = null, string $contentType = self::contentTypes['getPaymentSettings'][0])
     {
@@ -190,11 +190,11 @@ class PaymentSettingsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Rvvup\Api\Model\PaymentMethodDetailsPage' === '\SplFileObject') {
+                    if ('\Rvvup\Api\Model\PaymentSettings' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Rvvup\Api\Model\PaymentMethodDetailsPage' !== 'string') {
+                        if ('\Rvvup\Api\Model\PaymentSettings' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -212,7 +212,7 @@ class PaymentSettingsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Rvvup\Api\Model\PaymentMethodDetailsPage', []),
+                        ObjectSerializer::deserialize($content, '\Rvvup\Api\Model\PaymentSettings', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -231,7 +231,7 @@ class PaymentSettingsApi
                 );
             }
 
-            $returnType = '\Rvvup\Api\Model\PaymentMethodDetailsPage';
+            $returnType = '\Rvvup\Api\Model\PaymentSettings';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -264,7 +264,7 @@ class PaymentSettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Rvvup\Api\Model\PaymentMethodDetailsPage',
+                        '\Rvvup\Api\Model\PaymentSettings',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -316,7 +316,7 @@ class PaymentSettingsApi
      */
     public function getPaymentSettingsAsyncWithHttpInfo($merchant_id, $payment_settings_context, $offset = null, $limit = null, $mpk = null, string $contentType = self::contentTypes['getPaymentSettings'][0])
     {
-        $returnType = '\Rvvup\Api\Model\PaymentMethodDetailsPage';
+        $returnType = '\Rvvup\Api\Model\PaymentSettings';
         $request = $this->getPaymentSettingsRequest($merchant_id, $payment_settings_context, $offset, $limit, $mpk, $contentType);
 
         return $this->client

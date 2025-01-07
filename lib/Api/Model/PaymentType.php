@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentMethod
+ * PaymentType
  *
  * PHP version 7.4
  *
@@ -31,38 +31,24 @@ namespace Rvvup\Api\Model;
 use \Rvvup\ObjectSerializer;
 
 /**
- * PaymentMethod Class Doc Comment
+ * PaymentType Class Doc Comment
  *
  * @category Class
- * @description The payment method.
+ * @description The type of payment.
  * @package  Rvvup
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class PaymentMethod
+class PaymentType
 {
     /**
      * Possible values of this enum
      */
-    public const FAKE_PAYMENT_METHOD = 'FAKE_PAYMENT_METHOD';
+    public const EXPRESS = 'EXPRESS';
 
-    public const CLEARPAY = 'CLEARPAY';
+    public const STANDARD = 'STANDARD';
 
-    public const CRYPTO = 'CRYPTO';
-
-    public const PAYPAL = 'PAYPAL';
-
-    public const PAYPAL_CUSTOM_CARD = 'PAYPAL_CUSTOM_CARD';
-
-    public const CARD = 'CARD';
-
-    public const APPLE_PAY = 'APPLE_PAY';
-
-    public const GOOGLE_PAY = 'GOOGLE_PAY';
-
-    public const PAY_BY_BANK = 'PAY_BY_BANK';
-
-    public const KLARNA = 'KLARNA';
+    public const CHECKOUT = 'CHECKOUT';
 
     /**
      * Gets allowable values of the enum
@@ -71,16 +57,9 @@ class PaymentMethod
     public static function getAllowableEnumValues()
     {
         return [
-            self::FAKE_PAYMENT_METHOD,
-            self::CLEARPAY,
-            self::CRYPTO,
-            self::PAYPAL,
-            self::PAYPAL_CUSTOM_CARD,
-            self::CARD,
-            self::APPLE_PAY,
-            self::GOOGLE_PAY,
-            self::PAY_BY_BANK,
-            self::KLARNA
+            self::EXPRESS,
+            self::STANDARD,
+            self::CHECKOUT
         ];
     }
 }

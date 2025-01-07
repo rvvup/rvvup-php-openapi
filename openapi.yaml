@@ -10,24 +10,24 @@ externalDocs:
   description: Rvvup Developer Documentation
   url: https://docs.rvvup.com
 security:
-- apiKey: []
+  - apiKey: []
 paths:
   /api/2024-03-01/{merchantId}/accounts/statements:
     post:
       description: Creates a new account statement
       operationId: createAccountStatement
       parameters:
-      - description: Merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: Idempotency Key
-        in: header
-        name: Idempotency-Key
-        schema:
-          type: string
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Idempotency Key
+          in: header
+          name: Idempotency-Key
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -49,27 +49,27 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Create a new account statement
       tags:
-      - AccountStatements
+        - AccountStatements
   /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId}:
     get:
       description: Get an account statement by ID
       operationId: getAccountStatement
       parameters:
-      - description: Merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: Account Statement ID
-        in: path
-        name: accountStatementId
-        required: true
-        schema:
-          type: string
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Account Statement ID
+          in: path
+          name: accountStatementId
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -84,33 +84,33 @@ paths:
         "404":
           description: Account statement not found
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Get an account statement
       tags:
-      - AccountStatements
+        - AccountStatements
   /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId}/checkouts/{checkoutId}:
     get:
       description: Get a checkout for an account statement by ID
       operationId: getCheckoutForAccountStatement
       parameters:
-      - description: Merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: Account Statement ID
-        in: path
-        name: accountStatementId
-        required: true
-        schema:
-          type: string
-      - description: Checkout ID
-        in: path
-        name: checkoutId
-        required: true
-        schema:
-          type: string
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Account Statement ID
+          in: path
+          name: accountStatementId
+          required: true
+          schema:
+            type: string
+        - description: Checkout ID
+          in: path
+          name: checkoutId
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -125,28 +125,28 @@ paths:
         "404":
           description: Account statement not found
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Get a checkout for an account statement
       tags:
-      - AccountStatements
+        - AccountStatements
   /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId}/theme:
     get:
       description: Gets the theme for an account statement. The theme is used to style
         the page.
       operationId: getThemeForAccountStatement
       parameters:
-      - description: Merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: Account Statement ID
-        in: path
-        name: accountStatementId
-        required: true
-        schema:
-          type: string
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Account Statement ID
+          in: path
+          name: accountStatementId
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -161,33 +161,33 @@ paths:
         "404":
           description: Theme not found
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Get the theme for an account statement
       tags:
-      - AccountStatements
+        - AccountStatements
   /api/2024-03-01/{merchantId}/checkout-templates:
     get:
       description: List checkout templates
       operationId: listCheckoutTemplates
       parameters:
-      - description: pagination offset
-        in: query
-        name: offset
-        schema:
-          type: integer
-          format: int64
-      - description: pagination limit
-        in: query
-        name: limit
-        schema:
-          type: integer
-          format: int32
-      - description: merchant id
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
+        - description: pagination offset
+          in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - description: pagination limit
+          in: query
+          name: limit
+          schema:
+            type: integer
+            format: int32
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -200,20 +200,20 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: List checkout templates
       tags:
-      - Checkout Templates
+        - Checkout Templates
     post:
       description: Creates a new checkout template.
       operationId: createCheckoutTemplate
       parameters:
-      - description: merchant id
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -235,27 +235,27 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Create new checkout template
       tags:
-      - Checkout Templates
+        - Checkout Templates
   /api/2024-03-01/{merchantId}/checkout-templates/{checkoutTemplateId}:
     get:
       description: Get a checkout template by id
       operationId: getCheckoutTemplate
       parameters:
-      - description: checkout template id
-        in: path
-        name: checkoutTemplateId
-        required: true
-        schema:
-          type: string
-      - description: merchant id
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
+        - description: checkout template id
+          in: path
+          name: checkoutTemplateId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -270,26 +270,26 @@ paths:
         "404":
           description: Checkout template not found
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Get a checkout template
       tags:
-      - Checkout Templates
+        - Checkout Templates
     patch:
       description: Update a checkout template
       operationId: updateCheckoutTemplate
       parameters:
-      - description: checkout template id
-        in: path
-        name: checkoutTemplateId
-        required: true
-        schema:
-          type: string
-      - description: merchant id
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
+        - description: checkout template id
+          in: path
+          name: checkoutTemplateId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -313,33 +313,33 @@ paths:
         "404":
           description: Checkout template not found
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Update a checkout template
       tags:
-      - Checkout Templates
+        - Checkout Templates
   /api/2024-03-01/{merchantId}/checkouts:
     get:
       description: List checkouts
       operationId: listCheckouts
       parameters:
-      - description: pagination offset
-        in: query
-        name: offset
-        schema:
-          type: integer
-          format: int64
-      - description: pagination limit
-        in: query
-        name: limit
-        schema:
-          type: integer
-          format: int32
-      - description: merchant id
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
+        - description: pagination offset
+          in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - description: pagination limit
+          in: query
+          name: limit
+          schema:
+            type: integer
+            format: int32
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -352,25 +352,25 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: List checkouts
       tags:
-      - Checkouts
+        - Checkouts
     post:
       description: Creates a new checkout.
       operationId: createCheckout
       parameters:
-      - description: merchant id
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: Idempotency Key
-        in: header
-        name: Idempotency-Key
-        schema:
-          type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Idempotency Key
+          in: header
+          name: Idempotency-Key
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -392,32 +392,32 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Create new checkout
       tags:
-      - Checkouts
+        - Checkouts
   /api/2024-03-01/{merchantId}/checkouts/{checkoutId}:
     get:
       description: Get a checkout by id
       operationId: getCheckout
       parameters:
-      - description: checkout id
-        in: path
-        name: checkoutId
-        required: true
-        schema:
-          type: string
-      - description: merchant id
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: Accept header
-        in: header
-        name: Accept
-        schema:
-          type: string
+        - description: checkout id
+          in: path
+          name: checkoutId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Accept header
+          in: header
+          name: Accept
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -435,10 +435,10 @@ paths:
         "404":
           description: Checkout not found
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Get a checkout
       tags:
-      - Checkouts
+        - Checkouts
   /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-methods:
     get:
       description: Lists the currently eligible payment methods for a checkout. The
@@ -446,30 +446,30 @@ paths:
         the eligible methods.
       operationId: listCheckoutPaymentMethods
       parameters:
-      - description: checkout id
-        in: path
-        name: checkoutId
-        required: true
-        schema:
-          type: string
-      - description: merchant id
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: pagination offset
-        in: query
-        name: offset
-        schema:
-          type: integer
-          format: int64
-      - description: pagination limit
-        in: query
-        name: limit
-        schema:
-          type: integer
-          format: int32
+        - description: checkout id
+          in: path
+          name: checkoutId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: pagination offset
+          in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - description: pagination limit
+          in: query
+          name: limit
+          schema:
+            type: integer
+            format: int32
       responses:
         "200":
           content:
@@ -484,27 +484,27 @@ paths:
         "404":
           description: Not found
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Get payment methods for a checkout
       tags:
-      - Checkouts
+        - Checkouts
   /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions:
     post:
       description: Creates a payment session with a new active payment.
       operationId: createPaymentSession
       parameters:
-      - description: merchant id
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: checkout id
-        in: path
-        name: checkoutId
-        required: true
-        schema:
-          type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: checkout id
+          in: path
+          name: checkoutId
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -526,33 +526,33 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Create a payment session
       tags:
-      - Payment Sessions
+        - Payment Sessions
   /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions/{paymentSessionId}:
     get:
       description: Get a payment session by id.
       operationId: getPaymentSession
       parameters:
-      - description: merchant id
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: checkout id
-        in: path
-        name: checkoutId
-        required: true
-        schema:
-          type: string
-      - description: payment session id
-        in: path
-        name: paymentSessionId
-        required: true
-        schema:
-          type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: checkout id
+          in: path
+          name: checkoutId
+          required: true
+          schema:
+            type: string
+        - description: payment session id
+          in: path
+          name: paymentSessionId
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -567,29 +567,28 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Get a payment session
       tags:
-      - Payment Sessions
-
+        - Payment Sessions
   /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/theme:
     get:
       description: Gets the theme for a checkout. The theme is used to style the checkout
         page.
       operationId: getThemeForCheckout
       parameters:
-      - description: Merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: Checkout ID
-        in: path
-        name: checkoutId
-        required: true
-        schema:
-          type: string
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Checkout ID
+          in: path
+          name: checkoutId
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -604,33 +603,33 @@ paths:
         "404":
           description: Theme not found
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Get the theme for a checkout
       tags:
-      - Checkouts
+        - Checkouts
   /api/2024-03-01/{merchantId}/connections:
     get:
       description: List connections by Merchant ID
       operationId: listConnections
       parameters:
-      - description: pagination offset
-        in: query
-        name: offset
-        schema:
-          type: integer
-          format: int64
-      - description: pagination limit
-        in: query
-        name: limit
-        schema:
-          type: integer
-          format: int32
-      - description: Merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
+        - description: pagination offset
+          in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - description: pagination limit
+          in: query
+          name: limit
+          schema:
+            type: integer
+            format: int32
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -643,20 +642,20 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: List connections
       tags:
-      - Connections
+        - Connections
     put:
       description: Creates a new connection or updates an existing connection.
       operationId: createConnection
       parameters:
-      - description: Merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -678,27 +677,27 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Create a new connection or updates an existing connection.
       tags:
-      - Connections
+        - Connections
   /api/2024-03-01/{merchantId}/connections/{connectionId}:
     delete:
       description: Disconnect a connection
       operationId: disconnectConnection
       parameters:
-      - description: Merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: Connection ID
-        in: path
-        name: connectionId
-        required: true
-        schema:
-          type: string
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Connection ID
+          in: path
+          name: connectionId
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -713,26 +712,26 @@ paths:
         "404":
           description: Connection not found
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Disconnect a connection
       tags:
-      - Connections
+        - Connections
     get:
       description: Get a connection by ID
       operationId: getConnection
       parameters:
-      - description: Merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: Connection ID
-        in: path
-        name: connectionId
-        required: true
-        schema:
-          type: string
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Connection ID
+          in: path
+          name: connectionId
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -747,21 +746,21 @@ paths:
         "404":
           description: Connection not found
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Get a connection
       tags:
-      - Connections
+        - Connections
   /api/2024-03-01/{merchantId}/logs:
     post:
       description: Logs information.
       operationId: createLog
       parameters:
-      - description: The merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
+        - description: The merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -783,33 +782,33 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Create a log
       tags:
-      - Logs
+        - Logs
   /api/2024-03-01/{merchantId}/notification-subscriptions:
     get:
       description: List notification subscriptions.
       operationId: listNotificationSubscriptions
       parameters:
-      - description: pagination offset
-        in: query
-        name: offset
-        schema:
-          type: integer
-          format: int64
-      - description: pagination limit
-        in: query
-        name: limit
-        schema:
-          type: integer
-          format: int32
-      - description: Merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
+        - description: pagination offset
+          in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - description: pagination limit
+          in: query
+          name: limit
+          schema:
+            type: integer
+            format: int32
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -824,20 +823,20 @@ paths:
         "404":
           description: Notification Subscription not found
       security:
-      - apiKey: []
+        - apiKey: []
       summary: List notification subscriptions.
       tags:
-      - Notifications
+        - Notifications
     post:
       description: Create a new notification subscription.
       operationId: createNotificationSubscription
       parameters:
-      - description: Merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -859,27 +858,27 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Create a new notification subscription.
       tags:
-      - Notifications
+        - Notifications
   /api/2024-03-01/{merchantId}/notification-subscriptions/{id}:
     get:
       description: Get a notification subscription by ID
       operationId: getNotificationSubscription
       parameters:
-      - description: Merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: Notification Subscription ID
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Notification Subscription ID
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -894,33 +893,33 @@ paths:
         "404":
           description: Notification Subscription not found
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Get a notification subscription
       tags:
-      - Notifications
+        - Notifications
   /api/2024-03-01/{merchantId}/payment-links:
     get:
       description: List payment links
       operationId: listPaymentLinks
       parameters:
-      - description: pagination offset
-        in: query
-        name: offset
-        schema:
-          type: integer
-          format: int64
-      - description: pagination limit
-        in: query
-        name: limit
-        schema:
-          type: integer
-          format: int32
-      - description: merchant id
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
+        - description: pagination offset
+          in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - description: pagination limit
+          in: query
+          name: limit
+          schema:
+            type: integer
+            format: int32
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -933,26 +932,26 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: List payment links
       tags:
-      - Payment Links
+        - Payment Links
     post:
       description: Creates a new payment link. User can choose whether to make it
         reusable
       operationId: createPaymentLink
       parameters:
-      - description: merchant id
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: Idempotency Key
-        in: header
-        name: Idempotency-Key
-        schema:
-          type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Idempotency Key
+          in: header
+          name: Idempotency-Key
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -974,27 +973,27 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Create new payment link
       tags:
-      - Payment Links
+        - Payment Links
   /api/2024-03-01/{merchantId}/payment-links/{paymentLinkId}:
     delete:
       description: Deactivate a payment link
       operationId: deactivatePaymentLink
       parameters:
-      - description: payment link id
-        in: path
-        name: paymentLinkId
-        required: true
-        schema:
-          type: string
-      - description: merchant id
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
+        - description: payment link id
+          in: path
+          name: paymentLinkId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -1009,26 +1008,26 @@ paths:
         "404":
           description: Payment link not found
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Deactivate a payment link
       tags:
-      - Payment Links
+        - Payment Links
     get:
       description: Get a payment link by id
       operationId: getPaymentLink
       parameters:
-      - description: payment link id
-        in: path
-        name: paymentLinkId
-        required: true
-        schema:
-          type: string
-      - description: merchant id
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
+        - description: payment link id
+          in: path
+          name: paymentLinkId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -1043,36 +1042,36 @@ paths:
         "404":
           description: Payment link not found
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Get a payment link
       tags:
-      - Payment Links
+        - Payment Links
   /api/2024-03-01/{merchantId}/payment-methods:
     get:
       description: Get all available payment methods for the merchant
       operationId: listPaymentMethods
       parameters:
-      - description: The transaction currency
-        in: query
-        name: currency
-        schema:
-          type: string
-      - description: The transaction amount
-        in: query
-        name: amount
-        schema:
-          type: string
-      - description: Include inactive payment methods
-        in: query
-        name: includeInactive
-        schema:
-          type: boolean
-      - description: The merchant id
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
+        - description: The transaction currency
+          in: query
+          name: currency
+          schema:
+            type: string
+        - description: The transaction amount
+          in: query
+          name: amount
+          schema:
+            type: string
+        - description: Include inactive payment methods
+          in: query
+          name: includeInactive
+          schema:
+            type: boolean
+        - description: The merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -1085,38 +1084,38 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Get payment methods
       tags:
-      - Payment Methods
+        - Payment Methods
   /api/2024-03-01/{merchantId}/payment-settings:
     post:
       description: Get available payment methods and their relevant settings.
       operationId: getPaymentSettings
       parameters:
-      - description: pagination offset
-        in: query
-        name: offset
-        schema:
-          type: integer
-          format: int64
-      - description: pagination limit
-        in: query
-        name: limit
-        schema:
-          type: integer
-          format: int32
-      - description: merchant public key
-        in: query
-        name: mpk
-        schema:
-          type: string
-      - description: merchant id
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
+        - description: pagination offset
+          in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - description: pagination limit
+          in: query
+          name: limit
+          schema:
+            type: integer
+            format: int32
+        - description: merchant public key
+          in: query
+          name: mpk
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -1129,24 +1128,24 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PaymentMethodDetailsPage"
+                $ref: "#/components/schemas/PaymentSettings"
           description: Payment methods and their settings
         "400":
           description: Validation failed
       summary: Get payment settings for a merchant
       tags:
-      - Payment Settings
+        - Payment Settings
   /api/2024-03-01/{merchantId}/statements/export:
     post:
       description: Export statements in different formats.
       operationId: exportStatement
       parameters:
-      - description: merchant id
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -1164,33 +1163,33 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Export a statement
       tags:
-      - Statement Exports
+        - Statement Exports
   /api/2024-03-01/{merchantId}/themes:
     get:
       description: List all themes
       operationId: listThemes
       parameters:
-      - description: Merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: Pagination offset
-        in: query
-        name: offset
-        schema:
-          type: integer
-          format: int64
-      - description: Pagination limit
-        in: query
-        name: limit
-        schema:
-          type: integer
-          format: int32
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Pagination offset
+          in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - description: Pagination limit
+          in: query
+          name: limit
+          schema:
+            type: integer
+            format: int32
       responses:
         "200":
           content:
@@ -1203,20 +1202,20 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: List themes
       tags:
-      - Themes
+        - Themes
     post:
       description: Creates a new theme
       operationId: createTheme
       parameters:
-      - description: Merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -1238,27 +1237,27 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Create a new theme
       tags:
-      - Themes
+        - Themes
   /api/2024-03-01/{merchantId}/themes/{themeId}:
     get:
       description: Get a theme by ID
       operationId: getTheme
       parameters:
-      - description: Merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: Theme ID
-        in: path
-        name: themeId
-        required: true
-        schema:
-          type: string
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Theme ID
+          in: path
+          name: themeId
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -1273,26 +1272,26 @@ paths:
         "404":
           description: Theme not found
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Get a theme
       tags:
-      - Themes
+        - Themes
     patch:
       description: Update a theme
       operationId: updateTheme
       parameters:
-      - description: merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: theme ID
-        in: path
-        name: themeId
-        required: true
-        schema:
-          type: string
+        - description: merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: theme ID
+          in: path
+          name: themeId
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -1316,33 +1315,33 @@ paths:
         "404":
           description: Theme not found
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Update a theme
       tags:
-      - Themes
+        - Themes
   /api/2024-03-01/{merchantId}/webhooks:
     get:
       description: Get all webhook
       operationId: listWebhooks
       parameters:
-      - description: Merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: pagination offset
-        in: query
-        name: offset
-        schema:
-          type: integer
-          format: int64
-      - description: pagination limit
-        in: query
-        name: limit
-        schema:
-          type: integer
-          format: int32
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: pagination offset
+          in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - description: pagination limit
+          in: query
+          name: limit
+          schema:
+            type: integer
+            format: int32
       responses:
         "200":
           content:
@@ -1355,20 +1354,20 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Get all webhook
       tags:
-      - Webhooks
+        - Webhooks
     post:
       description: Create a new webhook
       operationId: createWebhook
       parameters:
-      - description: Merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -1390,27 +1389,27 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Create a new webhook
       tags:
-      - Webhooks
+        - Webhooks
   /api/2024-03-01/{merchantId}/webhooks/{webhookId}:
     get:
       description: Get a webhook by id
       operationId: getWebhook
       parameters:
-      - description: Merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: Webhook ID
-        in: path
-        name: webhookId
-        required: true
-        schema:
-          type: string
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Webhook ID
+          in: path
+          name: webhookId
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -1425,26 +1424,26 @@ paths:
         "404":
           description: Webhook not found
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Get a webhook by id
       tags:
-      - Webhooks
+        - Webhooks
     patch:
       description: Update a webhook
       operationId: updateWebhook
       parameters:
-      - description: Merchant ID
-        in: path
-        name: merchantId
-        required: true
-        schema:
-          type: string
-      - description: Webhook ID
-        in: path
-        name: webhookId
-        required: true
-        schema:
-          type: string
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Webhook ID
+          in: path
+          name: webhookId
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -1466,10 +1465,10 @@ paths:
         "403":
           description: User does not have permission
       security:
-      - apiKey: []
+        - apiKey: []
       summary: Update a webhook
       tags:
-      - Webhooks
+        - Webhooks
 components:
   schemas:
     AccountStatement:
@@ -1522,14 +1521,14 @@ components:
           type: string
           description: The URL to the account statement page.
       required:
-      - checkoutIds
-      - creditNotes
-      - id
-      - invoices
-      - merchantId
-      - pendingCheckoutIds
-      - status
-      - url
+        - checkoutIds
+        - creditNotes
+        - id
+        - invoices
+        - merchantId
+        - pendingCheckoutIds
+        - status
+        - url
     AccountStatementConnection:
       type: object
       description: Data for the account statement connection.
@@ -1541,7 +1540,7 @@ components:
         type:
           $ref: "#/components/schemas/AccountStatementConnectionType"
       required:
-      - type
+        - type
     AccountStatementConnectionInput:
       type: object
       description: The input to define which connection should be used for this statement
@@ -1554,12 +1553,12 @@ components:
         type:
           $ref: "#/components/schemas/AccountStatementConnectionType"
       required:
-      - type
+        - type
     AccountStatementConnectionType:
       type: string
       description: The connection type for this account statement.
       enum:
-      - MAGENTO_PROXY
+        - MAGENTO_PROXY
     AccountStatementCreateInput:
       type: object
       description: The input to create a new account statement.
@@ -1617,15 +1616,15 @@ components:
         total:
           $ref: "#/components/schemas/Money"
       required:
-      - amountRemaining
-      - creditNoteDate
-      - dueDate
-      - id
-      - merchantId
-      - metadata
-      - reference
-      - taxAmount
-      - total
+        - amountRemaining
+        - creditNoteDate
+        - dueDate
+        - id
+        - merchantId
+        - metadata
+        - reference
+        - taxAmount
+        - total
     AccountStatementCreditNoteCreateInput:
       type: object
       description: The input to create a new account statement credit note.
@@ -1657,12 +1656,12 @@ components:
         total:
           $ref: "#/components/schemas/MoneyInput"
       required:
-      - amountRemaining
-      - creditNoteDate
-      - dueDate
-      - reference
-      - taxAmount
-      - total
+        - amountRemaining
+        - creditNoteDate
+        - dueDate
+        - reference
+        - taxAmount
+        - total
     AccountStatementInvoice:
       type: object
       description: An account statement invoice.
@@ -1727,20 +1726,20 @@ components:
         total:
           $ref: "#/components/schemas/Money"
       required:
-      - amountPaid
-      - amountPending
-      - amountRemaining
-      - checkoutIds
-      - dueDate
-      - id
-      - invoiceDate
-      - merchantId
-      - metadata
-      - pendingCheckoutIds
-      - reference
-      - status
-      - taxAmount
-      - total
+        - amountPaid
+        - amountPending
+        - amountRemaining
+        - checkoutIds
+        - dueDate
+        - id
+        - invoiceDate
+        - merchantId
+        - metadata
+        - pendingCheckoutIds
+        - reference
+        - status
+        - taxAmount
+        - total
     AccountStatementInvoiceCreateInput:
       type: object
       description: The input to create a new account statement invoice.
@@ -1777,159 +1776,159 @@ components:
         total:
           $ref: "#/components/schemas/MoneyInput"
       required:
-      - amountPaid
-      - amountRemaining
-      - dueDate
-      - invoiceDate
-      - reference
-      - taxAmount
-      - total
+        - amountPaid
+        - amountRemaining
+        - dueDate
+        - invoiceDate
+        - reference
+        - taxAmount
+        - total
     AccountStatementInvoiceStatus:
       type: string
       description: The status for this invoice.
       enum:
-      - UNPAID
-      - PARTIALLY_PAID
-      - PAID
-      - OVERPAID
+        - UNPAID
+        - PARTIALLY_PAID
+        - PAID
+        - OVERPAID
     AccountStatementMagentoProxyConnection:
       type: object
       allOf:
-      - $ref: "#/components/schemas/AccountStatementConnection"
-      - type: object
-        properties:
-          accountId:
-            type: string
-            description: The magento proxy account ID.
-          companyId:
-            type: string
-            description: The magento proxy company ID.
+        - $ref: "#/components/schemas/AccountStatementConnection"
+        - type: object
+          properties:
+            accountId:
+              type: string
+              description: The magento proxy account ID.
+            companyId:
+              type: string
+              description: The magento proxy company ID.
       description: Data for the magento proxy connection.
       required:
-      - accountId
-      - companyId
-      - type
+        - accountId
+        - companyId
+        - type
     AccountStatementMagentoProxyConnectionInput:
       type: object
       allOf:
-      - $ref: "#/components/schemas/AccountStatementConnectionInput"
-      - type: object
-        properties:
-          accountId:
-            type: string
-            description: The magento proxy account ID.
-          companyId:
-            type: string
-            description: The magento proxy company ID.
-          invoiceId:
-            type: string
-            description: The magento proxy invoice ID.
+        - $ref: "#/components/schemas/AccountStatementConnectionInput"
+        - type: object
+          properties:
+            accountId:
+              type: string
+              description: The magento proxy account ID.
+            companyId:
+              type: string
+              description: The magento proxy company ID.
+            invoiceId:
+              type: string
+              description: The magento proxy invoice ID.
       description: Data for the magento proxy connection.
       required:
-      - accountId
-      - companyId
-      - invoiceId
-      - type
+        - accountId
+        - companyId
+        - invoiceId
+        - type
     AccountStatementStatus:
       type: string
       description: "The status of the account statement. Derived from the invoice\
         \ data. If all invoices are paid, the account statement is considered paid."
       enum:
-      - UNPAID
-      - PARTIALLY_PAID
-      - PAID
+        - UNPAID
+        - PARTIALLY_PAID
+        - PAID
     ActionType:
       type: string
       description: The action performed
       enum:
-      - GLOBAL_PAYMENT_METHOD_UPDATED
-      - MERCHANT_CREATED
-      - MERCHANT_DETAILS_UPDATED
-      - MERCHANT_LEGAL_DETAILS_CREATED
-      - MERCHANT_LEGAL_DETAILS_UPDATED
-      - MERCHANT_STATUS_UPDATED
-      - MERCHANT_ONBOARDING_COMPLETED
-      - MERCHANT_CLIENT_UPDATED
-      - MERCHANT_PLUGIN_ACTIVATED
-      - MERCHANT_PLUGIN_DEACTIVATED
-      - MERCHANT_PRICING_RATE_CREATED
-      - MERCHANT_USER_ADDED
-      - MERCHANT_USER_UPDATED
-      - MERCHANT_WEBHOOK_CREATED
-      - MERCHANT_WEBHOOK_UPDATED
-      - MERCHANT_PAYMENT_METHOD_UPDATED
-      - MERCHANT_PAYMENT_METHOD_CONNECTION_UPDATED
-      - MERCHANT_ADDRESS_UPDATED
-      - MERCHANT_BANK_ACCOUNT_UPDATED
-      - MERCHANT_CREDENTIALS_CREATED
-      - MERCHANT_CREDENTIALS_DELETED
-      - MERCHANT_CREDENTIALS_REQUESTED
-      - MERCHANT_CREDENTIALS_SECRET_ROTATED
-      - MERCHANT_ACCOUNTING_REPORT_DOWNLOAD
-      - MERCHANT_APPLE_PAY_REGISTERED
-      - MERCHANT_APPLE_PAY_UNREGISTERED
-      - MERCHANT_PRIMARY_EMAIL_UPDATED
-      - MERCHANT_USER_POLICIES_UPDATED
-      - PASSFORT_COMPANY_PROFILE_FETCHED
-      - MERCHANT_KYC_APPROVED
-      - MERCHANT_KYC_STATUS_UPDATED
-      - MERCHANT_MODULR_CUSTOMER_CREATED
-      - MERCHANT_MODULR_CUSTOMER_UPDATED
-      - MERCHANT_MODULR_ACCOUNT_CREATED
-      - MERCHANT_MODULR_ACCOUNT_UPDATED
-      - MERCHANT_STATEMENT_EXPORTED
-      - ONBOARDING_APPLICANT_CREATED
-      - ONBOARDING_APPLICANT_UPDATED
-      - APPLICANT_STATUS_UPDATED
-      - ON_NETWORK_GLOBAL_SETTING_UPDATED
-      - ON_NETWORK_MERCHANT_SETTING_UPDATED
-      - ORDER_CREATED
-      - ORDER_UPDATED
-      - ORDER_STATUS_CHANGE
-      - ORDER_REPORT_DOWNLOAD
-      - PAYMENT_CREATED
-      - PAYMENT_UPDATED
-      - USER_EMAIL_UPDATED
-      - USER_CREATED
-      - USER_PASSWORD_CHANGED
-      - USER_PASSWORD_CHANGE_REQUESTED
-      - USER_LOGOUT
-      - IDENTITY_PROVIDER_USER_CREATED
-      - AUTH0_USER_CREATED
-      - AUTH0_USER_UPDATED
-      - LEDGER_MANUAL_ADJUSTMENT
-      - LEDGER_REVERSAL
-      - USER_CONSENT_GIVEN
-      - PAYMENT_LINK_CREATED
-      - PAYMENT_LINK_UPDATED
-      - REIMBURSEMENT_CREATED
-      - FEE_DELETED
-      - CHECKOUT_CREATED
-      - CHECKOUT_UPDATED
-      - CHECKOUT_TEMPLATE_CREATED
-      - CHECKOUT_TEMPLATE_UPDATED
-      - MERCHANT_COMMUNICATION_PREFERENCES_UPDATED
-      - THEME_CREATED
-      - THEME_UPDATED
-      - DOCUMENT_CREATED
-      - DOCUMENT_UPDATED
-      - ACCOUNT_STATEMENT_CREATED
-      - ACCOUNT_STATEMENT_UPDATED
-      - ACCOUNT_STATEMENT_PLUGIN_PAGE_VISITED
+        - GLOBAL_PAYMENT_METHOD_UPDATED
+        - MERCHANT_CREATED
+        - MERCHANT_DETAILS_UPDATED
+        - MERCHANT_LEGAL_DETAILS_CREATED
+        - MERCHANT_LEGAL_DETAILS_UPDATED
+        - MERCHANT_STATUS_UPDATED
+        - MERCHANT_ONBOARDING_COMPLETED
+        - MERCHANT_CLIENT_UPDATED
+        - MERCHANT_PLUGIN_ACTIVATED
+        - MERCHANT_PLUGIN_DEACTIVATED
+        - MERCHANT_PRICING_RATE_CREATED
+        - MERCHANT_USER_ADDED
+        - MERCHANT_USER_UPDATED
+        - MERCHANT_WEBHOOK_CREATED
+        - MERCHANT_WEBHOOK_UPDATED
+        - MERCHANT_PAYMENT_METHOD_UPDATED
+        - MERCHANT_PAYMENT_METHOD_CONNECTION_UPDATED
+        - MERCHANT_ADDRESS_UPDATED
+        - MERCHANT_BANK_ACCOUNT_UPDATED
+        - MERCHANT_CREDENTIALS_CREATED
+        - MERCHANT_CREDENTIALS_DELETED
+        - MERCHANT_CREDENTIALS_REQUESTED
+        - MERCHANT_CREDENTIALS_SECRET_ROTATED
+        - MERCHANT_ACCOUNTING_REPORT_DOWNLOAD
+        - MERCHANT_APPLE_PAY_REGISTERED
+        - MERCHANT_APPLE_PAY_UNREGISTERED
+        - MERCHANT_PRIMARY_EMAIL_UPDATED
+        - MERCHANT_USER_POLICIES_UPDATED
+        - PASSFORT_COMPANY_PROFILE_FETCHED
+        - MERCHANT_KYC_APPROVED
+        - MERCHANT_KYC_STATUS_UPDATED
+        - MERCHANT_MODULR_CUSTOMER_CREATED
+        - MERCHANT_MODULR_CUSTOMER_UPDATED
+        - MERCHANT_MODULR_ACCOUNT_CREATED
+        - MERCHANT_MODULR_ACCOUNT_UPDATED
+        - MERCHANT_STATEMENT_EXPORTED
+        - ONBOARDING_APPLICANT_CREATED
+        - ONBOARDING_APPLICANT_UPDATED
+        - APPLICANT_STATUS_UPDATED
+        - ON_NETWORK_GLOBAL_SETTING_UPDATED
+        - ON_NETWORK_MERCHANT_SETTING_UPDATED
+        - ORDER_CREATED
+        - ORDER_UPDATED
+        - ORDER_STATUS_CHANGE
+        - ORDER_REPORT_DOWNLOAD
+        - PAYMENT_CREATED
+        - PAYMENT_UPDATED
+        - USER_EMAIL_UPDATED
+        - USER_CREATED
+        - USER_PASSWORD_CHANGED
+        - USER_PASSWORD_CHANGE_REQUESTED
+        - USER_LOGOUT
+        - IDENTITY_PROVIDER_USER_CREATED
+        - AUTH0_USER_CREATED
+        - AUTH0_USER_UPDATED
+        - LEDGER_MANUAL_ADJUSTMENT
+        - LEDGER_REVERSAL
+        - USER_CONSENT_GIVEN
+        - PAYMENT_LINK_CREATED
+        - PAYMENT_LINK_UPDATED
+        - REIMBURSEMENT_CREATED
+        - FEE_DELETED
+        - CHECKOUT_CREATED
+        - CHECKOUT_UPDATED
+        - CHECKOUT_TEMPLATE_CREATED
+        - CHECKOUT_TEMPLATE_UPDATED
+        - MERCHANT_COMMUNICATION_PREFERENCES_UPDATED
+        - THEME_CREATED
+        - THEME_UPDATED
+        - DOCUMENT_CREATED
+        - DOCUMENT_UPDATED
+        - ACCOUNT_STATEMENT_CREATED
+        - ACCOUNT_STATEMENT_UPDATED
+        - ACCOUNT_STATEMENT_PLUGIN_PAGE_VISITED
     ActionTypeInput:
       type: string
       description: The action performed
       enum:
-      - MERCHANT_PLUGIN_ACTIVATED
-      - MERCHANT_PLUGIN_DEACTIVATED
-      - ACCOUNT_STATEMENT_PLUGIN_PAGE_VISITED
+        - MERCHANT_PLUGIN_ACTIVATED
+        - MERCHANT_PLUGIN_DEACTIVATED
+        - ACCOUNT_STATEMENT_PLUGIN_PAGE_VISITED
     ActorType:
       type: string
       description: Who is performing the action
       enum:
-      - INTERNAL
-      - EXTERNAL
-      - SYSTEM
+        - INTERNAL
+        - EXTERNAL
+        - SYSTEM
     Address:
       type: object
       properties:
@@ -1961,11 +1960,11 @@ components:
           type: string
           description: State.
       required:
-      - city
-      - countryCode
-      - line1
-      - name
-      - postcode
+        - city
+        - countryCode
+        - line1
+        - name
+        - postcode
     AddressInput:
       type: object
       description: The address details.
@@ -2023,27 +2022,27 @@ components:
           maxLength: 128
           minLength: 1
       required:
-      - city
-      - countryCode
-      - line1
-      - name
-      - postcode
+        - city
+        - countryCode
+        - line1
+        - name
+        - postcode
     ApplicationSource:
       type: string
       description: The source of the application.
       enum:
-      - API
-      - XERO
-      - MOTO
-      - DASHBOARD_MOTO
-      - DASHBOARD_PAYMENT_LINK
-      - MAGENTO_CHECKOUT
-      - MAGENTO_MOTO
-      - MAGENTO_PAYMENT_LINK
-      - MAGENTO_AX_INVOICE
-      - PAY_NOW_IN_PERSON
-      - PAY_NOW_MOTO
-      - PAY_NOW_PAYMENT_LINK
+        - API
+        - XERO
+        - MOTO
+        - DASHBOARD_MOTO
+        - DASHBOARD_PAYMENT_LINK
+        - MAGENTO_CHECKOUT
+        - MAGENTO_MOTO
+        - MAGENTO_PAYMENT_LINK
+        - MAGENTO_AX_INVOICE
+        - PAY_NOW_IN_PERSON
+        - PAY_NOW_MOTO
+        - PAY_NOW_PAYMENT_LINK
     Checkout:
       type: object
       description: Checkout object
@@ -2135,21 +2134,21 @@ components:
           type: string
           description: The URL to the hosted checkout page.
       required:
-      - checkoutTemplateId
-      - createdAt
-      - expiresAt
-      - id
-      - items
-      - merchantId
-      - metadata
-      - mode
-      - modeId
-      - paymentSessionIds
-      - source
-      - status
-      - token
-      - updatedAt
-      - url
+        - checkoutTemplateId
+        - createdAt
+        - expiresAt
+        - id
+        - items
+        - merchantId
+        - metadata
+        - mode
+        - modeId
+        - paymentSessionIds
+        - source
+        - status
+        - token
+        - updatedAt
+        - url
     CheckoutAmountType:
       type: string
       description: "The amount type for the checkout. This can be either a fixed amount\
@@ -2158,8 +2157,8 @@ components:
         \ the amount set in the checkout is the amount that will be paid and cannot\
         \ be changed inside the hosted checkout."
       enum:
-      - FIXED
-      - EDITABLE
+        - FIXED
+        - EDITABLE
     CheckoutApplePaySettings:
       type: object
       description: The Apple Pay settings to be used for the checkout.
@@ -2281,11 +2280,11 @@ components:
       type: string
       description: The customer field type.
       enum:
-      - GIVEN_NAME
-      - SURNAME
-      - EMAIL
-      - PHONE_NUMBER
-      - BILLING_ADDRESS
+        - GIVEN_NAME
+        - SURNAME
+        - EMAIL
+        - PHONE_NUMBER
+        - BILLING_ADDRESS
     CheckoutCustomerFields:
       type: object
       properties:
@@ -2365,10 +2364,10 @@ components:
       type: string
       description: The mode of the checkout.
       enum:
-      - CHECKOUT
-      - PAYMENT_LINK
-      - ACCOUNT_STATEMENT
-      - VIRTUAL_TERMINAL
+        - CHECKOUT
+        - PAYMENT_LINK
+        - ACCOUNT_STATEMENT
+        - VIRTUAL_TERMINAL
     CheckoutPage:
       type: object
       properties:
@@ -2382,9 +2381,9 @@ components:
           type: integer
           format: int32
       required:
-      - pageable
-      - results
-      - total
+        - pageable
+        - results
+        - total
     CheckoutPayByBankSettings:
       type: object
       description: The Pay by Bank settings to be used for the checkout.
@@ -2451,15 +2450,15 @@ components:
         \ If editable, the user can modify the reference when they pay inside the\
         \ hosted checkout. "
       enum:
-      - FIXED
-      - EDITABLE
+        - FIXED
+        - EDITABLE
     CheckoutStatus:
       type: string
       description: The status of the checkout.
       enum:
-      - ACTIVE
-      - EXPIRED
-      - COMPLETED
+        - ACTIVE
+        - EXPIRED
+        - COMPLETED
     CheckoutTemplate:
       type: object
       properties:
@@ -2504,17 +2503,17 @@ components:
           format: date-time
           description: The datetime when the checkout template was last updated.
       required:
-      - amountType
-      - createdAt
-      - id
-      - merchantId
-      - mode
-      - name
-      - notifyCustomer
-      - notifyMerchant
-      - referenceType
-      - source
-      - updatedAt
+        - amountType
+        - createdAt
+        - id
+        - merchantId
+        - mode
+        - name
+        - notifyCustomer
+        - notifyMerchant
+        - referenceType
+        - source
+        - updatedAt
     CheckoutTemplateCreateInput:
       type: object
       description: The input for creating a checkout template.
@@ -2524,18 +2523,18 @@ components:
         amountType: FIXED
         referenceType: FIXED
         enabledPaymentMethods:
-        - CARD
-        - APPLE_PAY
-        - PAY_BY_BANK
+          - CARD
+          - APPLE_PAY
+          - PAY_BY_BANK
         notifyCustomer: false
         notifyMerchant: false
         customerFields:
           required:
-          - GIVEN_NAME
-          - SURNAME
-          - EMAIL
+            - GIVEN_NAME
+            - SURNAME
+            - EMAIL
           optional:
-          - PHONE_NUMBER
+            - PHONE_NUMBER
         paymentMethodSettings: null
       properties:
         amountType:
@@ -2546,10 +2545,10 @@ components:
           type: array
           description: Ordered list of payment methods that are enabled for the checkout.
           enum:
-          - CARD
-          - APPLE_PAY
-          - GOOGLE_PAY
-          - PAY_BY_BANK
+            - CARD
+            - APPLE_PAY
+            - GOOGLE_PAY
+            - PAY_BY_BANK
           items:
             $ref: "#/components/schemas/PaymentMethod"
         mode:
@@ -2574,7 +2573,7 @@ components:
         source:
           $ref: "#/components/schemas/ApplicationSource"
       required:
-      - name
+        - name
     CheckoutTemplatePage:
       type: object
       properties:
@@ -2588,9 +2587,9 @@ components:
           type: integer
           format: int32
       required:
-      - pageable
-      - results
-      - total
+        - pageable
+        - results
+        - total
     CheckoutTemplateUpdateInput:
       type: object
       description: The input for updating a checkout template.
@@ -2599,17 +2598,17 @@ components:
         amountType: FIXED
         referenceType: FIXED
         enabledPaymentMethods:
-        - CARD
-        - PAY_BY_BANK
+          - CARD
+          - PAY_BY_BANK
         notifyCustomer: false
         notifyMerchant: false
         customerFields:
           required:
-          - GIVEN_NAME
-          - SURNAME
-          - EMAIL
+            - GIVEN_NAME
+            - SURNAME
+            - EMAIL
           optional:
-          - PHONE_NUMBER
+            - PHONE_NUMBER
         paymentMethodSettings: null
       properties:
         amountType:
@@ -2620,10 +2619,10 @@ components:
           type: array
           description: Ordered list of payment methods that are enabled for the checkout.
           enum:
-          - CARD
-          - APPLE_PAY
-          - GOOGLE_PAY
-          - PAY_BY_BANK
+            - CARD
+            - APPLE_PAY
+            - GOOGLE_PAY
+            - PAY_BY_BANK
           items:
             $ref: "#/components/schemas/PaymentMethod"
         name:
@@ -2662,12 +2661,12 @@ components:
           type: string
           format: date-time
       required:
-      - createdAt
-      - data
-      - id
-      - merchantId
-      - status
-      - updatedAt
+        - createdAt
+        - data
+        - id
+        - merchantId
+        - status
+        - updatedAt
     ConnectionCreateInput:
       type: object
       description: The input to create a new connection.
@@ -2675,39 +2674,41 @@ components:
         data:
           $ref: "#/components/schemas/ConnectionDataInput"
       required:
-      - data
+        - data
     ConnectionData:
       type: object
       description: The connection data for a given type
       discriminator:
         mapping:
           GOOGLE_PAY: "#/components/schemas/GooglePayConnectionData"
+          KLARNA: "#/components/schemas/KlarnaConnectionData"
           MAGENTO_PROXY: "#/components/schemas/MagentoProxyConnectionData"
         propertyName: type
       properties:
         type:
           $ref: "#/components/schemas/ConnectionType"
       required:
-      - type
+        - type
     ConnectionDataInput:
       type: object
       description: The input to define the connection data for a given type
       discriminator:
         mapping:
           GOOGLE_PAY: "#/components/schemas/GooglePayConnectionDataInput"
+          KLARNA: "#/components/schemas/KlarnaConnectionDataInput"
           MAGENTO_PROXY: "#/components/schemas/MagentoProxyConnectionDataInput"
         propertyName: type
       properties:
         type:
           $ref: "#/components/schemas/ConnectionType"
       required:
-      - type
+        - type
     ConnectionOauthSignatureMethod:
       type: string
       description: The connections oauth signature method.
       enum:
-      - HMAC_SHA256
-      - HMAC_SHA1
+        - HMAC_SHA256
+        - HMAC_SHA1
     ConnectionPage:
       type: object
       properties:
@@ -2721,21 +2722,22 @@ components:
           type: integer
           format: int32
       required:
-      - pageable
-      - results
-      - total
+        - pageable
+        - results
+        - total
     ConnectionStatus:
       type: string
       description: The connection status.
       enum:
-      - CONNECTED
-      - DISCONNECTED
+        - CONNECTED
+        - DISCONNECTED
     ConnectionType:
       type: string
       description: The connection type.
       enum:
-      - MAGENTO_PROXY
-      - GOOGLE_PAY
+        - MAGENTO_PROXY
+        - GOOGLE_PAY
+        - KLARNA
     Customer:
       type: object
       properties:
@@ -2784,35 +2786,35 @@ components:
       description: Indicates whether payment settings query is for express checkout
         product or cart.
       enum:
-      - CART
-      - PRODUCT
-      - GENERIC
+        - CART
+        - PRODUCT
+        - GENERIC
     GooglePayConnectionData:
       type: object
       allOf:
-      - $ref: "#/components/schemas/ConnectionData"
-      - type: object
-        properties:
-          displayName:
-            type: string
-          externalMerchantId:
-            type: string
+        - $ref: "#/components/schemas/ConnectionData"
+        - type: object
+          properties:
+            displayName:
+              type: string
+            externalMerchantId:
+              type: string
       description: Data for the google pay connection.
       required:
-      - displayName
-      - type
+        - displayName
+        - type
     GooglePayConnectionDataInput:
       type: object
       allOf:
-      - $ref: "#/components/schemas/ConnectionDataInput"
-      - type: object
-        properties:
-          externalMerchantId:
-            type: string
+        - $ref: "#/components/schemas/ConnectionDataInput"
+        - type: object
+          properties:
+            externalMerchantId:
+              type: string
       description: Data for the google pay connection.
       required:
-      - externalMerchantId
-      - type
+        - externalMerchantId
+        - type
     Item:
       type: object
       description: List of items that the customer is purchasing.
@@ -2844,14 +2846,14 @@ components:
         total:
           $ref: "#/components/schemas/Money"
       required:
-      - createdAt
-      - id
-      - name
-      - price
-      - quantity
-      - restriction
-      - sku
-      - total
+        - createdAt
+        - id
+        - name
+        - price
+        - quantity
+        - restriction
+        - sku
+        - total
     ItemInput:
       type: object
       description: An item that the customer is purchasing.
@@ -2881,19 +2883,55 @@ components:
         total:
           $ref: "#/components/schemas/MoneyInput"
       required:
-      - name
-      - price
-      - quantity
-      - sku
-      - total
+        - name
+        - price
+        - quantity
+        - sku
+        - total
     ItemRestriction:
       type: string
       description: Indicator of restrictions on the item. Some payment methods are
         unavailable for restricted items.
       enum:
-      - ALLOWED
-      - RESTRICTED
-      - PROHIBITED
+        - ALLOWED
+        - RESTRICTED
+        - PROHIBITED
+    KlarnaConnectionData:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/ConnectionData"
+        - type: object
+          properties:
+            apiPassword:
+              type: string
+            apiUsername:
+              type: string
+            displayName:
+              type: string
+            sdkClientIdentifier:
+              type: string
+      description: Data for the Klarna connection.
+      required:
+        - displayName
+        - type
+    KlarnaConnectionDataInput:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/ConnectionDataInput"
+        - type: object
+          properties:
+            apiPassword:
+              type: string
+            apiUsername:
+              type: string
+            sdkClientIdentifier:
+              type: string
+      description: Data for the klarna connection.
+      required:
+        - apiPassword
+        - apiUsername
+        - sdkClientIdentifier
+        - type
     LogCreateInput:
       type: object
       description: The log to create
@@ -2909,9 +2947,9 @@ components:
         resourceId:
           type: string
       required:
-      - actionType
-      - currentData
-      - resourceId
+        - actionType
+        - currentData
+        - resourceId
     LogRecord:
       type: object
       description: A log record
@@ -2960,64 +2998,85 @@ components:
         resourceType:
           $ref: "#/components/schemas/ResourceType"
       required:
-      - actionType
-      - actorType
-      - createdAt
-      - currentValue
-      - id
-      - principalId
-      - resourceId
-      - resourceType
+        - actionType
+        - actorType
+        - createdAt
+        - currentValue
+        - id
+        - principalId
+        - resourceId
+        - resourceType
     MagentoProxyConnectionData:
       type: object
       allOf:
-      - $ref: "#/components/schemas/ConnectionData"
-      - type: object
-        properties:
-          accessToken:
-            type: string
-          accessTokenSecret:
-            type: string
-          baseUrl:
-            type: string
-          consumerKey:
-            type: string
-          consumerSecret:
-            type: string
-          displayName:
-            type: string
-          oauthSignatureMethod:
-            $ref: "#/components/schemas/ConnectionOauthSignatureMethod"
+        - $ref: "#/components/schemas/ConnectionData"
+        - type: object
+          properties:
+            accessToken:
+              type: string
+            accessTokenSecret:
+              type: string
+            baseUrl:
+              type: string
+            consumerKey:
+              type: string
+            consumerSecret:
+              type: string
+            displayName:
+              type: string
+            oauthSignatureMethod:
+              $ref: "#/components/schemas/ConnectionOauthSignatureMethod"
       description: Data for the magento proxy connection.
       required:
-      - displayName
-      - type
+        - displayName
+        - type
     MagentoProxyConnectionDataInput:
       type: object
       allOf:
-      - $ref: "#/components/schemas/ConnectionDataInput"
-      - type: object
-        properties:
-          accessToken:
-            type: string
-          accessTokenSecret:
-            type: string
-          baseUrl:
-            type: string
-          consumerKey:
-            type: string
-          consumerSecret:
-            type: string
-          oauthSignatureMethod:
-            $ref: "#/components/schemas/ConnectionOauthSignatureMethod"
+        - $ref: "#/components/schemas/ConnectionDataInput"
+        - type: object
+          properties:
+            accessToken:
+              type: string
+            accessTokenSecret:
+              type: string
+            baseUrl:
+              type: string
+            consumerKey:
+              type: string
+            consumerSecret:
+              type: string
+            oauthSignatureMethod:
+              $ref: "#/components/schemas/ConnectionOauthSignatureMethod"
       description: Data for the magento proxy connection.
       required:
-      - accessToken
-      - accessTokenSecret
-      - baseUrl
-      - consumerKey
-      - consumerSecret
-      - type
+        - accessToken
+        - accessTokenSecret
+        - baseUrl
+        - consumerKey
+        - consumerSecret
+        - type
+    MerchantLogoWithUrls:
+      type: object
+      description: Merchant logo with urls
+      properties:
+        documentId:
+          type: string
+          description: Logo document id
+        size104x104:
+          type: string
+          description: Logo in 104x104 size
+        size40x40:
+          type: string
+          description: Logo in 40x40 size
+        size80x80:
+          type: string
+          description: Logo in 80x80 size
+      required:
+        - documentId
+        - size104x104
+        - size40x40
+        - size80x80
     Money:
       type: object
       properties:
@@ -3030,8 +3089,8 @@ components:
             The three-letter ISO-4217 currency code of the amount.
                                      For cryptocurrencies, the currency code is the cryptocurrency symbol in uppercase.
       required:
-      - amount
-      - currency
+        - amount
+        - currency
     MoneyInput:
       type: object
       example:
@@ -3045,11 +3104,15 @@ components:
           type: string
           description: The three-letter ISO-4217 currency code of the amount.
           enum:
-          - GBP
-          pattern: GBP
+            - AED
+            - EUR
+            - GBP
+            - RON
+            - USD
+          pattern: AED|EUR|GBP|RON|USD
       required:
-      - amount
-      - currency
+        - amount
+        - currency
     NotificationSubscription:
       type: object
       description: Notification subscription.
@@ -3093,15 +3156,15 @@ components:
           format: date-time
           description: The datetime when the entity was last updated.
       required:
-      - activeFrom
-      - configurations
-      - createdAt
-      - id
-      - includeMainContact
-      - isActive
-      - name
-      - recipients
-      - updatedAt
+        - activeFrom
+        - configurations
+        - createdAt
+        - id
+        - includeMainContact
+        - isActive
+        - name
+        - recipients
+        - updatedAt
     NotificationSubscriptionConfiguration:
       type: object
       description: Notification subscription configuration entry.The configuration
@@ -3115,16 +3178,16 @@ components:
             type: string
             description: Allowed channels for this notification type.
             enum:
-            - EMAIL
-            - SMS
+              - EMAIL
+              - SMS
         id:
           type: string
         notificationType:
           $ref: "#/components/schemas/NotificationType"
       required:
-      - allowedChannels
-      - id
-      - notificationType
+        - allowedChannels
+        - id
+        - notificationType
     NotificationSubscriptionConfigurationInput:
       type: object
       description: Notification subscription configuration input.The configuration
@@ -3138,16 +3201,16 @@ components:
             type: string
             description: Allowed channels for this notification type.
             enum:
-            - EMAIL
-            - SMS
+              - EMAIL
+              - SMS
           maxItems: 2147483647
           minItems: 1
           uniqueItems: true
         notificationType:
           $ref: "#/components/schemas/NotificationType"
       required:
-      - allowedChannels
-      - notificationType
+        - allowedChannels
+        - notificationType
     NotificationSubscriptionCreateInput:
       type: object
       description: Notification subscription create input.
@@ -3182,10 +3245,10 @@ components:
           maxItems: 25
           minItems: 0
       required:
-      - configurations
-      - includeMainContact
-      - name
-      - recipients
+        - configurations
+        - includeMainContact
+        - name
+        - recipients
     NotificationSubscriptionPage:
       type: object
       properties:
@@ -3199,9 +3262,9 @@ components:
           type: integer
           format: int32
       required:
-      - pageable
-      - results
-      - total
+        - pageable
+        - results
+        - total
     NotificationSubscriptionRecipient:
       type: object
       description: Notification subscription recipient.
@@ -3226,14 +3289,14 @@ components:
       type: string
       description: The notification type.
       enum:
-      - MERCHANT_PENDING_REFUNDS
-      - MERCHANT_FAILED_REFUNDS
-      - MERCHANT_FAILED_SEND_PAYMENT_LINK_NOTIFICATION
-      - MERCHANT_PAYMENT_COMPLETED
-      - MERCHANT_PAYMENT_DECLINED
-      - MERCHANT_REFUND_SUCCEEDED
-      - MERCHANT_PAYMENT_VOIDED
-      - MERCHANT_WEEKEND_DISBURSEMENT_REPORT
+        - MERCHANT_PENDING_REFUNDS
+        - MERCHANT_FAILED_REFUNDS
+        - MERCHANT_FAILED_SEND_PAYMENT_LINK_NOTIFICATION
+        - MERCHANT_PAYMENT_COMPLETED
+        - MERCHANT_PAYMENT_DECLINED
+        - MERCHANT_REFUND_SUCCEEDED
+        - MERCHANT_PAYMENT_VOIDED
+        - MERCHANT_WEEKEND_DISBURSEMENT_REPORT
     PageCheckout:
       type: object
       properties:
@@ -3247,9 +3310,9 @@ components:
           type: integer
           format: int32
       required:
-      - pageable
-      - results
-      - total
+        - pageable
+        - results
+        - total
     PageCheckoutTemplate:
       type: object
       properties:
@@ -3263,9 +3326,9 @@ components:
           type: integer
           format: int32
       required:
-      - pageable
-      - results
-      - total
+        - pageable
+        - results
+        - total
     PageConnection:
       type: object
       properties:
@@ -3279,9 +3342,9 @@ components:
           type: integer
           format: int32
       required:
-      - pageable
-      - results
-      - total
+        - pageable
+        - results
+        - total
     PageNotificationSubscription:
       type: object
       properties:
@@ -3295,9 +3358,9 @@ components:
           type: integer
           format: int32
       required:
-      - pageable
-      - results
-      - total
+        - pageable
+        - results
+        - total
     PagePaymentLink:
       type: object
       properties:
@@ -3311,11 +3374,12 @@ components:
           type: integer
           format: int32
       required:
-      - pageable
-      - results
-      - total
+        - pageable
+        - results
+        - total
     PagePaymentMethodDetail:
       type: object
+      description: Payment methods and their settings
       properties:
         pageable:
           $ref: "#/components/schemas/Pageable"
@@ -3327,9 +3391,9 @@ components:
           type: integer
           format: int32
       required:
-      - pageable
-      - results
-      - total
+        - pageable
+        - results
+        - total
     PageTheme:
       type: object
       properties:
@@ -3343,9 +3407,9 @@ components:
           type: integer
           format: int32
       required:
-      - pageable
-      - results
-      - total
+        - pageable
+        - results
+        - total
     PageWebhook:
       type: object
       properties:
@@ -3359,9 +3423,9 @@ components:
           type: integer
           format: int32
       required:
-      - pageable
-      - results
-      - total
+        - pageable
+        - results
+        - total
     Pageable:
       type: object
       properties:
@@ -3372,8 +3436,8 @@ components:
           type: integer
           format: int64
       required:
-      - limit
-      - offset
+        - limit
+        - offset
     Payment:
       type: object
       description: List of payments that have been made for the payment session.
@@ -3414,16 +3478,16 @@ components:
         voidReason:
           $ref: "#/components/schemas/PaymentVoidReason"
       required:
-      - amount
-      - captureType
-      - createdAt
-      - id
-      - method
-      - paymentSessionId
-      - settlementStatus
-      - status
-      - summary
-      - updatedAt
+        - amount
+        - captureType
+        - createdAt
+        - id
+        - method
+        - paymentSessionId
+        - settlementStatus
+        - status
+        - summary
+        - updatedAt
     PaymentAction:
       type: object
       description: The list of actions that can be performed on the payment.
@@ -3435,46 +3499,46 @@ components:
         value:
           type: string
       required:
-      - method
-      - type
-      - value
+        - method
+        - type
+        - value
     PaymentActionMethod:
       type: string
       description: The method of the payment action.
       enum:
-      - REDIRECT_URL
-      - TOKEN
-      - URL
+        - REDIRECT_URL
+        - TOKEN
+        - URL
     PaymentActionType:
       type: string
       description: The type of the payment action.
       enum:
-      - AUTHORIZATION
-      - CAPTURE
-      - CANCEL
-      - CONFIRM_AUTHORIZATION
-      - CARD_3DS_AUTHENTICATION
+        - AUTHORIZATION
+        - CAPTURE
+        - CANCEL
+        - CONFIRM_AUTHORIZATION
+        - CARD_3DS_AUTHENTICATION
     PaymentCaptureType:
       type: string
       description: The capture type for the payment.
       enum:
-      - AUTOMATIC_CHECKOUT
-      - AUTOMATIC_PLUGIN
-      - MANUAL
+        - AUTOMATIC_CHECKOUT
+        - AUTOMATIC_PLUGIN
+        - MANUAL
     PaymentDeclineReason:
       type: string
       description: The reason the payment was declined.
       enum:
-      - INSUFFICIENT_FUNDS
-      - FUNDING_INSTRUMENT_DECLINED
-      - CONSENT_MISSING
-      - SUSPECTED_FRAUD
-      - AMOUNT_LIMITS_EXCEEDED
-      - ACCOUNT_CLOSED
-      - CVV2_FAILURE
-      - FUNDING_INSTRUMENT_EXPIRED
-      - FUNDING_INSTRUMENT_INVALID
-      - INVALID_AUTHORIZATION
+        - INSUFFICIENT_FUNDS
+        - FUNDING_INSTRUMENT_DECLINED
+        - CONSENT_MISSING
+        - SUSPECTED_FRAUD
+        - AMOUNT_LIMITS_EXCEEDED
+        - ACCOUNT_CLOSED
+        - CVV2_FAILURE
+        - FUNDING_INSTRUMENT_EXPIRED
+        - FUNDING_INSTRUMENT_INVALID
+        - INVALID_AUTHORIZATION
     PaymentLink:
       type: object
       description: Payment link object
@@ -3524,15 +3588,15 @@ components:
           type: string
           description: The URL to the hosted payment link page.
       required:
-      - checkoutIds
-      - createdAt
-      - id
-      - merchantId
-      - reusable
-      - source
-      - status
-      - updatedAt
-      - url
+        - checkoutIds
+        - createdAt
+        - id
+        - merchantId
+        - reusable
+        - source
+        - status
+        - updatedAt
+        - url
     PaymentLinkCreateInput:
       type: object
       description: The input for creating a payment link.
@@ -3574,30 +3638,31 @@ components:
           type: integer
           format: int32
       required:
-      - pageable
-      - results
-      - total
+        - pageable
+        - results
+        - total
     PaymentLinkStatus:
       type: string
       description: The status of the payment link.
       enum:
-      - ACTIVE
-      - EXPIRED
-      - INACTIVE
-      - COMPLETED
+        - ACTIVE
+        - EXPIRED
+        - INACTIVE
+        - COMPLETED
     PaymentMethod:
       type: string
       description: The payment method.
       enum:
-      - FAKE_PAYMENT_METHOD
-      - CLEARPAY
-      - CRYPTO
-      - PAYPAL
-      - PAYPAL_CUSTOM_CARD
-      - CARD
-      - APPLE_PAY
-      - GOOGLE_PAY
-      - PAY_BY_BANK
+        - FAKE_PAYMENT_METHOD
+        - CLEARPAY
+        - CRYPTO
+        - PAYPAL
+        - PAYPAL_CUSTOM_CARD
+        - CARD
+        - APPLE_PAY
+        - GOOGLE_PAY
+        - PAY_BY_BANK
+        - KLARNA
     PaymentMethodAsset:
       type: object
       description: Payment method assets object
@@ -3611,14 +3676,14 @@ components:
         url:
           type: string
       required:
-      - assetType
-      - attributes
-      - url
+        - assetType
+        - attributes
+        - url
     PaymentMethodAssetType:
       type: string
       description: The type of the payment method asset.
       enum:
-      - SCRIPT
+        - SCRIPT
     PaymentMethodDetail:
       type: object
       description: Payment method object
@@ -3636,11 +3701,11 @@ components:
         summaryUrl:
           type: string
       required:
-      - logoUrl
-      - name
-      - settings
-      - status
-      - summaryUrl
+        - logoUrl
+        - name
+        - settings
+        - status
+        - summaryUrl
     PaymentMethodDetailsPage:
       type: object
       properties:
@@ -3654,9 +3719,9 @@ components:
           type: integer
           format: int32
       required:
-      - pageable
-      - results
-      - total
+        - pageable
+        - results
+        - total
     PaymentMethodLimit:
       type: object
       description: Payment method limits object. Contains expiration date and restrictions
@@ -3670,8 +3735,8 @@ components:
           items:
             $ref: "#/components/schemas/PaymentMethodTotalLimit"
       required:
-      - expiresAt
-      - total
+        - expiresAt
+        - total
     PaymentMethodSettings:
       type: object
       description: Payment method settings object
@@ -3685,17 +3750,17 @@ components:
         displayName:
           type: string
       required:
-      - assets
-      - description
-      - displayName
+        - assets
+        - description
+        - displayName
     PaymentMethodStatus:
       type: string
       description: The status of the payment method.
       enum:
-      - ENABLED
-      - DISABLED
-      - UNAVAILABLE
-      - SUSPENDED
+        - ENABLED
+        - DISABLED
+        - UNAVAILABLE
+        - SUSPENDED
     PaymentMethodTotalLimit:
       type: object
       description: Payment method total limit object. Contains min and max limits
@@ -3708,9 +3773,9 @@ components:
         min:
           type: string
       required:
-      - currency
-      - max
-      - min
+        - currency
+        - max
+        - min
     PaymentSession:
       type: object
       properties:
@@ -3777,16 +3842,16 @@ components:
           format: date-time
           description: The datetime when the payment session was last updated.
       required:
-      - checkoutMode
-      - createdAt
-      - dashboardUrl
-      - id
-      - items
-      - merchantId
-      - payments
-      - status
-      - total
-      - updatedAt
+        - checkoutMode
+        - createdAt
+        - dashboardUrl
+        - id
+        - items
+        - merchantId
+        - payments
+        - status
+        - total
+        - updatedAt
     PaymentSessionCreateInput:
       type: object
       description: Input for creating a payment session.
@@ -3817,6 +3882,8 @@ components:
           $ref: "#/components/schemas/PaymentCaptureType"
         paymentMethod:
           $ref: "#/components/schemas/PaymentMethod"
+        paymentType:
+          $ref: "#/components/schemas/PaymentType"
         requiresShipping:
           type: boolean
           default: false
@@ -3838,20 +3905,32 @@ components:
         total:
           $ref: "#/components/schemas/MoneyInput"
       required:
-      - paymentMethod
-      - sessionKey
-      - total
+        - paymentMethod
+        - paymentType
+        - sessionKey
+        - total
     PaymentSessionStatus:
       type: string
       description: The status of the payment session.
       enum:
-      - CANCELLED
-      - DECLINED
-      - EXPIRED
-      - PENDING
-      - REQUIRES_ACTION
-      - REQUIRES_PAYMENT
-      - SUCCEEDED
+        - CANCELLED
+        - DECLINED
+        - EXPIRED
+        - PENDING
+        - REQUIRES_ACTION
+        - REQUIRES_PAYMENT
+        - SUCCEEDED
+    PaymentSettings:
+      type: object
+      description: Payment Settings object
+      properties:
+        merchant:
+          $ref: "#/components/schemas/PaymentSettingsMerchant"
+        paymentMethods:
+          $ref: "#/components/schemas/PagePaymentMethodDetail"
+      required:
+        - merchant
+        - paymentMethods
     PaymentSettingsContext:
       type: object
       description: Input for payment settings.
@@ -3868,30 +3947,45 @@ components:
           $ref: "#/components/schemas/Address"
         total:
           $ref: "#/components/schemas/MoneyInput"
+    PaymentSettingsMerchant:
+      type: object
+      description: Merchant details
+      properties:
+        id:
+          type: string
+          description: Merchant's id
+        logo:
+          $ref: "#/components/schemas/MerchantLogoWithUrls"
+        name:
+          type: string
+          description: Merchant's name
+      required:
+        - id
+        - name
     PaymentSettlementStatus:
       type: string
       description: The settlement status of the payment.
       enum:
-      - NOT_INITIATED
-      - ACCEPTED
-      - SETTLED
-      - FUNDS_RECEIVED
-      - SETTLED_EXTERNALLY
+        - NOT_INITIATED
+        - ACCEPTED
+        - SETTLED
+        - FUNDS_RECEIVED
+        - SETTLED_EXTERNALLY
     PaymentStatus:
       type: string
       description: The status of the payment.
       enum:
-      - CREATED
-      - PENDING
-      - SUCCEEDED
-      - REQUIRES_ACTION
-      - FAILED
-      - CANCELLED
-      - DECLINED
-      - EXPIRED
-      - VOIDED
-      - AUTHORIZED
-      - AUTHORIZATION_EXPIRED
+        - CREATED
+        - PENDING
+        - SUCCEEDED
+        - REQUIRES_ACTION
+        - FAILED
+        - CANCELLED
+        - DECLINED
+        - EXPIRED
+        - VOIDED
+        - AUTHORIZED
+        - AUTHORIZATION_EXPIRED
     PaymentSummary:
       type: object
       properties:
@@ -3912,20 +4006,28 @@ components:
         refundableAmount:
           $ref: "#/components/schemas/Money"
       required:
-      - isManuallyCapturable
-      - isRefundable
-      - isVoidable
-      - paymentActions
-      - refundableAmount
+        - isManuallyCapturable
+        - isRefundable
+        - isVoidable
+        - paymentActions
+        - refundableAmount
+    PaymentType:
+      type: string
+      default: CHECKOUT
+      description: The type of payment.
+      enum:
+        - EXPRESS
+        - STANDARD
+        - CHECKOUT
     PaymentVoidReason:
       type: string
       description: The reason the payment was voided.
       enum:
-      - CUSTOMER_REQUEST
-      - MERCHANT_REQUEST
-      - SUSPECTED_FRAUD
-      - STOCK_ISSUES
-      - INVALID_DATA
+        - CUSTOMER_REQUEST
+        - MERCHANT_REQUEST
+        - SUSPECTED_FRAUD
+        - STOCK_ISSUES
+        - INVALID_DATA
     Refund:
       type: object
       description: A refund.
@@ -3960,14 +4062,14 @@ components:
         status:
           $ref: "#/components/schemas/RefundStatus"
       required:
-      - amount
-      - createdAt
-      - id
-      - merchantId
-      - paymentId
-      - paymentMethod
-      - paymentSessionId
-      - status
+        - amount
+        - createdAt
+        - id
+        - merchantId
+        - paymentId
+        - paymentMethod
+        - paymentSessionId
+        - status
     RefundCreateInput:
       type: object
       description: Input for creating a refund.
@@ -3980,52 +4082,52 @@ components:
           maxLength: 255
           minLength: 0
       required:
-      - amount
+        - amount
     RefundFailureReason:
       type: string
       description: The reason for the refund failure.
       enum:
-      - AMOUNT_LIMITS_EXCEEDED
-      - INSUFFICIENT_FUNDS
-      - PAYMENT_DISPUTED
+        - AMOUNT_LIMITS_EXCEEDED
+        - INSUFFICIENT_FUNDS
+        - PAYMENT_DISPUTED
     RefundStatus:
       type: string
       description: The status of the refund.
       enum:
-      - PENDING
-      - SUCCEEDED
-      - FAILED
+        - PENDING
+        - SUCCEEDED
+        - FAILED
     ResourceType:
       type: string
       description: The resource an action was performed upon
       enum:
-      - GlobalPaymentMethod
-      - Applicant
-      - User
-      - Merchant
-      - MerchantLegalDetails
-      - MerchantUser
-      - MerchantPaymentMethod
-      - MerchantPricingRate
-      - MerchantAddress
-      - MerchantBankAccount
-      - MerchantCredentials
-      - MerchantWebhook
-      - Onboarding
-      - OnNetworkGlobalSetting
-      - OnNetworkMerchantSetting
-      - Order
-      - Payment
-      - Ledger
-      - MerchantAccountingReport
-      - PaymentLink
-      - Reimbursement
-      - Fee
-      - Checkout
-      - CheckoutTemplate
-      - Theme
-      - Document
-      - AccountStatement
+        - GlobalPaymentMethod
+        - Applicant
+        - User
+        - Merchant
+        - MerchantLegalDetails
+        - MerchantUser
+        - MerchantPaymentMethod
+        - MerchantPricingRate
+        - MerchantAddress
+        - MerchantBankAccount
+        - MerchantCredentials
+        - MerchantWebhook
+        - Onboarding
+        - OnNetworkGlobalSetting
+        - OnNetworkMerchantSetting
+        - Order
+        - Payment
+        - Ledger
+        - MerchantAccountingReport
+        - PaymentLink
+        - Reimbursement
+        - Fee
+        - Checkout
+        - CheckoutTemplate
+        - Theme
+        - Document
+        - AccountStatement
     StartEnd:
       type: object
       description: Date range for the export.
@@ -4037,8 +4139,8 @@ components:
           type: string
           format: date-time
       required:
-      - end
-      - start
+        - end
+        - start
     StatementExportRequest:
       type: object
       description: Request statement export.
@@ -4049,11 +4151,11 @@ components:
           type: string
           description: Format for export.
           enum:
-          - OFX_V2
+            - OFX_V2
         range:
           $ref: "#/components/schemas/StartEnd"
       required:
-      - exportFormat
+        - exportFormat
     Theme:
       type: object
       description: Theme object
@@ -4086,14 +4188,14 @@ components:
           format: date-time
           description: The datetime when the theme was last updated.
       required:
-      - colors
-      - createdAt
-      - id
-      - isDefault
-      - merchantId
-      - name
-      - paymentMethodSelector
-      - updatedAt
+        - colors
+        - createdAt
+        - id
+        - isDefault
+        - merchantId
+        - name
+        - paymentMethodSelector
+        - updatedAt
     ThemeBackgroundImage:
       type: object
       description: The background images for the theme.
@@ -4148,11 +4250,11 @@ components:
           type: string
           description: Primary light color.
       required:
-      - primary
-      - primaryDivider
-      - primaryHover
-      - primaryHoverLight
-      - primaryLight
+        - primary
+        - primaryDivider
+        - primaryHover
+        - primaryHoverLight
+        - primaryLight
     ThemeColorsCreateInput:
       type: object
       description: Theme colors create input object
@@ -4194,11 +4296,11 @@ components:
           maxLength: 128
           minLength: 1
       required:
-      - primary
-      - primaryDivider
-      - primaryHover
-      - primaryHoverLight
-      - primaryLight
+        - primary
+        - primaryDivider
+        - primaryHover
+        - primaryHoverLight
+        - primaryLight
     ThemeColorsUpdateInput:
       type: object
       description: Theme colors update input object
@@ -4260,10 +4362,10 @@ components:
         paymentMethodSelector:
           $ref: "#/components/schemas/ThemePaymentMethodSelectorCreateInput"
       required:
-      - colors
-      - isDefault
-      - name
-      - paymentMethodSelector
+        - colors
+        - isDefault
+        - name
+        - paymentMethodSelector
     ThemeDesktopBackgroundImage:
       type: object
       description: The background image for desktop with the URLs for the different
@@ -4282,10 +4384,10 @@ components:
           type: string
           description: The URL for the image with the size 768x1024.
       required:
-      - documentId
-      - size1920x1080
-      - size420x800
-      - size768x1024
+        - documentId
+        - size1920x1080
+        - size420x800
+        - size768x1024
     ThemeImageCreateInput:
       type: object
       description: The image for the theme.
@@ -4294,7 +4396,7 @@ components:
           type: string
           description: The document ID of the image.
       required:
-      - documentId
+        - documentId
     ThemeImageUpdateInput:
       type: object
       description: Theme image update input.
@@ -4303,7 +4405,7 @@ components:
           type: string
           description: The document ID of the image.
       required:
-      - documentId
+        - documentId
     ThemeMobileBackgroundImage:
       type: object
       description: The background image for mobile with the URLs for the different
@@ -4322,10 +4424,10 @@ components:
           type: string
           description: The URL for the image with the size 768x1024.
       required:
-      - documentId
-      - size1920x1080
-      - size420x800
-      - size768x1024
+        - documentId
+        - size1920x1080
+        - size420x800
+        - size768x1024
     ThemePage:
       type: object
       properties:
@@ -4339,9 +4441,9 @@ components:
           type: integer
           format: int32
       required:
-      - pageable
-      - results
-      - total
+        - pageable
+        - results
+        - total
     ThemePaymentMethodSelector:
       type: object
       description: The theme settings for the payment method selector.
@@ -4349,7 +4451,7 @@ components:
         colors:
           $ref: "#/components/schemas/ThemePaymentMethodSelectorColors"
       required:
-      - colors
+        - colors
     ThemePaymentMethodSelectorColors:
       type: object
       description: The colors for the payment method selector.
@@ -4370,11 +4472,11 @@ components:
           type: string
           description: The text color.
       required:
-      - background
-      - border
-      - hoverBackground
-      - hoverText
-      - text
+        - background
+        - border
+        - hoverBackground
+        - hoverText
+        - text
     ThemePaymentMethodSelectorColorsCreateInput:
       type: object
       description: The colors for the payment method selector.
@@ -4410,11 +4512,11 @@ components:
           maxLength: 128
           minLength: 1
       required:
-      - background
-      - border
-      - hoverBackground
-      - hoverText
-      - text
+        - background
+        - border
+        - hoverBackground
+        - hoverText
+        - text
     ThemePaymentMethodSelectorColorsUpdateInput:
       type: object
       description: Theme payment method selector colors update input
@@ -4456,7 +4558,7 @@ components:
         colors:
           $ref: "#/components/schemas/ThemePaymentMethodSelectorColorsCreateInput"
       required:
-      - colors
+        - colors
     ThemePaymentMethodSelectorUpdateInput:
       type: object
       description: Theme payment method selector update input
@@ -4464,7 +4566,7 @@ components:
         colors:
           $ref: "#/components/schemas/ThemePaymentMethodSelectorColorsUpdateInput"
       required:
-      - colors
+        - colors
     ThemeUpdateInput:
       type: object
       description: Theme update input
@@ -4513,12 +4615,12 @@ components:
           type: string
           description: The URL to send the webhook events to.
       required:
-      - headers
-      - id
-      - merchantId
-      - status
-      - subscribedEvents
-      - url
+        - headers
+        - id
+        - merchantId
+        - status
+        - subscribedEvents
+        - url
     WebhookCreateInput:
       type: object
       description: The input for creating a webhook.
@@ -4535,8 +4637,8 @@ components:
           type: array
           description: The events to subscribe to.
           example:
-          - PAYMENT_SUCCEEDED
-          - REFUND_SUCCEEDED
+            - PAYMENT_SUCCEEDED
+            - REFUND_SUCCEEDED
           items:
             $ref: "#/components/schemas/WebhookEventType"
           maxItems: 2147483647
@@ -4547,18 +4649,18 @@ components:
           description: The URL to send the webhook event to.
           example: https://example.com/webhook
       required:
-      - headers
-      - subscribedEvents
-      - url
+        - headers
+        - subscribedEvents
+        - url
     WebhookEventType:
       type: string
       description: The event type of the webhook.
       enum:
-      - PAYMENT_AUTHORIZED
-      - PAYMENT_COMPLETED
-      - PAYMENT_SUCCEEDED
-      - REFUND_COMPLETED
-      - REFUND_SUCCEEDED
+        - PAYMENT_AUTHORIZED
+        - PAYMENT_COMPLETED
+        - PAYMENT_SUCCEEDED
+        - REFUND_COMPLETED
+        - REFUND_SUCCEEDED
       example: "[\"PAYMENT_SUCCEEDED\"]"
     WebhookPage:
       type: object
@@ -4573,15 +4675,15 @@ components:
           type: integer
           format: int32
       required:
-      - pageable
-      - results
-      - total
+        - pageable
+        - results
+        - total
     WebhookStatus:
       type: string
       description: The status of the webhook.
       enum:
-      - ENABLED
-      - DISABLED
+        - ENABLED
+        - DISABLED
     WebhookUpdateInput:
       type: object
       description: The input for updating a webhook.
@@ -4600,7 +4702,7 @@ components:
           type: array
           description: The events to subscribe to.
           example:
-          - PAYMENT_SUCCEEDED
+            - PAYMENT_SUCCEEDED
           items:
             $ref: "#/components/schemas/WebhookEventType"
           uniqueItems: true

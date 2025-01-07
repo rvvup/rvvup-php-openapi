@@ -1,6 +1,6 @@
 <?php
 /**
- * MoneyInput
+ * PaymentSettingsMerchant
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Rvvup\ObjectSerializer;
 
 /**
- * MoneyInput Class Doc Comment
+ * PaymentSettingsMerchant Class Doc Comment
  *
  * @category Class
+ * @description Merchant details
  * @package  Rvvup
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentSettingsMerchant implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MoneyInput';
+    protected static $openAPIModelName = 'PaymentSettingsMerchant';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,9 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'string',
-        'currency' => 'string'
+        'id' => 'string',
+        'logo' => '\Rvvup\Api\Model\MerchantLogoWithUrls',
+        'name' => 'string'
     ];
 
     /**
@@ -70,8 +72,9 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => null,
-        'currency' => null
+        'id' => null,
+        'logo' => null,
+        'name' => null
     ];
 
     /**
@@ -80,8 +83,9 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amount' => false,
-        'currency' => false
+        'id' => false,
+        'logo' => false,
+        'name' => false
     ];
 
     /**
@@ -170,8 +174,9 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'currency' => 'currency'
+        'id' => 'id',
+        'logo' => 'logo',
+        'name' => 'name'
     ];
 
     /**
@@ -180,8 +185,9 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'currency' => 'setCurrency'
+        'id' => 'setId',
+        'logo' => 'setLogo',
+        'name' => 'setName'
     ];
 
     /**
@@ -190,8 +196,9 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'currency' => 'getCurrency'
+        'id' => 'getId',
+        'logo' => 'getLogo',
+        'name' => 'getName'
     ];
 
     /**
@@ -235,27 +242,6 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const CURRENCY_AED = 'AED';
-    public const CURRENCY_EUR = 'EUR';
-    public const CURRENCY_GBP = 'GBP';
-    public const CURRENCY_RON = 'RON';
-    public const CURRENCY_USD = 'USD';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCurrencyAllowableValues()
-    {
-        return [
-            self::CURRENCY_AED,
-            self::CURRENCY_EUR,
-            self::CURRENCY_GBP,
-            self::CURRENCY_RON,
-            self::CURRENCY_USD,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -272,8 +258,9 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('logo', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
     }
 
     /**
@@ -303,25 +290,12 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
-        $allowedValues = $this->getCurrencyAllowableValues();
-        if (!is_null($this->container['currency']) && !in_array($this->container['currency'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'currency', must be one of '%s'",
-                $this->container['currency'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if (!preg_match("/AED|EUR|GBP|RON|USD/", $this->container['currency'])) {
-            $invalidProperties[] = "invalid value for 'currency', must be conform to the pattern /AED|EUR|GBP|RON|USD/.";
-        }
-
         return $invalidProperties;
     }
 
@@ -338,70 +312,82 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets amount
+     * Gets id
      *
      * @return string
      */
-    public function getAmount()
+    public function getId()
     {
-        return $this->container['amount'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets amount
+     * Sets id
      *
-     * @param string $amount The amount as a string.
+     * @param string $id Merchant's id
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setId($id)
     {
-        if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['amount'] = $amount;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets logo
      *
-     * @return string
+     * @return \Rvvup\Api\Model\MerchantLogoWithUrls|null
      */
-    public function getCurrency()
+    public function getLogo()
     {
-        return $this->container['currency'];
+        return $this->container['logo'];
     }
 
     /**
-     * Sets currency
+     * Sets logo
      *
-     * @param string $currency The three-letter ISO-4217 currency code of the amount.
+     * @param \Rvvup\Api\Model\MerchantLogoWithUrls|null $logo logo
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setLogo($logo)
     {
-        if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+        if (is_null($logo)) {
+            throw new \InvalidArgumentException('non-nullable logo cannot be null');
         }
-        $allowedValues = $this->getCurrencyAllowableValues();
-        if (!in_array($currency, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'currency', must be one of '%s'",
-                    $currency,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        $this->container['logo'] = $logo;
 
-        if ((!preg_match("/AED|EUR|GBP|RON|USD/", ObjectSerializer::toString($currency)))) {
-            throw new \InvalidArgumentException("invalid value for \$currency when calling MoneyInput., must conform to the pattern /AED|EUR|GBP|RON|USD/.");
-        }
+        return $this;
+    }
 
-        $this->container['currency'] = $currency;
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name Merchant's name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * MoneyInput
+ * MerchantLogoWithUrls
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Rvvup\ObjectSerializer;
 
 /**
- * MoneyInput Class Doc Comment
+ * MerchantLogoWithUrls Class Doc Comment
  *
  * @category Class
+ * @description Merchant logo with urls
  * @package  Rvvup
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
+class MerchantLogoWithUrls implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MoneyInput';
+    protected static $openAPIModelName = 'MerchantLogoWithUrls';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,10 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'string',
-        'currency' => 'string'
+        'document_id' => 'string',
+        'size104x104' => 'string',
+        'size40x40' => 'string',
+        'size80x80' => 'string'
     ];
 
     /**
@@ -70,8 +73,10 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => null,
-        'currency' => null
+        'document_id' => null,
+        'size104x104' => null,
+        'size40x40' => null,
+        'size80x80' => null
     ];
 
     /**
@@ -80,8 +85,10 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amount' => false,
-        'currency' => false
+        'document_id' => false,
+        'size104x104' => false,
+        'size40x40' => false,
+        'size80x80' => false
     ];
 
     /**
@@ -170,8 +177,10 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'currency' => 'currency'
+        'document_id' => 'documentId',
+        'size104x104' => 'size104x104',
+        'size40x40' => 'size40x40',
+        'size80x80' => 'size80x80'
     ];
 
     /**
@@ -180,8 +189,10 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'currency' => 'setCurrency'
+        'document_id' => 'setDocumentId',
+        'size104x104' => 'setSize104x104',
+        'size40x40' => 'setSize40x40',
+        'size80x80' => 'setSize80x80'
     ];
 
     /**
@@ -190,8 +201,10 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'currency' => 'getCurrency'
+        'document_id' => 'getDocumentId',
+        'size104x104' => 'getSize104x104',
+        'size40x40' => 'getSize40x40',
+        'size80x80' => 'getSize80x80'
     ];
 
     /**
@@ -235,27 +248,6 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const CURRENCY_AED = 'AED';
-    public const CURRENCY_EUR = 'EUR';
-    public const CURRENCY_GBP = 'GBP';
-    public const CURRENCY_RON = 'RON';
-    public const CURRENCY_USD = 'USD';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCurrencyAllowableValues()
-    {
-        return [
-            self::CURRENCY_AED,
-            self::CURRENCY_EUR,
-            self::CURRENCY_GBP,
-            self::CURRENCY_RON,
-            self::CURRENCY_USD,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -272,8 +264,10 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('document_id', $data ?? [], null);
+        $this->setIfExists('size104x104', $data ?? [], null);
+        $this->setIfExists('size40x40', $data ?? [], null);
+        $this->setIfExists('size80x80', $data ?? [], null);
     }
 
     /**
@@ -303,25 +297,18 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
+        if ($this->container['document_id'] === null) {
+            $invalidProperties[] = "'document_id' can't be null";
         }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
+        if ($this->container['size104x104'] === null) {
+            $invalidProperties[] = "'size104x104' can't be null";
         }
-        $allowedValues = $this->getCurrencyAllowableValues();
-        if (!is_null($this->container['currency']) && !in_array($this->container['currency'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'currency', must be one of '%s'",
-                $this->container['currency'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['size40x40'] === null) {
+            $invalidProperties[] = "'size40x40' can't be null";
         }
-
-        if (!preg_match("/AED|EUR|GBP|RON|USD/", $this->container['currency'])) {
-            $invalidProperties[] = "invalid value for 'currency', must be conform to the pattern /AED|EUR|GBP|RON|USD/.";
+        if ($this->container['size80x80'] === null) {
+            $invalidProperties[] = "'size80x80' can't be null";
         }
-
         return $invalidProperties;
     }
 
@@ -338,70 +325,109 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets amount
+     * Gets document_id
      *
      * @return string
      */
-    public function getAmount()
+    public function getDocumentId()
     {
-        return $this->container['amount'];
+        return $this->container['document_id'];
     }
 
     /**
-     * Sets amount
+     * Sets document_id
      *
-     * @param string $amount The amount as a string.
+     * @param string $document_id Logo document id
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setDocumentId($document_id)
     {
-        if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+        if (is_null($document_id)) {
+            throw new \InvalidArgumentException('non-nullable document_id cannot be null');
         }
-        $this->container['amount'] = $amount;
+        $this->container['document_id'] = $document_id;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets size104x104
      *
      * @return string
      */
-    public function getCurrency()
+    public function getSize104x104()
     {
-        return $this->container['currency'];
+        return $this->container['size104x104'];
     }
 
     /**
-     * Sets currency
+     * Sets size104x104
      *
-     * @param string $currency The three-letter ISO-4217 currency code of the amount.
+     * @param string $size104x104 Logo in 104x104 size
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setSize104x104($size104x104)
     {
-        if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+        if (is_null($size104x104)) {
+            throw new \InvalidArgumentException('non-nullable size104x104 cannot be null');
         }
-        $allowedValues = $this->getCurrencyAllowableValues();
-        if (!in_array($currency, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'currency', must be one of '%s'",
-                    $currency,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        $this->container['size104x104'] = $size104x104;
 
-        if ((!preg_match("/AED|EUR|GBP|RON|USD/", ObjectSerializer::toString($currency)))) {
-            throw new \InvalidArgumentException("invalid value for \$currency when calling MoneyInput., must conform to the pattern /AED|EUR|GBP|RON|USD/.");
-        }
+        return $this;
+    }
 
-        $this->container['currency'] = $currency;
+    /**
+     * Gets size40x40
+     *
+     * @return string
+     */
+    public function getSize40x40()
+    {
+        return $this->container['size40x40'];
+    }
+
+    /**
+     * Sets size40x40
+     *
+     * @param string $size40x40 Logo in 40x40 size
+     *
+     * @return self
+     */
+    public function setSize40x40($size40x40)
+    {
+        if (is_null($size40x40)) {
+            throw new \InvalidArgumentException('non-nullable size40x40 cannot be null');
+        }
+        $this->container['size40x40'] = $size40x40;
+
+        return $this;
+    }
+
+    /**
+     * Gets size80x80
+     *
+     * @return string
+     */
+    public function getSize80x80()
+    {
+        return $this->container['size80x80'];
+    }
+
+    /**
+     * Sets size80x80
+     *
+     * @param string $size80x80 Logo in 80x80 size
+     *
+     * @return self
+     */
+    public function setSize80x80($size80x80)
+    {
+        if (is_null($size80x80)) {
+            throw new \InvalidArgumentException('non-nullable size80x80 cannot be null');
+        }
+        $this->container['size80x80'] = $size80x80;
 
         return $this;
     }

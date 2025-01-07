@@ -48,6 +48,8 @@ class ConnectionType
 
     public const GOOGLE_PAY = 'GOOGLE_PAY';
 
+    public const KLARNA = 'KLARNA';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -56,7 +58,8 @@ class ConnectionType
     {
         return [
             self::MAGENTO_PROXY,
-            self::GOOGLE_PAY
+            self::GOOGLE_PAY,
+            self::KLARNA
         ];
     }
 }

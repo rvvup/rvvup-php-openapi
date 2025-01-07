@@ -1,6 +1,6 @@
 <?php
 /**
- * MoneyInput
+ * KlarnaConnectionDataInput
  *
  * PHP version 7.4
  *
@@ -28,20 +28,19 @@
  */
 
 namespace Rvvup\Api\Model;
-
-use \ArrayAccess;
 use \Rvvup\ObjectSerializer;
 
 /**
- * MoneyInput Class Doc Comment
+ * KlarnaConnectionDataInput Class Doc Comment
  *
  * @category Class
+ * @description Data for the klarna connection.
  * @package  Rvvup
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
+class KlarnaConnectionDataInput extends ConnectionDataInput
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MoneyInput';
+    protected static $openAPIModelName = 'KlarnaConnectionDataInput';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +57,9 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'string',
-        'currency' => 'string'
+        'api_password' => 'string',
+        'api_username' => 'string',
+        'sdk_client_identifier' => 'string'
     ];
 
     /**
@@ -70,8 +70,9 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => null,
-        'currency' => null
+        'api_password' => null,
+        'api_username' => null,
+        'sdk_client_identifier' => null
     ];
 
     /**
@@ -80,8 +81,9 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amount' => false,
-        'currency' => false
+        'api_password' => false,
+        'api_username' => false,
+        'sdk_client_identifier' => false
     ];
 
     /**
@@ -98,7 +100,7 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function openAPITypes()
     {
-        return self::$openAPITypes;
+        return self::$openAPITypes + parent::openAPITypes();
     }
 
     /**
@@ -108,7 +110,7 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function openAPIFormats()
     {
-        return self::$openAPIFormats;
+        return self::$openAPIFormats + parent::openAPIFormats();
     }
 
     /**
@@ -118,7 +120,7 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static function openAPINullables(): array
     {
-        return self::$openAPINullables;
+        return self::$openAPINullables + parent::openAPINullables();
     }
 
     /**
@@ -170,8 +172,9 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'currency' => 'currency'
+        'api_password' => 'apiPassword',
+        'api_username' => 'apiUsername',
+        'sdk_client_identifier' => 'sdkClientIdentifier'
     ];
 
     /**
@@ -180,8 +183,9 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'currency' => 'setCurrency'
+        'api_password' => 'setApiPassword',
+        'api_username' => 'setApiUsername',
+        'sdk_client_identifier' => 'setSdkClientIdentifier'
     ];
 
     /**
@@ -190,8 +194,9 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'currency' => 'getCurrency'
+        'api_password' => 'getApiPassword',
+        'api_username' => 'getApiUsername',
+        'sdk_client_identifier' => 'getSdkClientIdentifier'
     ];
 
     /**
@@ -202,7 +207,7 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function attributeMap()
     {
-        return self::$attributeMap;
+        return parent::attributeMap() + self::$attributeMap;
     }
 
     /**
@@ -212,7 +217,7 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function setters()
     {
-        return self::$setters;
+        return parent::setters() + self::$setters;
     }
 
     /**
@@ -222,7 +227,7 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function getters()
     {
-        return self::$getters;
+        return parent::getters() + self::$getters;
     }
 
     /**
@@ -235,34 +240,7 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const CURRENCY_AED = 'AED';
-    public const CURRENCY_EUR = 'EUR';
-    public const CURRENCY_GBP = 'GBP';
-    public const CURRENCY_RON = 'RON';
-    public const CURRENCY_USD = 'USD';
 
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCurrencyAllowableValues()
-    {
-        return [
-            self::CURRENCY_AED,
-            self::CURRENCY_EUR,
-            self::CURRENCY_GBP,
-            self::CURRENCY_RON,
-            self::CURRENCY_USD,
-        ];
-    }
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $container = [];
 
     /**
      * Constructor
@@ -272,8 +250,11 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('currency', $data ?? [], null);
+        parent::__construct($data);
+
+        $this->setIfExists('api_password', $data ?? [], null);
+        $this->setIfExists('api_username', $data ?? [], null);
+        $this->setIfExists('sdk_client_identifier', $data ?? [], null);
     }
 
     /**
@@ -301,27 +282,17 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
+        $invalidProperties = parent::listInvalidProperties();
 
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
+        if ($this->container['api_password'] === null) {
+            $invalidProperties[] = "'api_password' can't be null";
         }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
+        if ($this->container['api_username'] === null) {
+            $invalidProperties[] = "'api_username' can't be null";
         }
-        $allowedValues = $this->getCurrencyAllowableValues();
-        if (!is_null($this->container['currency']) && !in_array($this->container['currency'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'currency', must be one of '%s'",
-                $this->container['currency'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['sdk_client_identifier'] === null) {
+            $invalidProperties[] = "'sdk_client_identifier' can't be null";
         }
-
-        if (!preg_match("/AED|EUR|GBP|RON|USD/", $this->container['currency'])) {
-            $invalidProperties[] = "invalid value for 'currency', must be conform to the pattern /AED|EUR|GBP|RON|USD/.";
-        }
-
         return $invalidProperties;
     }
 
@@ -338,70 +309,82 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets amount
+     * Gets api_password
      *
      * @return string
      */
-    public function getAmount()
+    public function getApiPassword()
     {
-        return $this->container['amount'];
+        return $this->container['api_password'];
     }
 
     /**
-     * Sets amount
+     * Sets api_password
      *
-     * @param string $amount The amount as a string.
+     * @param string $api_password api_password
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setApiPassword($api_password)
     {
-        if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+        if (is_null($api_password)) {
+            throw new \InvalidArgumentException('non-nullable api_password cannot be null');
         }
-        $this->container['amount'] = $amount;
+        $this->container['api_password'] = $api_password;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets api_username
      *
      * @return string
      */
-    public function getCurrency()
+    public function getApiUsername()
     {
-        return $this->container['currency'];
+        return $this->container['api_username'];
     }
 
     /**
-     * Sets currency
+     * Sets api_username
      *
-     * @param string $currency The three-letter ISO-4217 currency code of the amount.
+     * @param string $api_username api_username
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setApiUsername($api_username)
     {
-        if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+        if (is_null($api_username)) {
+            throw new \InvalidArgumentException('non-nullable api_username cannot be null');
         }
-        $allowedValues = $this->getCurrencyAllowableValues();
-        if (!in_array($currency, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'currency', must be one of '%s'",
-                    $currency,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        $this->container['api_username'] = $api_username;
 
-        if ((!preg_match("/AED|EUR|GBP|RON|USD/", ObjectSerializer::toString($currency)))) {
-            throw new \InvalidArgumentException("invalid value for \$currency when calling MoneyInput., must conform to the pattern /AED|EUR|GBP|RON|USD/.");
-        }
+        return $this;
+    }
 
-        $this->container['currency'] = $currency;
+    /**
+     * Gets sdk_client_identifier
+     *
+     * @return string
+     */
+    public function getSdkClientIdentifier()
+    {
+        return $this->container['sdk_client_identifier'];
+    }
+
+    /**
+     * Sets sdk_client_identifier
+     *
+     * @param string $sdk_client_identifier sdk_client_identifier
+     *
+     * @return self
+     */
+    public function setSdkClientIdentifier($sdk_client_identifier)
+    {
+        if (is_null($sdk_client_identifier)) {
+            throw new \InvalidArgumentException('non-nullable sdk_client_identifier cannot be null');
+        }
+        $this->container['sdk_client_identifier'] = $sdk_client_identifier;
 
         return $this;
     }

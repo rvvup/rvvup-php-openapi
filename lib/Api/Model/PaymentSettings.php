@@ -1,6 +1,6 @@
 <?php
 /**
- * MoneyInput
+ * PaymentSettings
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Rvvup\ObjectSerializer;
 
 /**
- * MoneyInput Class Doc Comment
+ * PaymentSettings Class Doc Comment
  *
  * @category Class
+ * @description Payment Settings object
  * @package  Rvvup
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentSettings implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MoneyInput';
+    protected static $openAPIModelName = 'PaymentSettings';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,8 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'string',
-        'currency' => 'string'
+        'merchant' => '\Rvvup\Api\Model\PaymentSettingsMerchant',
+        'payment_methods' => '\Rvvup\Api\Model\PagePaymentMethodDetail'
     ];
 
     /**
@@ -70,8 +71,8 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => null,
-        'currency' => null
+        'merchant' => null,
+        'payment_methods' => null
     ];
 
     /**
@@ -80,8 +81,8 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amount' => false,
-        'currency' => false
+        'merchant' => false,
+        'payment_methods' => false
     ];
 
     /**
@@ -170,8 +171,8 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'currency' => 'currency'
+        'merchant' => 'merchant',
+        'payment_methods' => 'paymentMethods'
     ];
 
     /**
@@ -180,8 +181,8 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'currency' => 'setCurrency'
+        'merchant' => 'setMerchant',
+        'payment_methods' => 'setPaymentMethods'
     ];
 
     /**
@@ -190,8 +191,8 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'currency' => 'getCurrency'
+        'merchant' => 'getMerchant',
+        'payment_methods' => 'getPaymentMethods'
     ];
 
     /**
@@ -235,27 +236,6 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const CURRENCY_AED = 'AED';
-    public const CURRENCY_EUR = 'EUR';
-    public const CURRENCY_GBP = 'GBP';
-    public const CURRENCY_RON = 'RON';
-    public const CURRENCY_USD = 'USD';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCurrencyAllowableValues()
-    {
-        return [
-            self::CURRENCY_AED,
-            self::CURRENCY_EUR,
-            self::CURRENCY_GBP,
-            self::CURRENCY_RON,
-            self::CURRENCY_USD,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -272,8 +252,8 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('merchant', $data ?? [], null);
+        $this->setIfExists('payment_methods', $data ?? [], null);
     }
 
     /**
@@ -303,25 +283,12 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
+        if ($this->container['merchant'] === null) {
+            $invalidProperties[] = "'merchant' can't be null";
         }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
+        if ($this->container['payment_methods'] === null) {
+            $invalidProperties[] = "'payment_methods' can't be null";
         }
-        $allowedValues = $this->getCurrencyAllowableValues();
-        if (!is_null($this->container['currency']) && !in_array($this->container['currency'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'currency', must be one of '%s'",
-                $this->container['currency'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if (!preg_match("/AED|EUR|GBP|RON|USD/", $this->container['currency'])) {
-            $invalidProperties[] = "invalid value for 'currency', must be conform to the pattern /AED|EUR|GBP|RON|USD/.";
-        }
-
         return $invalidProperties;
     }
 
@@ -338,70 +305,55 @@ class MoneyInput implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets amount
+     * Gets merchant
      *
-     * @return string
+     * @return \Rvvup\Api\Model\PaymentSettingsMerchant
      */
-    public function getAmount()
+    public function getMerchant()
     {
-        return $this->container['amount'];
+        return $this->container['merchant'];
     }
 
     /**
-     * Sets amount
+     * Sets merchant
      *
-     * @param string $amount The amount as a string.
+     * @param \Rvvup\Api\Model\PaymentSettingsMerchant $merchant merchant
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setMerchant($merchant)
     {
-        if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+        if (is_null($merchant)) {
+            throw new \InvalidArgumentException('non-nullable merchant cannot be null');
         }
-        $this->container['amount'] = $amount;
+        $this->container['merchant'] = $merchant;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets payment_methods
      *
-     * @return string
+     * @return \Rvvup\Api\Model\PagePaymentMethodDetail
      */
-    public function getCurrency()
+    public function getPaymentMethods()
     {
-        return $this->container['currency'];
+        return $this->container['payment_methods'];
     }
 
     /**
-     * Sets currency
+     * Sets payment_methods
      *
-     * @param string $currency The three-letter ISO-4217 currency code of the amount.
+     * @param \Rvvup\Api\Model\PagePaymentMethodDetail $payment_methods payment_methods
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setPaymentMethods($payment_methods)
     {
-        if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+        if (is_null($payment_methods)) {
+            throw new \InvalidArgumentException('non-nullable payment_methods cannot be null');
         }
-        $allowedValues = $this->getCurrencyAllowableValues();
-        if (!in_array($currency, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'currency', must be one of '%s'",
-                    $currency,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-
-        if ((!preg_match("/AED|EUR|GBP|RON|USD/", ObjectSerializer::toString($currency)))) {
-            throw new \InvalidArgumentException("invalid value for \$currency when calling MoneyInput., must conform to the pattern /AED|EUR|GBP|RON|USD/.");
-        }
-
-        $this->container['currency'] = $currency;
+        $this->container['payment_methods'] = $payment_methods;
 
         return $this;
     }

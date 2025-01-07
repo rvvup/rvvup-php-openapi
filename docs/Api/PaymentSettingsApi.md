@@ -10,7 +10,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 ## `getPaymentSettings()`
 
 ```php
-getPaymentSettings($merchant_id, $payment_settings_context, $offset, $limit, $mpk): \Rvvup\Api\Model\PaymentMethodDetailsPage
+getPaymentSettings($merchant_id, $payment_settings_context, $offset, $limit, $mpk): \Rvvup\Api\Model\PaymentSettings
 ```
 
 Get payment settings for a merchant
@@ -60,7 +60,7 @@ try {
 
 ### Return type
 
-[**\Rvvup\Api\Model\PaymentMethodDetailsPage**](../Model/PaymentMethodDetailsPage.md)
+[**\Rvvup\Api\Model\PaymentSettings**](../Model/PaymentSettings.md)
 
 ### Authorization
 
