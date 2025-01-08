@@ -585,7 +585,7 @@ class CheckoutCreateInput implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets mode
      *
-     * @param \Rvvup\Api\Model\CheckoutMode|null $mode mode
+     * @param \Rvvup\Api\Model\CheckoutMode|string|null $mode mode
      *
      * @return self
      */
@@ -700,7 +700,7 @@ class CheckoutCreateInput implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets source
      *
-     * @param \Rvvup\Api\Model\ApplicationSource|null $source source
+     * @param \Rvvup\Api\Model\ApplicationSource|string|null $source source
      *
      * @return self
      */

@@ -311,7 +311,7 @@ class CheckoutPayByBankSettingsInput implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets capture_type
      *
-     * @param \Rvvup\Api\Model\PaymentCaptureType|null $capture_type capture_type
+     * @param \Rvvup\Api\Model\PaymentCaptureType|string|null $capture_type capture_type
      *
      * @return self
      */

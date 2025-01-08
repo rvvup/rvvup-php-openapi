@@ -408,7 +408,7 @@ class PaymentMethodDetail implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets name
      *
-     * @param \Rvvup\Api\Model\PaymentMethod $name name
+     * @param \Rvvup\Api\Model\PaymentMethod|string $name name
      *
      * @return self
      */
@@ -462,7 +462,7 @@ class PaymentMethodDetail implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets status
      *
-     * @param \Rvvup\Api\Model\PaymentMethodStatus $status status
+     * @param \Rvvup\Api\Model\PaymentMethodStatus|string $status status
      *
      * @return self
      */

@@ -1,11 +1,12 @@
 docker run --rm \
   -v ${PWD}:/local openapitools/openapi-generator-cli:latest-release generate \
   -i /local/openapi.yaml  \
+  -t /local/templates \
   -g php \
   -o /local/ \
   --git-user-id rvvup \
   --git-repo-id rvvup-php-openapi \
   --invoker-package=Rvvup \
   --api-package=Api \
-  --model-package=Api\\Model
+  --model-package=Api\\Model \
   --additional-properties=composerPackageName=rvvup/php-openapi,developerOrganization=Rvvup,developerOrganizationUrl=https://rvvup.com,licenseName=MIT,packageName=Rvvup/Api

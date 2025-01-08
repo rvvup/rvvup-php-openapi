@@ -465,7 +465,7 @@ class Connection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \Rvvup\Api\Model\ConnectionStatus $status status
+     * @param \Rvvup\Api\Model\ConnectionStatus|string $status status
      *
      * @return self
      */

@@ -310,7 +310,7 @@ class AccountStatementConnection implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets type
      *
-     * @param \Rvvup\Api\Model\AccountStatementConnectionType $type type
+     * @param \Rvvup\Api\Model\AccountStatementConnectionType|string $type type
      *
      * @return self
      */

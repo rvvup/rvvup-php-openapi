@@ -599,7 +599,7 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets payment_capture_type
      *
-     * @param \Rvvup\Api\Model\PaymentCaptureType|null $payment_capture_type payment_capture_type
+     * @param \Rvvup\Api\Model\PaymentCaptureType|string|null $payment_capture_type payment_capture_type
      *
      * @return self
      */
@@ -626,7 +626,7 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets payment_method
      *
-     * @param \Rvvup\Api\Model\PaymentMethod $payment_method payment_method
+     * @param \Rvvup\Api\Model\PaymentMethod|string $payment_method payment_method
      *
      * @return self
      */
@@ -653,7 +653,7 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets payment_type
      *
-     * @param \Rvvup\Api\Model\PaymentType $payment_type payment_type
+     * @param \Rvvup\Api\Model\PaymentType|string $payment_type payment_type
      *
      * @return self
      */

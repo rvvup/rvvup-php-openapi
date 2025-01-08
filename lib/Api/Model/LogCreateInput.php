@@ -334,7 +334,7 @@ class LogCreateInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action_type
      *
-     * @param \Rvvup\Api\Model\ActionTypeInput $action_type action_type
+     * @param \Rvvup\Api\Model\ActionTypeInput|string $action_type action_type
      *
      * @return self
      */

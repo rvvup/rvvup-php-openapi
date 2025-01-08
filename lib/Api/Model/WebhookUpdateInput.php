@@ -359,7 +359,7 @@ class WebhookUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets status
      *
-     * @param \Rvvup\Api\Model\WebhookStatus|null $status status
+     * @param \Rvvup\Api\Model\WebhookStatus|string|null $status status
      *
      * @return self
      */

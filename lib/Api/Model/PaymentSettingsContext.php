@@ -393,7 +393,7 @@ class PaymentSettingsContext implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets express_checkout_display_intent
      *
-     * @param \Rvvup\Api\Model\ExpressCheckoutDisplayIntent|null $express_checkout_display_intent express_checkout_display_intent
+     * @param \Rvvup\Api\Model\ExpressCheckoutDisplayIntent|string|null $express_checkout_display_intent express_checkout_display_intent
      *
      * @return self
      */

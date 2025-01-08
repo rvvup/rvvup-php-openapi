@@ -373,7 +373,7 @@ class CheckoutTemplateUpdateInput implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets amount_type
      *
-     * @param \Rvvup\Api\Model\CheckoutAmountType|null $amount_type amount_type
+     * @param \Rvvup\Api\Model\CheckoutAmountType|string|null $amount_type amount_type
      *
      * @return self
      */
@@ -578,7 +578,7 @@ class CheckoutTemplateUpdateInput implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets reference_type
      *
-     * @param \Rvvup\Api\Model\CheckoutReferenceType|null $reference_type reference_type
+     * @param \Rvvup\Api\Model\CheckoutReferenceType|string|null $reference_type reference_type
      *
      * @return self
      */
