@@ -342,9 +342,3 @@ lib/Configuration.php
 lib/HeaderSelector.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/KlarnaConnectionDataInputTest.php
-test/Model/KlarnaConnectionDataTest.php
-test/Model/MerchantLogoWithUrlsTest.php
-test/Model/PaymentSettingsMerchantTest.php
-test/Model/PaymentSettingsTest.php
-test/Model/PaymentTypeTest.php

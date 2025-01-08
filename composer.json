@@ -11,11 +11,11 @@
         "api"
     ],
     "homepage": "https://openapi-generator.tech",
-    "license": "unlicense",
+    "license": "MIT",
     "authors": [
         {
-            "name": "OpenAPI",
-            "homepage": "https://openapi-generator.tech"
+            "name": "Rvvup",
+            "homepage": "https://rvvup.com"
         }
     ],
     "require": {
