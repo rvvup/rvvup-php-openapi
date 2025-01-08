@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **metadata** | **array<string,string>** |  | [optional]
 **payment_capture_type** | [**\Rvvup\Api\Model\PaymentCaptureType**](PaymentCaptureType.md) |  | [optional]
 **payment_method** | [**\Rvvup\Api\Model\PaymentMethod**](PaymentMethod.md) |  |
+**payment_type** | [**\Rvvup\Api\Model\PaymentType**](PaymentType.md) |  |
 **requires_shipping** | **bool** | Whether the customer is required to provide a shipping address. | [optional] [default to false]
 **session_key** | **string** | The unique identifier for the payment session. If the same session key has been used,                          the existing payment session will be updated with the new values. |
 **shipping_address** | [**\Rvvup\Api\Model\AddressInput**](AddressInput.md) |  | [optional]

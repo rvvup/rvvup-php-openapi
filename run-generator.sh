@@ -1,5 +1,5 @@
 docker run --rm \
-  -v ${PWD}:/local openapitools/openapi-generator-cli generate \
+  -v ${PWD}:/local openapitools/openapi-generator-cli:latest-release generate \
   -i /local/openapi.yaml  \
   -g php \
   -o /local/ \
