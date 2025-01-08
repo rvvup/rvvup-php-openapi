@@ -383,7 +383,7 @@ class NotificationSubscriptionConfigurationInput implements ModelInterface, Arra
     /**
      * Sets notification_type
      *
-     * @param \Rvvup\Api\Model\NotificationType $notification_type notification_type
+     * @param \Rvvup\Api\Model\NotificationType|string $notification_type notification_type
      *
      * @return self
      */

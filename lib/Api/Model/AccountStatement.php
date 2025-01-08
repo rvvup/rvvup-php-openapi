@@ -611,7 +611,7 @@ class AccountStatement implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \Rvvup\Api\Model\AccountStatementStatus $status status
+     * @param \Rvvup\Api\Model\AccountStatementStatus|string $status status
      *
      * @return self
      */

@@ -624,7 +624,7 @@ class PaymentLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets source
      *
-     * @param \Rvvup\Api\Model\ApplicationSource $source source
+     * @param \Rvvup\Api\Model\ApplicationSource|string $source source
      *
      * @return self
      */
@@ -651,7 +651,7 @@ class PaymentLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \Rvvup\Api\Model\PaymentLinkStatus $status status
+     * @param \Rvvup\Api\Model\PaymentLinkStatus|string $status status
      *
      * @return self
      */

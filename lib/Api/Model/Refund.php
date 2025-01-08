@@ -453,7 +453,7 @@ class Refund implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets failure_reason
      *
-     * @param \Rvvup\Api\Model\RefundFailureReason|null $failure_reason failure_reason
+     * @param \Rvvup\Api\Model\RefundFailureReason|string|null $failure_reason failure_reason
      *
      * @return self
      */
@@ -561,7 +561,7 @@ class Refund implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payment_method
      *
-     * @param \Rvvup\Api\Model\PaymentMethod $payment_method payment_method
+     * @param \Rvvup\Api\Model\PaymentMethod|string $payment_method payment_method
      *
      * @return self
      */
@@ -649,7 +649,7 @@ class Refund implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \Rvvup\Api\Model\RefundStatus $status status
+     * @param \Rvvup\Api\Model\RefundStatus|string $status status
      *
      * @return self
      */

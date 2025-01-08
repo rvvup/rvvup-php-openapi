@@ -327,7 +327,7 @@ class PaymentMethodAsset implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets asset_type
      *
-     * @param \Rvvup\Api\Model\PaymentMethodAssetType $asset_type asset_type
+     * @param \Rvvup\Api\Model\PaymentMethodAssetType|string $asset_type asset_type
      *
      * @return self
      */

@@ -327,7 +327,7 @@ class PaymentAction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets method
      *
-     * @param \Rvvup\Api\Model\PaymentActionMethod $method method
+     * @param \Rvvup\Api\Model\PaymentActionMethod|string $method method
      *
      * @return self
      */
@@ -354,7 +354,7 @@ class PaymentAction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param \Rvvup\Api\Model\PaymentActionType $type type
+     * @param \Rvvup\Api\Model\PaymentActionType|string $type type
      *
      * @return self
      */

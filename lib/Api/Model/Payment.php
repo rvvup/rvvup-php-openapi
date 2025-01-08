@@ -472,7 +472,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets capture_type
      *
-     * @param \Rvvup\Api\Model\PaymentCaptureType $capture_type capture_type
+     * @param \Rvvup\Api\Model\PaymentCaptureType|string $capture_type capture_type
      *
      * @return self
      */
@@ -526,7 +526,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets decline_reason
      *
-     * @param \Rvvup\Api\Model\PaymentDeclineReason|null $decline_reason decline_reason
+     * @param \Rvvup\Api\Model\PaymentDeclineReason|string|null $decline_reason decline_reason
      *
      * @return self
      */
@@ -580,7 +580,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets method
      *
-     * @param \Rvvup\Api\Model\PaymentMethod $method method
+     * @param \Rvvup\Api\Model\PaymentMethod|string $method method
      *
      * @return self
      */
@@ -634,7 +634,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets settlement_status
      *
-     * @param \Rvvup\Api\Model\PaymentSettlementStatus $settlement_status settlement_status
+     * @param \Rvvup\Api\Model\PaymentSettlementStatus|string $settlement_status settlement_status
      *
      * @return self
      */
@@ -661,7 +661,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \Rvvup\Api\Model\PaymentStatus $status status
+     * @param \Rvvup\Api\Model\PaymentStatus|string $status status
      *
      * @return self
      */
@@ -742,7 +742,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets void_reason
      *
-     * @param \Rvvup\Api\Model\PaymentVoidReason|null $void_reason void_reason
+     * @param \Rvvup\Api\Model\PaymentVoidReason|string|null $void_reason void_reason
      *
      * @return self
      */

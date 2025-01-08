@@ -499,7 +499,7 @@ class ItemInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets restriction
      *
-     * @param \Rvvup\Api\Model\ItemRestriction|null $restriction restriction
+     * @param \Rvvup\Api\Model\ItemRestriction|string|null $restriction restriction
      *
      * @return self
      */

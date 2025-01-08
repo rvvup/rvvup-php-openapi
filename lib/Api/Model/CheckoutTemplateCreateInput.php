@@ -390,7 +390,7 @@ class CheckoutTemplateCreateInput implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets amount_type
      *
-     * @param \Rvvup\Api\Model\CheckoutAmountType|null $amount_type amount_type
+     * @param \Rvvup\Api\Model\CheckoutAmountType|string|null $amount_type amount_type
      *
      * @return self
      */
@@ -480,7 +480,7 @@ class CheckoutTemplateCreateInput implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets mode
      *
-     * @param \Rvvup\Api\Model\CheckoutMode|null $mode mode
+     * @param \Rvvup\Api\Model\CheckoutMode|string|null $mode mode
      *
      * @return self
      */
@@ -622,7 +622,7 @@ class CheckoutTemplateCreateInput implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets reference_type
      *
-     * @param \Rvvup\Api\Model\CheckoutReferenceType|null $reference_type reference_type
+     * @param \Rvvup\Api\Model\CheckoutReferenceType|string|null $reference_type reference_type
      *
      * @return self
      */
@@ -649,7 +649,7 @@ class CheckoutTemplateCreateInput implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets source
      *
-     * @param \Rvvup\Api\Model\ApplicationSource|null $source source
+     * @param \Rvvup\Api\Model\ApplicationSource|string|null $source source
      *
      * @return self
      */

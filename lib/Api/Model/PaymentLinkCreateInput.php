@@ -455,7 +455,7 @@ class PaymentLinkCreateInput implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets source
      *
-     * @param \Rvvup\Api\Model\ApplicationSource|null $source source
+     * @param \Rvvup\Api\Model\ApplicationSource|string|null $source source
      *
      * @return self
      */

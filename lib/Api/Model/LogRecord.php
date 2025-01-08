@@ -412,7 +412,7 @@ class LogRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action_type
      *
-     * @param \Rvvup\Api\Model\ActionType $action_type action_type
+     * @param \Rvvup\Api\Model\ActionType|string $action_type action_type
      *
      * @return self
      */
@@ -439,7 +439,7 @@ class LogRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets actor_type
      *
-     * @param \Rvvup\Api\Model\ActorType $actor_type actor_type
+     * @param \Rvvup\Api\Model\ActorType|string $actor_type actor_type
      *
      * @return self
      */
@@ -736,7 +736,7 @@ class LogRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets resource_type
      *
-     * @param \Rvvup\Api\Model\ResourceType $resource_type resource_type
+     * @param \Rvvup\Api\Model\ResourceType|string $resource_type resource_type
      *
      * @return self
      */

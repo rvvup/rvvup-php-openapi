@@ -527,7 +527,7 @@ class PaymentSession implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets checkout_mode
      *
-     * @param \Rvvup\Api\Model\CheckoutMode $checkout_mode checkout_mode
+     * @param \Rvvup\Api\Model\CheckoutMode|string $checkout_mode checkout_mode
      *
      * @return self
      */
@@ -932,7 +932,7 @@ class PaymentSession implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \Rvvup\Api\Model\PaymentSessionStatus $status status
+     * @param \Rvvup\Api\Model\PaymentSessionStatus|string $status status
      *
      * @return self
      */

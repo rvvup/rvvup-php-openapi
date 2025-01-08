@@ -437,7 +437,7 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \Rvvup\Api\Model\WebhookStatus $status status
+     * @param \Rvvup\Api\Model\WebhookStatus|string $status status
      *
      * @return self
      */

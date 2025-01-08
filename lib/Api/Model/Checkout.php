@@ -800,7 +800,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets mode
      *
-     * @param \Rvvup\Api\Model\CheckoutMode $mode mode
+     * @param \Rvvup\Api\Model\CheckoutMode|string $mode mode
      *
      * @return self
      */
@@ -964,7 +964,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets source
      *
-     * @param \Rvvup\Api\Model\ApplicationSource $source source
+     * @param \Rvvup\Api\Model\ApplicationSource|string $source source
      *
      * @return self
      */
@@ -991,7 +991,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \Rvvup\Api\Model\CheckoutStatus $status status
+     * @param \Rvvup\Api\Model\CheckoutStatus|string $status status
      *
      * @return self
      */

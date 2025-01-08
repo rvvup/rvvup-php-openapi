@@ -427,7 +427,7 @@ class CheckoutTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amount_type
      *
-     * @param \Rvvup\Api\Model\CheckoutAmountType $amount_type amount_type
+     * @param \Rvvup\Api\Model\CheckoutAmountType|string $amount_type amount_type
      *
      * @return self
      */
@@ -589,7 +589,7 @@ class CheckoutTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets mode
      *
-     * @param \Rvvup\Api\Model\CheckoutMode $mode mode
+     * @param \Rvvup\Api\Model\CheckoutMode|string $mode mode
      *
      * @return self
      */
@@ -724,7 +724,7 @@ class CheckoutTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets reference_type
      *
-     * @param \Rvvup\Api\Model\CheckoutReferenceType $reference_type reference_type
+     * @param \Rvvup\Api\Model\CheckoutReferenceType|string $reference_type reference_type
      *
      * @return self
      */
@@ -751,7 +751,7 @@ class CheckoutTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets source
      *
-     * @param \Rvvup\Api\Model\ApplicationSource $source source
+     * @param \Rvvup\Api\Model\ApplicationSource|string $source source
      *
      * @return self
      */

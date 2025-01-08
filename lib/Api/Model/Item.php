@@ -553,7 +553,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets restriction
      *
-     * @param \Rvvup\Api\Model\ItemRestriction $restriction restriction
+     * @param \Rvvup\Api\Model\ItemRestriction|string $restriction restriction
      *
      * @return self
      */

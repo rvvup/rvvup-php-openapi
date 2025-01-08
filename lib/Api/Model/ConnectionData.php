@@ -310,7 +310,7 @@ class ConnectionData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param \Rvvup\Api\Model\ConnectionType $type type
+     * @param \Rvvup\Api\Model\ConnectionType|string $type type
      *
      * @return self
      */

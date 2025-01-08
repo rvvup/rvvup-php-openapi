@@ -772,7 +772,7 @@ class AccountStatementInvoice implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets status
      *
-     * @param \Rvvup\Api\Model\AccountStatementInvoiceStatus $status status
+     * @param \Rvvup\Api\Model\AccountStatementInvoiceStatus|string $status status
      *
      * @return self
      */

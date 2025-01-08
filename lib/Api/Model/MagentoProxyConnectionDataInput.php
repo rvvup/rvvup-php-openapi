@@ -483,7 +483,7 @@ class MagentoProxyConnectionDataInput extends ConnectionDataInput
     /**
      * Sets oauth_signature_method
      *
-     * @param \Rvvup\Api\Model\ConnectionOauthSignatureMethod|null $oauth_signature_method oauth_signature_method
+     * @param \Rvvup\Api\Model\ConnectionOauthSignatureMethod|string|null $oauth_signature_method oauth_signature_method
      *
      * @return self
      */
