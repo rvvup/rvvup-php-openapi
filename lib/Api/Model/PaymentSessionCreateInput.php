@@ -385,9 +385,6 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['payment_method'] === null) {
             $invalidProperties[] = "'payment_method' can't be null";
         }
-        if ($this->container['payment_type'] === null) {
-            $invalidProperties[] = "'payment_type' can't be null";
-        }
         if ($this->container['session_key'] === null) {
             $invalidProperties[] = "'session_key' can't be null";
         }
@@ -643,7 +640,7 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets payment_type
      *
-     * @return \Rvvup\Api\Model\PaymentType
+     * @return \Rvvup\Api\Model\PaymentType|null
      */
     public function getPaymentType()
     {
@@ -653,7 +650,7 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets payment_type
      *
-     * @param \Rvvup\Api\Model\PaymentType|string $payment_type payment_type
+     * @param \Rvvup\Api\Model\PaymentType|string|null $payment_type payment_type
      *
      * @return self
      */
