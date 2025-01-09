@@ -3906,7 +3906,6 @@ components:
           $ref: "#/components/schemas/MoneyInput"
       required:
         - paymentMethod
-        - paymentType
         - sessionKey
         - total
     PaymentSessionStatus:
