@@ -62,6 +62,8 @@ class ApplicationSource
 
     public const MAGENTO_AX_INVOICE = 'MAGENTO_AX_INVOICE';
 
+    public const WOOCOMMERCE_CHECKOUT = 'WOOCOMMERCE_CHECKOUT';
+
     public const PAY_NOW_IN_PERSON = 'PAY_NOW_IN_PERSON';
 
     public const PAY_NOW_MOTO = 'PAY_NOW_MOTO';
@@ -84,6 +86,7 @@ class ApplicationSource
             self::MAGENTO_MOTO,
             self::MAGENTO_PAYMENT_LINK,
             self::MAGENTO_AX_INVOICE,
+            self::WOOCOMMERCE_CHECKOUT,
             self::PAY_NOW_IN_PERSON,
             self::PAY_NOW_MOTO,
             self::PAY_NOW_PAYMENT_LINK
