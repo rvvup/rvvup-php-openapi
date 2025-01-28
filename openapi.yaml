@@ -2040,6 +2040,7 @@ components:
         - MAGENTO_MOTO
         - MAGENTO_PAYMENT_LINK
         - MAGENTO_AX_INVOICE
+        - WOOCOMMERCE_CHECKOUT
         - PAY_NOW_IN_PERSON
         - PAY_NOW_MOTO
         - PAY_NOW_PAYMENT_LINK
@@ -2470,9 +2471,21 @@ components:
           description: The datetime when the checkout template was created.
         customerFields:
           $ref: "#/components/schemas/CheckoutCustomerFields"
+        disabledPaymentMethods:
+          type: array
+          description: The set of payment methods that are disabled for the checkout.
+          enum:
+            - CARD
+            - APPLE_PAY
+            - GOOGLE_PAY
+            - PAY_BY_BANK
+          items:
+            $ref: "#/components/schemas/PaymentMethod"
+          uniqueItems: true
         enabledPaymentMethods:
           type: array
           description: Ordered list of payment methods that are enabled for the checkout.
+            An empty list means all payment methods are enabled.
           items:
             $ref: "#/components/schemas/PaymentMethod"
         id:
@@ -2505,6 +2518,8 @@ components:
       required:
         - amountType
         - createdAt
+        - disabledPaymentMethods
+        - enabledPaymentMethods
         - id
         - merchantId
         - mode
@@ -2541,9 +2556,21 @@ components:
           $ref: "#/components/schemas/CheckoutAmountType"
         customerFields:
           $ref: "#/components/schemas/CheckoutCustomerFieldsInput"
+        disabledPaymentMethods:
+          type: array
+          description: The set of payment methods that are disabled for the checkout.
+          enum:
+            - CARD
+            - APPLE_PAY
+            - GOOGLE_PAY
+            - PAY_BY_BANK
+          items:
+            $ref: "#/components/schemas/PaymentMethod"
+          uniqueItems: true
         enabledPaymentMethods:
           type: array
           description: Ordered list of payment methods that are enabled for the checkout.
+            An empty list (or null) means all payment methods are enabled.
           enum:
             - CARD
             - APPLE_PAY
@@ -2615,9 +2642,21 @@ components:
           $ref: "#/components/schemas/CheckoutAmountType"
         customerFields:
           $ref: "#/components/schemas/CheckoutCustomerFieldsUpdateInput"
+        disabledPaymentMethods:
+          type: array
+          description: The set of payment methods that are disabled for the checkout.
+          enum:
+            - CARD
+            - APPLE_PAY
+            - GOOGLE_PAY
+            - PAY_BY_BANK
+          items:
+            $ref: "#/components/schemas/PaymentMethod"
+          uniqueItems: true
         enabledPaymentMethods:
           type: array
           description: Ordered list of payment methods that are enabled for the checkout.
+            An empty list means all payment methods are enabled.
           enum:
             - CARD
             - APPLE_PAY

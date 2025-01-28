@@ -61,6 +61,7 @@ class CheckoutTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'amount_type' => '\Rvvup\Api\Model\CheckoutAmountType',
         'created_at' => '\DateTime',
         'customer_fields' => '\Rvvup\Api\Model\CheckoutCustomerFields',
+        'disabled_payment_methods' => '\Rvvup\Api\Model\PaymentMethod[]',
         'enabled_payment_methods' => '\Rvvup\Api\Model\PaymentMethod[]',
         'id' => 'string',
         'merchant_id' => 'string',
@@ -85,6 +86,7 @@ class CheckoutTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'amount_type' => null,
         'created_at' => 'date-time',
         'customer_fields' => null,
+        'disabled_payment_methods' => null,
         'enabled_payment_methods' => null,
         'id' => null,
         'merchant_id' => null,
@@ -107,6 +109,7 @@ class CheckoutTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'amount_type' => false,
         'created_at' => false,
         'customer_fields' => false,
+        'disabled_payment_methods' => false,
         'enabled_payment_methods' => false,
         'id' => false,
         'merchant_id' => false,
@@ -209,6 +212,7 @@ class CheckoutTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'amount_type' => 'amountType',
         'created_at' => 'createdAt',
         'customer_fields' => 'customerFields',
+        'disabled_payment_methods' => 'disabledPaymentMethods',
         'enabled_payment_methods' => 'enabledPaymentMethods',
         'id' => 'id',
         'merchant_id' => 'merchantId',
@@ -231,6 +235,7 @@ class CheckoutTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'amount_type' => 'setAmountType',
         'created_at' => 'setCreatedAt',
         'customer_fields' => 'setCustomerFields',
+        'disabled_payment_methods' => 'setDisabledPaymentMethods',
         'enabled_payment_methods' => 'setEnabledPaymentMethods',
         'id' => 'setId',
         'merchant_id' => 'setMerchantId',
@@ -253,6 +258,7 @@ class CheckoutTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'amount_type' => 'getAmountType',
         'created_at' => 'getCreatedAt',
         'customer_fields' => 'getCustomerFields',
+        'disabled_payment_methods' => 'getDisabledPaymentMethods',
         'enabled_payment_methods' => 'getEnabledPaymentMethods',
         'id' => 'getId',
         'merchant_id' => 'getMerchantId',
@@ -309,6 +315,18 @@ class CheckoutTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getDisabledPaymentMethodsAllowableValues()
+    {
+        return [
+            
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -326,6 +344,7 @@ class CheckoutTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('amount_type', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('customer_fields', $data ?? [], null);
+        $this->setIfExists('disabled_payment_methods', $data ?? [], null);
         $this->setIfExists('enabled_payment_methods', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('merchant_id', $data ?? [], null);
@@ -371,6 +390,12 @@ class CheckoutTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['disabled_payment_methods'] === null) {
+            $invalidProperties[] = "'disabled_payment_methods' can't be null";
+        }
+        if ($this->container['enabled_payment_methods'] === null) {
+            $invalidProperties[] = "'enabled_payment_methods' can't be null";
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
@@ -496,9 +521,47 @@ class CheckoutTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets disabled_payment_methods
+     *
+     * @return \Rvvup\Api\Model\PaymentMethod[]
+     */
+    public function getDisabledPaymentMethods()
+    {
+        return $this->container['disabled_payment_methods'];
+    }
+
+    /**
+     * Sets disabled_payment_methods
+     *
+     * @param \Rvvup\Api\Model\PaymentMethod[] $disabled_payment_methods The set of payment methods that are disabled for the checkout.
+     *
+     * @return self
+     */
+    public function setDisabledPaymentMethods($disabled_payment_methods)
+    {
+        if (is_null($disabled_payment_methods)) {
+            throw new \InvalidArgumentException('non-nullable disabled_payment_methods cannot be null');
+        }
+        $allowedValues = $this->getDisabledPaymentMethodsAllowableValues();
+        if (array_diff($disabled_payment_methods, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'disabled_payment_methods', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+
+
+        $this->container['disabled_payment_methods'] = $disabled_payment_methods;
+
+        return $this;
+    }
+
+    /**
      * Gets enabled_payment_methods
      *
-     * @return \Rvvup\Api\Model\PaymentMethod[]|null
+     * @return \Rvvup\Api\Model\PaymentMethod[]
      */
     public function getEnabledPaymentMethods()
     {
@@ -508,7 +571,7 @@ class CheckoutTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets enabled_payment_methods
      *
-     * @param \Rvvup\Api\Model\PaymentMethod[]|null $enabled_payment_methods Ordered list of payment methods that are enabled for the checkout.
+     * @param \Rvvup\Api\Model\PaymentMethod[] $enabled_payment_methods Ordered list of payment methods that are enabled for the checkout. An empty list means all payment methods are enabled.
      *
      * @return self
      */

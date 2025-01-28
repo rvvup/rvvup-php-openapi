@@ -61,6 +61,7 @@ class CheckoutTemplateCreateInput implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPITypes = [
         'amount_type' => '\Rvvup\Api\Model\CheckoutAmountType',
         'customer_fields' => '\Rvvup\Api\Model\CheckoutCustomerFieldsInput',
+        'disabled_payment_methods' => '\Rvvup\Api\Model\PaymentMethod[]',
         'enabled_payment_methods' => '\Rvvup\Api\Model\PaymentMethod[]',
         'mode' => '\Rvvup\Api\Model\CheckoutMode',
         'name' => 'string',
@@ -81,6 +82,7 @@ class CheckoutTemplateCreateInput implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPIFormats = [
         'amount_type' => null,
         'customer_fields' => null,
+        'disabled_payment_methods' => null,
         'enabled_payment_methods' => null,
         'mode' => null,
         'name' => null,
@@ -99,6 +101,7 @@ class CheckoutTemplateCreateInput implements ModelInterface, ArrayAccess, \JsonS
     protected static array $openAPINullables = [
         'amount_type' => false,
         'customer_fields' => false,
+        'disabled_payment_methods' => false,
         'enabled_payment_methods' => false,
         'mode' => false,
         'name' => false,
@@ -197,6 +200,7 @@ class CheckoutTemplateCreateInput implements ModelInterface, ArrayAccess, \JsonS
     protected static $attributeMap = [
         'amount_type' => 'amountType',
         'customer_fields' => 'customerFields',
+        'disabled_payment_methods' => 'disabledPaymentMethods',
         'enabled_payment_methods' => 'enabledPaymentMethods',
         'mode' => 'mode',
         'name' => 'name',
@@ -215,6 +219,7 @@ class CheckoutTemplateCreateInput implements ModelInterface, ArrayAccess, \JsonS
     protected static $setters = [
         'amount_type' => 'setAmountType',
         'customer_fields' => 'setCustomerFields',
+        'disabled_payment_methods' => 'setDisabledPaymentMethods',
         'enabled_payment_methods' => 'setEnabledPaymentMethods',
         'mode' => 'setMode',
         'name' => 'setName',
@@ -233,6 +238,7 @@ class CheckoutTemplateCreateInput implements ModelInterface, ArrayAccess, \JsonS
     protected static $getters = [
         'amount_type' => 'getAmountType',
         'customer_fields' => 'getCustomerFields',
+        'disabled_payment_methods' => 'getDisabledPaymentMethods',
         'enabled_payment_methods' => 'getEnabledPaymentMethods',
         'mode' => 'getMode',
         'name' => 'getName',
@@ -290,6 +296,18 @@ class CheckoutTemplateCreateInput implements ModelInterface, ArrayAccess, \JsonS
      *
      * @return string[]
      */
+    public function getDisabledPaymentMethodsAllowableValues()
+    {
+        return [
+            
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getEnabledPaymentMethodsAllowableValues()
     {
         return [
@@ -314,6 +332,7 @@ class CheckoutTemplateCreateInput implements ModelInterface, ArrayAccess, \JsonS
     {
         $this->setIfExists('amount_type', $data ?? [], null);
         $this->setIfExists('customer_fields', $data ?? [], null);
+        $this->setIfExists('disabled_payment_methods', $data ?? [], null);
         $this->setIfExists('enabled_payment_methods', $data ?? [], null);
         $this->setIfExists('mode', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
@@ -432,6 +451,44 @@ class CheckoutTemplateCreateInput implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
+     * Gets disabled_payment_methods
+     *
+     * @return \Rvvup\Api\Model\PaymentMethod[]|null
+     */
+    public function getDisabledPaymentMethods()
+    {
+        return $this->container['disabled_payment_methods'];
+    }
+
+    /**
+     * Sets disabled_payment_methods
+     *
+     * @param \Rvvup\Api\Model\PaymentMethod[]|null $disabled_payment_methods The set of payment methods that are disabled for the checkout.
+     *
+     * @return self
+     */
+    public function setDisabledPaymentMethods($disabled_payment_methods)
+    {
+        if (is_null($disabled_payment_methods)) {
+            throw new \InvalidArgumentException('non-nullable disabled_payment_methods cannot be null');
+        }
+        $allowedValues = $this->getDisabledPaymentMethodsAllowableValues();
+        if (array_diff($disabled_payment_methods, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'disabled_payment_methods', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+
+
+        $this->container['disabled_payment_methods'] = $disabled_payment_methods;
+
+        return $this;
+    }
+
+    /**
      * Gets enabled_payment_methods
      *
      * @return \Rvvup\Api\Model\PaymentMethod[]|null
@@ -444,7 +501,7 @@ class CheckoutTemplateCreateInput implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets enabled_payment_methods
      *
-     * @param \Rvvup\Api\Model\PaymentMethod[]|null $enabled_payment_methods Ordered list of payment methods that are enabled for the checkout.
+     * @param \Rvvup\Api\Model\PaymentMethod[]|null $enabled_payment_methods Ordered list of payment methods that are enabled for the checkout. An empty list (or null) means all payment methods are enabled.
      *
      * @return self
      */

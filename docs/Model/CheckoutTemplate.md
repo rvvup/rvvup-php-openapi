@@ -7,7 +7,8 @@ Name | Type | Description | Notes
 **amount_type** | [**\Rvvup\Api\Model\CheckoutAmountType**](CheckoutAmountType.md) |  |
 **created_at** | **\DateTime** | The datetime when the checkout template was created. |
 **customer_fields** | [**\Rvvup\Api\Model\CheckoutCustomerFields**](CheckoutCustomerFields.md) |  | [optional]
-**enabled_payment_methods** | [**\Rvvup\Api\Model\PaymentMethod[]**](PaymentMethod.md) | Ordered list of payment methods that are enabled for the checkout. | [optional]
+**disabled_payment_methods** | [**\Rvvup\Api\Model\PaymentMethod[]**](PaymentMethod.md) | The set of payment methods that are disabled for the checkout. |
+**enabled_payment_methods** | [**\Rvvup\Api\Model\PaymentMethod[]**](PaymentMethod.md) | Ordered list of payment methods that are enabled for the checkout. An empty list means all payment methods are enabled. |
 **id** | **string** | The unique ID of the checkout template. |
 **merchant_id** | **string** | The ID of the merchant that owns this checkout template. |
 **mode** | [**\Rvvup\Api\Model\CheckoutMode**](CheckoutMode.md) |  |

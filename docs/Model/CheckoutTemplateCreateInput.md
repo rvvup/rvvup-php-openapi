@@ -6,7 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **amount_type** | [**\Rvvup\Api\Model\CheckoutAmountType**](CheckoutAmountType.md) |  | [optional]
 **customer_fields** | [**\Rvvup\Api\Model\CheckoutCustomerFieldsInput**](CheckoutCustomerFieldsInput.md) |  | [optional]
-**enabled_payment_methods** | [**\Rvvup\Api\Model\PaymentMethod[]**](PaymentMethod.md) | Ordered list of payment methods that are enabled for the checkout. | [optional]
+**disabled_payment_methods** | [**\Rvvup\Api\Model\PaymentMethod[]**](PaymentMethod.md) | The set of payment methods that are disabled for the checkout. | [optional]
+**enabled_payment_methods** | [**\Rvvup\Api\Model\PaymentMethod[]**](PaymentMethod.md) | Ordered list of payment methods that are enabled for the checkout. An empty list (or null) means all payment methods are enabled. | [optional]
 **mode** | [**\Rvvup\Api\Model\CheckoutMode**](CheckoutMode.md) |  | [optional]
 **name** | **string** | The name of the checkout template. |
 **notify_customer** | **bool** | Whether the customer should be notified on payment completion. | [optional] [default to false]
