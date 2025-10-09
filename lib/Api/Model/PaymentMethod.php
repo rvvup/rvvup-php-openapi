@@ -64,6 +64,8 @@ class PaymentMethod
 
     public const KLARNA = 'KLARNA';
 
+    public const ZOPA_RETAIL_FINANCE = 'ZOPA_RETAIL_FINANCE';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -80,7 +82,8 @@ class PaymentMethod
             self::APPLE_PAY,
             self::GOOGLE_PAY,
             self::PAY_BY_BANK,
-            self::KLARNA
+            self::KLARNA,
+            self::ZOPA_RETAIL_FINANCE
         ];
     }
 }

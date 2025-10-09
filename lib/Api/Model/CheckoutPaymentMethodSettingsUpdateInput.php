@@ -61,8 +61,11 @@ class CheckoutPaymentMethodSettingsUpdateInput implements ModelInterface, ArrayA
     protected static $openAPITypes = [
         'apple_pay' => '\Rvvup\Api\Model\CheckoutApplePaySettingsUpdateInput',
         'card' => '\Rvvup\Api\Model\CheckoutCardSettingsUpdateInput',
+        'clearpay' => '\Rvvup\Api\Model\CheckoutClearpaySettingsUpdateInput',
         'google_pay' => '\Rvvup\Api\Model\CheckoutGooglePaySettingsUpdateInput',
-        'pay_by_bank' => '\Rvvup\Api\Model\CheckoutPayByBankSettingsUpdateInput'
+        'klarna' => '\Rvvup\Api\Model\CheckoutKlarnaSettingsUpdateInput',
+        'pay_by_bank' => '\Rvvup\Api\Model\CheckoutPayByBankSettingsUpdateInput',
+        'zopa_retail_finance' => '\Rvvup\Api\Model\CheckoutZopaRetailFinanceSettingsUpdateInput'
     ];
 
     /**
@@ -75,8 +78,11 @@ class CheckoutPaymentMethodSettingsUpdateInput implements ModelInterface, ArrayA
     protected static $openAPIFormats = [
         'apple_pay' => null,
         'card' => null,
+        'clearpay' => null,
         'google_pay' => null,
-        'pay_by_bank' => null
+        'klarna' => null,
+        'pay_by_bank' => null,
+        'zopa_retail_finance' => null
     ];
 
     /**
@@ -87,8 +93,11 @@ class CheckoutPaymentMethodSettingsUpdateInput implements ModelInterface, ArrayA
     protected static array $openAPINullables = [
         'apple_pay' => false,
         'card' => false,
+        'clearpay' => false,
         'google_pay' => false,
-        'pay_by_bank' => false
+        'klarna' => false,
+        'pay_by_bank' => false,
+        'zopa_retail_finance' => false
     ];
 
     /**
@@ -179,8 +188,11 @@ class CheckoutPaymentMethodSettingsUpdateInput implements ModelInterface, ArrayA
     protected static $attributeMap = [
         'apple_pay' => 'applePay',
         'card' => 'card',
+        'clearpay' => 'clearpay',
         'google_pay' => 'googlePay',
-        'pay_by_bank' => 'payByBank'
+        'klarna' => 'klarna',
+        'pay_by_bank' => 'payByBank',
+        'zopa_retail_finance' => 'zopaRetailFinance'
     ];
 
     /**
@@ -191,8 +203,11 @@ class CheckoutPaymentMethodSettingsUpdateInput implements ModelInterface, ArrayA
     protected static $setters = [
         'apple_pay' => 'setApplePay',
         'card' => 'setCard',
+        'clearpay' => 'setClearpay',
         'google_pay' => 'setGooglePay',
-        'pay_by_bank' => 'setPayByBank'
+        'klarna' => 'setKlarna',
+        'pay_by_bank' => 'setPayByBank',
+        'zopa_retail_finance' => 'setZopaRetailFinance'
     ];
 
     /**
@@ -203,8 +218,11 @@ class CheckoutPaymentMethodSettingsUpdateInput implements ModelInterface, ArrayA
     protected static $getters = [
         'apple_pay' => 'getApplePay',
         'card' => 'getCard',
+        'clearpay' => 'getClearpay',
         'google_pay' => 'getGooglePay',
-        'pay_by_bank' => 'getPayByBank'
+        'klarna' => 'getKlarna',
+        'pay_by_bank' => 'getPayByBank',
+        'zopa_retail_finance' => 'getZopaRetailFinance'
     ];
 
     /**
@@ -266,8 +284,11 @@ class CheckoutPaymentMethodSettingsUpdateInput implements ModelInterface, ArrayA
     {
         $this->setIfExists('apple_pay', $data ?? [], null);
         $this->setIfExists('card', $data ?? [], null);
+        $this->setIfExists('clearpay', $data ?? [], null);
         $this->setIfExists('google_pay', $data ?? [], null);
+        $this->setIfExists('klarna', $data ?? [], null);
         $this->setIfExists('pay_by_bank', $data ?? [], null);
+        $this->setIfExists('zopa_retail_finance', $data ?? [], null);
     }
 
     /**
@@ -367,6 +388,33 @@ class CheckoutPaymentMethodSettingsUpdateInput implements ModelInterface, ArrayA
     }
 
     /**
+     * Gets clearpay
+     *
+     * @return \Rvvup\Api\Model\CheckoutClearpaySettingsUpdateInput|null
+     */
+    public function getClearpay()
+    {
+        return $this->container['clearpay'];
+    }
+
+    /**
+     * Sets clearpay
+     *
+     * @param \Rvvup\Api\Model\CheckoutClearpaySettingsUpdateInput|null $clearpay clearpay
+     *
+     * @return self
+     */
+    public function setClearpay($clearpay)
+    {
+        if (is_null($clearpay)) {
+            throw new \InvalidArgumentException('non-nullable clearpay cannot be null');
+        }
+        $this->container['clearpay'] = $clearpay;
+
+        return $this;
+    }
+
+    /**
      * Gets google_pay
      *
      * @return \Rvvup\Api\Model\CheckoutGooglePaySettingsUpdateInput|null
@@ -394,6 +442,33 @@ class CheckoutPaymentMethodSettingsUpdateInput implements ModelInterface, ArrayA
     }
 
     /**
+     * Gets klarna
+     *
+     * @return \Rvvup\Api\Model\CheckoutKlarnaSettingsUpdateInput|null
+     */
+    public function getKlarna()
+    {
+        return $this->container['klarna'];
+    }
+
+    /**
+     * Sets klarna
+     *
+     * @param \Rvvup\Api\Model\CheckoutKlarnaSettingsUpdateInput|null $klarna klarna
+     *
+     * @return self
+     */
+    public function setKlarna($klarna)
+    {
+        if (is_null($klarna)) {
+            throw new \InvalidArgumentException('non-nullable klarna cannot be null');
+        }
+        $this->container['klarna'] = $klarna;
+
+        return $this;
+    }
+
+    /**
      * Gets pay_by_bank
      *
      * @return \Rvvup\Api\Model\CheckoutPayByBankSettingsUpdateInput|null
@@ -416,6 +491,33 @@ class CheckoutPaymentMethodSettingsUpdateInput implements ModelInterface, ArrayA
             throw new \InvalidArgumentException('non-nullable pay_by_bank cannot be null');
         }
         $this->container['pay_by_bank'] = $pay_by_bank;
+
+        return $this;
+    }
+
+    /**
+     * Gets zopa_retail_finance
+     *
+     * @return \Rvvup\Api\Model\CheckoutZopaRetailFinanceSettingsUpdateInput|null
+     */
+    public function getZopaRetailFinance()
+    {
+        return $this->container['zopa_retail_finance'];
+    }
+
+    /**
+     * Sets zopa_retail_finance
+     *
+     * @param \Rvvup\Api\Model\CheckoutZopaRetailFinanceSettingsUpdateInput|null $zopa_retail_finance zopa_retail_finance
+     *
+     * @return self
+     */
+    public function setZopaRetailFinance($zopa_retail_finance)
+    {
+        if (is_null($zopa_retail_finance)) {
+            throw new \InvalidArgumentException('non-nullable zopa_retail_finance cannot be null');
+        }
+        $this->container['zopa_retail_finance'] = $zopa_retail_finance;
 
         return $this;
     }

@@ -70,6 +70,7 @@ class PaymentSession implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'string',
         'items' => '\Rvvup\Api\Model\Item[]',
         'merchant_id' => 'string',
+        'origin_url' => 'string',
         'payment_link_id' => 'string',
         'payments' => '\Rvvup\Api\Model\Payment[]',
         'requires_shipping' => 'bool',
@@ -101,6 +102,7 @@ class PaymentSession implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => null,
         'items' => null,
         'merchant_id' => null,
+        'origin_url' => null,
         'payment_link_id' => null,
         'payments' => null,
         'requires_shipping' => null,
@@ -130,6 +132,7 @@ class PaymentSession implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
         'items' => false,
         'merchant_id' => false,
+        'origin_url' => false,
         'payment_link_id' => false,
         'payments' => false,
         'requires_shipping' => false,
@@ -239,6 +242,7 @@ class PaymentSession implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'id',
         'items' => 'items',
         'merchant_id' => 'merchantId',
+        'origin_url' => 'originUrl',
         'payment_link_id' => 'paymentLinkId',
         'payments' => 'payments',
         'requires_shipping' => 'requiresShipping',
@@ -268,6 +272,7 @@ class PaymentSession implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'setId',
         'items' => 'setItems',
         'merchant_id' => 'setMerchantId',
+        'origin_url' => 'setOriginUrl',
         'payment_link_id' => 'setPaymentLinkId',
         'payments' => 'setPayments',
         'requires_shipping' => 'setRequiresShipping',
@@ -297,6 +302,7 @@ class PaymentSession implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'getId',
         'items' => 'getItems',
         'merchant_id' => 'getMerchantId',
+        'origin_url' => 'getOriginUrl',
         'payment_link_id' => 'getPaymentLinkId',
         'payments' => 'getPayments',
         'requires_shipping' => 'getRequiresShipping',
@@ -377,6 +383,7 @@ class PaymentSession implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('items', $data ?? [], null);
         $this->setIfExists('merchant_id', $data ?? [], null);
+        $this->setIfExists('origin_url', $data ?? [], null);
         $this->setIfExists('payment_link_id', $data ?? [], null);
         $this->setIfExists('payments', $data ?? [], null);
         $this->setIfExists('requires_shipping', $data ?? [], null);
@@ -780,6 +787,33 @@ class PaymentSession implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable merchant_id cannot be null');
         }
         $this->container['merchant_id'] = $merchant_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_url
+     *
+     * @return string|null
+     */
+    public function getOriginUrl()
+    {
+        return $this->container['origin_url'];
+    }
+
+    /**
+     * Sets origin_url
+     *
+     * @param string|null $origin_url The URL that the customer was on when the payment session was created.
+     *
+     * @return self
+     */
+    public function setOriginUrl($origin_url)
+    {
+        if (is_null($origin_url)) {
+            throw new \InvalidArgumentException('non-nullable origin_url cannot be null');
+        }
+        $this->container['origin_url'] = $origin_url;
 
         return $this;
     }

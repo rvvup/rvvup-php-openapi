@@ -65,6 +65,7 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
         'external_reference' => 'string',
         'items' => '\Rvvup\Api\Model\ItemInput[]',
         'metadata' => 'array<string,string>',
+        'origin_url' => 'string',
         'payment_capture_type' => '\Rvvup\Api\Model\PaymentCaptureType',
         'payment_method' => '\Rvvup\Api\Model\PaymentMethod',
         'payment_type' => '\Rvvup\Api\Model\PaymentType',
@@ -90,6 +91,7 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
         'external_reference' => null,
         'items' => null,
         'metadata' => null,
+        'origin_url' => null,
         'payment_capture_type' => null,
         'payment_method' => null,
         'payment_type' => null,
@@ -113,6 +115,7 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
         'external_reference' => false,
         'items' => false,
         'metadata' => false,
+        'origin_url' => false,
         'payment_capture_type' => false,
         'payment_method' => false,
         'payment_type' => false,
@@ -216,6 +219,7 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
         'external_reference' => 'externalReference',
         'items' => 'items',
         'metadata' => 'metadata',
+        'origin_url' => 'originUrl',
         'payment_capture_type' => 'paymentCaptureType',
         'payment_method' => 'paymentMethod',
         'payment_type' => 'paymentType',
@@ -239,6 +243,7 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
         'external_reference' => 'setExternalReference',
         'items' => 'setItems',
         'metadata' => 'setMetadata',
+        'origin_url' => 'setOriginUrl',
         'payment_capture_type' => 'setPaymentCaptureType',
         'payment_method' => 'setPaymentMethod',
         'payment_type' => 'setPaymentType',
@@ -262,6 +267,7 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
         'external_reference' => 'getExternalReference',
         'items' => 'getItems',
         'metadata' => 'getMetadata',
+        'origin_url' => 'getOriginUrl',
         'payment_capture_type' => 'getPaymentCaptureType',
         'payment_method' => 'getPaymentMethod',
         'payment_type' => 'getPaymentType',
@@ -336,6 +342,7 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('external_reference', $data ?? [], null);
         $this->setIfExists('items', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('origin_url', $data ?? [], null);
         $this->setIfExists('payment_capture_type', $data ?? [], null);
         $this->setIfExists('payment_method', $data ?? [], null);
         $this->setIfExists('payment_type', $data ?? [], null);
@@ -579,6 +586,33 @@ class PaymentSessionCreateInput implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable metadata cannot be null');
         }
         $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_url
+     *
+     * @return string|null
+     */
+    public function getOriginUrl()
+    {
+        return $this->container['origin_url'];
+    }
+
+    /**
+     * Sets origin_url
+     *
+     * @param string|null $origin_url The URL that the customer was on when the payment session was created.
+     *
+     * @return self
+     */
+    public function setOriginUrl($origin_url)
+    {
+        if (is_null($origin_url)) {
+            throw new \InvalidArgumentException('non-nullable origin_url cannot be null');
+        }
+        $this->container['origin_url'] = $origin_url;
 
         return $this;
     }

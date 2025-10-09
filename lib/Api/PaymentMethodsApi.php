@@ -132,15 +132,17 @@ class PaymentMethodsApi
      * @param  string $currency The transaction currency (optional)
      * @param  string $amount The transaction amount (optional)
      * @param  bool $include_inactive Include inactive payment methods (optional)
+     * @param  int $offset pagination offset (optional)
+     * @param  int $limit pagination limit (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPaymentMethods'] to see the possible values for this operation
      *
      * @throws \Rvvup\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Rvvup\Api\Model\PaymentMethodDetailsPage
      */
-    public function listPaymentMethods($merchant_id, $currency = null, $amount = null, $include_inactive = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
+    public function listPaymentMethods($merchant_id, $currency = null, $amount = null, $include_inactive = null, $offset = null, $limit = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
     {
-        list($response) = $this->listPaymentMethodsWithHttpInfo($merchant_id, $currency, $amount, $include_inactive, $contentType);
+        list($response) = $this->listPaymentMethodsWithHttpInfo($merchant_id, $currency, $amount, $include_inactive, $offset, $limit, $contentType);
         return $response;
     }
 
@@ -153,15 +155,17 @@ class PaymentMethodsApi
      * @param  string $currency The transaction currency (optional)
      * @param  string $amount The transaction amount (optional)
      * @param  bool $include_inactive Include inactive payment methods (optional)
+     * @param  int $offset pagination offset (optional)
+     * @param  int $limit pagination limit (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPaymentMethods'] to see the possible values for this operation
      *
      * @throws \Rvvup\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Rvvup\Api\Model\PaymentMethodDetailsPage, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listPaymentMethodsWithHttpInfo($merchant_id, $currency = null, $amount = null, $include_inactive = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
+    public function listPaymentMethodsWithHttpInfo($merchant_id, $currency = null, $amount = null, $include_inactive = null, $offset = null, $limit = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
     {
-        $request = $this->listPaymentMethodsRequest($merchant_id, $currency, $amount, $include_inactive, $contentType);
+        $request = $this->listPaymentMethodsRequest($merchant_id, $currency, $amount, $include_inactive, $offset, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -281,14 +285,16 @@ class PaymentMethodsApi
      * @param  string $currency The transaction currency (optional)
      * @param  string $amount The transaction amount (optional)
      * @param  bool $include_inactive Include inactive payment methods (optional)
+     * @param  int $offset pagination offset (optional)
+     * @param  int $limit pagination limit (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPaymentMethods'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPaymentMethodsAsync($merchant_id, $currency = null, $amount = null, $include_inactive = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
+    public function listPaymentMethodsAsync($merchant_id, $currency = null, $amount = null, $include_inactive = null, $offset = null, $limit = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
     {
-        return $this->listPaymentMethodsAsyncWithHttpInfo($merchant_id, $currency, $amount, $include_inactive, $contentType)
+        return $this->listPaymentMethodsAsyncWithHttpInfo($merchant_id, $currency, $amount, $include_inactive, $offset, $limit, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -305,15 +311,17 @@ class PaymentMethodsApi
      * @param  string $currency The transaction currency (optional)
      * @param  string $amount The transaction amount (optional)
      * @param  bool $include_inactive Include inactive payment methods (optional)
+     * @param  int $offset pagination offset (optional)
+     * @param  int $limit pagination limit (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPaymentMethods'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPaymentMethodsAsyncWithHttpInfo($merchant_id, $currency = null, $amount = null, $include_inactive = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
+    public function listPaymentMethodsAsyncWithHttpInfo($merchant_id, $currency = null, $amount = null, $include_inactive = null, $offset = null, $limit = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
     {
         $returnType = '\Rvvup\Api\Model\PaymentMethodDetailsPage';
-        $request = $this->listPaymentMethodsRequest($merchant_id, $currency, $amount, $include_inactive, $contentType);
+        $request = $this->listPaymentMethodsRequest($merchant_id, $currency, $amount, $include_inactive, $offset, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -358,12 +366,14 @@ class PaymentMethodsApi
      * @param  string $currency The transaction currency (optional)
      * @param  string $amount The transaction amount (optional)
      * @param  bool $include_inactive Include inactive payment methods (optional)
+     * @param  int $offset pagination offset (optional)
+     * @param  int $limit pagination limit (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPaymentMethods'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listPaymentMethodsRequest($merchant_id, $currency = null, $amount = null, $include_inactive = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
+    public function listPaymentMethodsRequest($merchant_id, $currency = null, $amount = null, $include_inactive = null, $offset = null, $limit = null, string $contentType = self::contentTypes['listPaymentMethods'][0])
     {
 
         // verify the required parameter 'merchant_id' is set
@@ -372,6 +382,8 @@ class PaymentMethodsApi
                 'Missing the required parameter $merchant_id when calling listPaymentMethods'
             );
         }
+
+
 
 
 
@@ -407,6 +419,24 @@ class PaymentMethodsApi
             $include_inactive,
             'includeInactive', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required

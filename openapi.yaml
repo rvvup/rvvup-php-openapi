@@ -52,7 +52,8 @@ paths:
         - apiKey: []
       summary: Create a new account statement
       tags:
-        - AccountStatements
+        - Account Statements
+        - Public
   /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId}:
     get:
       description: Get an account statement by ID
@@ -87,7 +88,8 @@ paths:
         - apiKey: []
       summary: Get an account statement
       tags:
-        - AccountStatements
+        - Account Statements
+        - Public
   /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId}/checkouts/{checkoutId}:
     get:
       description: Get a checkout for an account statement by ID
@@ -128,7 +130,8 @@ paths:
         - apiKey: []
       summary: Get a checkout for an account statement
       tags:
-        - AccountStatements
+        - Account Statements
+        - Public
   /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId}/theme:
     get:
       description: Gets the theme for an account statement. The theme is used to style
@@ -164,7 +167,125 @@ paths:
         - apiKey: []
       summary: Get the theme for an account statement
       tags:
-        - AccountStatements
+        - Account Statements
+        - Public
+  /api/2024-03-01/{merchantId}/chaser-plans:
+    get:
+      description: List chaser plans
+      operationId: listChaserPlans
+      parameters:
+        - description: pagination offset
+          in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - description: pagination limit
+          in: query
+          name: limit
+          schema:
+            type: integer
+            format: int32
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChaserPlanPage"
+          description: List of chaser plans
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+      security:
+        - apiKey: []
+      summary: List Chaser Plans
+      tags:
+        - Chaser Plans
+        - Public
+    post:
+      description: Creates a new chaser plan.
+      operationId: createChaserPlan
+      parameters:
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Idempotency Key
+          in: header
+          name: Idempotency-Key
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChaserPlanCreateInput"
+        description: The chaser plan to create
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChaserPlan"
+          description: The created chaser plan
+        "400":
+          description: Validation failed
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+      security:
+        - apiKey: []
+      summary: Create new chaser plan
+      tags:
+        - Chaser Plans
+        - Public
+  /api/2024-03-01/{merchantId}/chaser-plans/{chaserPlanId}:
+    get:
+      description: Get a chaser plan by id
+      operationId: getChaserPlan
+      parameters:
+        - description: chaser plan id
+          in: path
+          name: chaserPlanId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChaserPlan"
+          description: Chaser plan
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Chaser plan not found
+      security:
+        - apiKey: []
+      summary: Get a chaser plan
+      tags:
+        - Chaser Plans
+        - Public
   /api/2024-03-01/{merchantId}/checkout-templates:
     get:
       description: List checkout templates
@@ -204,6 +325,7 @@ paths:
       summary: List checkout templates
       tags:
         - Checkout Templates
+        - Public
     post:
       description: Creates a new checkout template.
       operationId: createCheckoutTemplate
@@ -239,6 +361,7 @@ paths:
       summary: Create new checkout template
       tags:
         - Checkout Templates
+        - Public
   /api/2024-03-01/{merchantId}/checkout-templates/{checkoutTemplateId}:
     get:
       description: Get a checkout template by id
@@ -274,6 +397,7 @@ paths:
       summary: Get a checkout template
       tags:
         - Checkout Templates
+        - Public
     patch:
       description: Update a checkout template
       operationId: updateCheckoutTemplate
@@ -317,6 +441,7 @@ paths:
       summary: Update a checkout template
       tags:
         - Checkout Templates
+        - Public
   /api/2024-03-01/{merchantId}/checkouts:
     get:
       description: List checkouts
@@ -356,6 +481,7 @@ paths:
       summary: List checkouts
       tags:
         - Checkouts
+        - Public
     post:
       description: Creates a new checkout.
       operationId: createCheckout
@@ -396,6 +522,7 @@ paths:
       summary: Create new checkout
       tags:
         - Checkouts
+        - Public
   /api/2024-03-01/{merchantId}/checkouts/{checkoutId}:
     get:
       description: Get a checkout by id
@@ -439,6 +566,7 @@ paths:
       summary: Get a checkout
       tags:
         - Checkouts
+        - Public
   /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-methods:
     get:
       description: Lists the currently eligible payment methods for a checkout. The
@@ -488,6 +616,7 @@ paths:
       summary: Get payment methods for a checkout
       tags:
         - Checkouts
+        - Public
   /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions:
     post:
       description: Creates a payment session with a new active payment.
@@ -530,6 +659,7 @@ paths:
       summary: Create a payment session
       tags:
         - Payment Sessions
+        - Public
   /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions/{paymentSessionId}:
     get:
       description: Get a payment session by id.
@@ -571,6 +701,109 @@ paths:
       summary: Get a payment session
       tags:
         - Payment Sessions
+        - Public
+  /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions/{paymentSessionId}/refunds:
+    post:
+      description: Creates a refund for a payment session.
+      operationId: createRefund
+      parameters:
+        - description: The merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: The checkout id
+          in: path
+          name: checkoutId
+          required: true
+          schema:
+            type: string
+        - description: The payment session id
+          in: path
+          name: paymentSessionId
+          required: true
+          schema:
+            type: string
+        - description: Idempotency Key
+          in: header
+          name: Idempotency-Key
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RefundCreateInput"
+        description: The refund to create
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Refund"
+          description: The created refund
+        "400":
+          description: Validation failed
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+      security:
+        - apiKey: []
+      summary: Create a refund
+      tags:
+        - Refunds
+        - Public
+  /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions/{paymentSessionId}/shipment-tracking:
+    post:
+      operationId: createShipmentTrackingWithCheckout
+      parameters:
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: payment session id
+          in: path
+          name: paymentSessionId
+          required: true
+          schema:
+            type: string
+        - description: checkout id
+          in: path
+          name: checkoutId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ShipmentTrackingCreateInput"
+        description: Input for adding new shipment tracking
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ShipmentTracking"
+          description: Shipment tracking entry created successfully
+        "400":
+          description: Validation failed
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+      security:
+        - apiKey: []
+      summary: Create a shipment tracking entry for a payment session
+      tags:
+        - Shipment Tracking
+        - Public
   /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/theme:
     get:
       description: Gets the theme for a checkout. The theme is used to style the checkout
@@ -607,6 +840,7 @@ paths:
       summary: Get the theme for a checkout
       tags:
         - Checkouts
+        - Public
   /api/2024-03-01/{merchantId}/connections:
     get:
       description: List connections by Merchant ID
@@ -646,6 +880,7 @@ paths:
       summary: List connections
       tags:
         - Connections
+        - Public
     put:
       description: Creates a new connection or updates an existing connection.
       operationId: createConnection
@@ -681,6 +916,7 @@ paths:
       summary: Create a new connection or updates an existing connection.
       tags:
         - Connections
+        - Public
   /api/2024-03-01/{merchantId}/connections/{connectionId}:
     delete:
       description: Disconnect a connection
@@ -716,6 +952,7 @@ paths:
       summary: Disconnect a connection
       tags:
         - Connections
+        - Public
     get:
       description: Get a connection by ID
       operationId: getConnection
@@ -750,12 +987,171 @@ paths:
       summary: Get a connection
       tags:
         - Connections
-  /api/2024-03-01/{merchantId}/logs:
-    post:
-      description: Logs information.
-      operationId: createLog
+        - Public
+  /api/2024-03-01/{merchantId}/credit-notes:
+    get:
+      description: List credit notes
+      operationId: listCreditNotes
       parameters:
-        - description: The merchant ID
+        - description: pagination offset
+          in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - description: pagination limit
+          in: query
+          name: limit
+          schema:
+            type: integer
+            format: int32
+        - description: Filter credit notes by invoice ID
+          in: query
+          name: invoiceId
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreditNotePage"
+          description: List of credit notes
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+      security:
+        - apiKey: []
+      summary: List credit notes
+      tags:
+        - Credit Notes
+        - Public
+    post:
+      description: Creates a new credit note.
+      operationId: createCreditNote
+      parameters:
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Idempotency Key
+          in: header
+          name: Idempotency-Key
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreditNoteCreateInput"
+        description: The credit note to create
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreditNote"
+          description: The created credit note
+        "400":
+          description: Validation failed
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+      security:
+        - apiKey: []
+      summary: Create new credit note
+      tags:
+        - Credit Notes
+        - Public
+  /api/2024-03-01/{merchantId}/credit-notes/{creditNoteId}:
+    delete:
+      description: Delete a draft credit note
+      operationId: deleteCreditNote
+      parameters:
+        - description: credit note id
+          in: path
+          name: creditNoteId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Delete successful
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Credit note not found
+      security:
+        - apiKey: []
+      summary: Delete a credit note
+      tags:
+        - Credit Notes
+        - Public
+    get:
+      description: Get a credit note by id
+      operationId: getCreditNote
+      parameters:
+        - description: credit note id
+          in: path
+          name: creditNoteId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreditNote"
+          description: Credit note
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Credit note not found
+      security:
+        - apiKey: []
+      summary: Get a credit note
+      tags:
+        - Credit Notes
+        - Public
+    put:
+      description: Update a draft credit note.
+      operationId: updateCreditNote
+      parameters:
+        - description: credit note id
+          in: path
+          name: creditNoteId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
           in: path
           name: merchantId
           required: true
@@ -765,16 +1161,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/LogCreateInput"
-        description: The log to write
+              $ref: "#/components/schemas/CreditNoteUpdateInput"
+        description: The credit note update
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/LogRecord"
-          description: The created log entry
+                $ref: "#/components/schemas/CreditNote"
+          description: The updated credit note
         "400":
           description: Validation failed
         "401":
@@ -783,9 +1179,1001 @@ paths:
           description: User does not have permission
       security:
         - apiKey: []
-      summary: Create a log
+      summary: Update a credit note
       tags:
-        - Logs
+        - Credit Notes
+        - Public
+  /api/2024-03-01/{merchantId}/credit-notes/{creditNoteId}/apply:
+    post:
+      description: Apply a credit note to an invoice
+      operationId: applyCreditNote
+      parameters:
+        - description: credit note id
+          in: path
+          name: creditNoteId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreditNote"
+          description: Credit note
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Credit note not found
+      security:
+        - apiKey: []
+      summary: Apply a credit note to an invoice
+      tags:
+        - Credit Notes
+        - Public
+  /api/2024-03-01/{merchantId}/credit-notes/{creditNoteId}/download:
+    post:
+      description: Get a link to download the credit note
+      operationId: downloadCreditNote
+      parameters:
+        - description: credit note id
+          in: path
+          name: creditNoteId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreditNoteDownload"
+          description: Credit note download
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Credit note not found
+      security:
+        - apiKey: []
+      summary: Get a link to download the credit note
+      tags:
+        - Credit Notes
+        - Public
+  /api/2024-03-01/{merchantId}/credit-notes/{creditNoteId}/finalize:
+    post:
+      description: Finalize a credit note
+      operationId: finalizeCreditNote
+      parameters:
+        - description: credit note id
+          in: path
+          name: creditNoteId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreditNote"
+          description: Credit note
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Credit note not found
+      security:
+        - apiKey: []
+      summary: Finalize a credit note
+      tags:
+        - Credit Notes
+        - Public
+  /api/2024-03-01/{merchantId}/credit-notes/{creditNoteId}/void:
+    post:
+      description: Void an open credit note
+      operationId: voidCreditNote
+      parameters:
+        - description: credit note id
+          in: path
+          name: creditNoteId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreditNote"
+          description: Credit note
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Credit note not found
+      security:
+        - apiKey: []
+      summary: Void a credit note
+      tags:
+        - Credit Notes
+        - Public
+  /api/2024-03-01/{merchantId}/customer-accounts:
+    get:
+      description: Get customer accounts
+      operationId: getCustomerAccounts
+      parameters:
+        - description: pagination offset
+          in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - description: pagination limit
+          in: query
+          name: limit
+          schema:
+            type: integer
+            format: int32
+        - description: search query
+          in: query
+          name: q
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomerAccountPage"
+          description: List of customer accounts
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Customer account not found
+      security:
+        - apiKey: []
+      summary: Get customer accounts
+      tags:
+        - Customer Accounts
+        - Public
+    post:
+      description: Create a customer account
+      operationId: createCustomerAccount
+      parameters:
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomerAccountCreateInput"
+        description: The Customer Account to create
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomerAccount"
+          description: Customer account
+        "400":
+          description: Validation failed
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Customer account not found
+      security:
+        - apiKey: []
+      summary: Create a customer account
+      tags:
+        - Customer Accounts
+        - Public
+  /api/2024-03-01/{merchantId}/customer-accounts/{customerAccountId}:
+    get:
+      description: Get a customer account by id
+      operationId: getCustomerAccount
+      parameters:
+        - description: customer account id
+          in: path
+          name: customerAccountId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomerAccount"
+          description: Customer account
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Customer account not found
+      security:
+        - apiKey: []
+      summary: Get a customer account
+      tags:
+        - Customer Accounts
+        - Public
+  /api/2024-03-01/{merchantId}/customer-accounts/{customerAccountId}/invoices:
+    get:
+      description: Get list of invoices for customer account by id
+      operationId: listInvoicesForCustomerAccount
+      parameters:
+        - description: pagination offset
+          in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - description: pagination limit
+          in: query
+          name: limit
+          schema:
+            type: integer
+            format: int32
+        - description: customer account id
+          in: path
+          name: customerAccountId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InvoicePage"
+          description: Invoices
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Customer account not found
+      security:
+        - apiKey: []
+      summary: Get list of invoices for customer account
+      tags:
+        - Customer Accounts
+        - Public
+  /api/2024-03-01/{merchantId}/domains:
+    get:
+      description: List merchant domains
+      operationId: listMerchantDomains
+      parameters:
+        - description: pagination offset
+          in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - description: pagination limit
+          in: query
+          name: limit
+          schema:
+            type: integer
+            format: int32
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MerchantDomainsPage"
+          description: List of merchant domains
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+      security:
+        - apiKey: []
+      summary: List merchant domains
+      tags:
+        - Merchant Domains
+        - Public
+    post:
+      description: "Add domains to a merchant, this will be used for various purposes\
+        \ such as restrict domains for CORS etc."
+      operationId: createMerchantDomains
+      parameters:
+        - description: Idempotency Key
+          in: header
+          name: Idempotency-Key
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MerchantDomainsCreateInput"
+        description: Input for adding new domains to the merchant
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MerchantDomainsPage"
+          description: The domains added to the merchant
+        "400":
+          description: Validation failed
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+      security:
+        - apiKey: []
+      summary: Create new merchant domains
+      tags:
+        - Merchant Domains
+        - Public
+  /api/2024-03-01/{merchantId}/domains/{merchantDomainId}:
+    delete:
+      description: Delete a merchant domain
+      operationId: deleteMerchantDomain
+      parameters:
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Merchant Domain ID
+          in: path
+          name: merchantDomainId
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Delete successful
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Merchant domain not found
+      security:
+        - apiKey: []
+      summary: Delete a merchant domain
+      tags:
+        - Merchant Domains
+        - Public
+  /api/2024-03-01/{merchantId}/invoices:
+    get:
+      description: List invoices
+      operationId: listInvoices
+      parameters:
+        - description: pagination offset
+          in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - description: pagination limit
+          in: query
+          name: limit
+          schema:
+            type: integer
+            format: int32
+        - description: invoice search query
+          in: query
+          name: q
+          schema:
+            type: string
+        - description: filter to a customer account
+          in: query
+          name: customerAccountId
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InvoicePage"
+          description: List of invoices
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+      security:
+        - apiKey: []
+      summary: List invoices
+      tags:
+        - Invoices
+        - Public
+    post:
+      description: Creates a new invoice.
+      operationId: createInvoice
+      parameters:
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Idempotency Key
+          in: header
+          name: Idempotency-Key
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InvoiceCreateInput"
+        description: The invoice to create
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invoice"
+          description: The created invoice
+        "400":
+          description: Validation failed
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+      security:
+        - apiKey: []
+      summary: Create new invoice
+      tags:
+        - Invoices
+        - Public
+  /api/2024-03-01/{merchantId}/invoices/{invoiceId}:
+    delete:
+      description: Deletes a draft invoice.
+      operationId: deleteInvoice
+      parameters:
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: invoice id
+          in: path
+          name: invoiceId
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Delete successful
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Invoice not found
+      security:
+        - apiKey: []
+      summary: Delete a draft invoice
+      tags:
+        - Invoices
+        - Public
+    get:
+      description: Get a invoice by id
+      operationId: getInvoice
+      parameters:
+        - description: invoice id
+          in: path
+          name: invoiceId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invoice"
+          description: Invoice
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Invoice not found
+      security:
+        - apiKey: []
+      summary: Get a invoice
+      tags:
+        - Invoices
+        - Public
+    put:
+      description: Update a draft invoice.
+      operationId: updateInvoice
+      parameters:
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: invoice id
+          in: path
+          name: invoiceId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InvoiceUpdateInputDto"
+        description: The invoice update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invoice"
+          description: The updated invoice
+        "400":
+          description: Validation failed
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+      security:
+        - apiKey: []
+      summary: Update an invoice
+      tags:
+        - Invoices
+        - Public
+  /api/2024-03-01/{merchantId}/invoices/{invoiceId}/checkouts/{checkoutId}:
+    get:
+      description: Get a checkout for an invoice by ID
+      operationId: getCheckoutForInvoice
+      parameters:
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Invoice ID
+          in: path
+          name: invoiceId
+          required: true
+          schema:
+            type: string
+        - description: Checkout ID
+          in: path
+          name: checkoutId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Checkout"
+          description: The checkout
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Invoice not found
+      security:
+        - apiKey: []
+      summary: Get a checkout for an invoice
+      tags:
+        - Invoices
+        - Public
+  /api/2024-03-01/{merchantId}/invoices/{invoiceId}/credit-notes:
+    get:
+      description: List credit notes for an invoice
+      operationId: listCreditNotesForInvoice
+      parameters:
+        - description: pagination offset
+          in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - description: pagination limit
+          in: query
+          name: limit
+          schema:
+            type: integer
+            format: int32
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: invoice id
+          in: path
+          name: invoiceId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreditNotePage"
+          description: List of credit notes
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+      security:
+        - apiKey: []
+      summary: List credit notes for an invoice
+      tags:
+        - Invoices
+        - Public
+  /api/2024-03-01/{merchantId}/invoices/{invoiceId}/credit-notes/{creditNoteId}/download:
+    get:
+      description: Get a link to download the credit note
+      operationId: downloadCreditNoteForInvoice
+      parameters:
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: invoice id
+          in: path
+          name: invoiceId
+          required: true
+          schema:
+            type: string
+        - description: credit note id
+          in: path
+          name: creditNoteId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreditNoteDownload"
+          description: Credit note download
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Credit note not found
+      security:
+        - apiKey: []
+      summary: Get a link to download the credit note
+      tags:
+        - Invoices
+        - Public
+  /api/2024-03-01/{merchantId}/invoices/{invoiceId}/download:
+    get:
+      description: Get a link to download the invoice
+      operationId: downloadInvoice
+      parameters:
+        - description: Merchant ID
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: Invoice ID
+          in: path
+          name: invoiceId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InvoiceDownload"
+          description: The invoice download object
+        "400":
+          description: Request invalid. Normally if the invoice is in a DRAFT status
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Invoice not found
+      security:
+        - apiKey: []
+      summary: Get a link to download the invoice
+      tags:
+        - Invoices
+        - Public
+  /api/2024-03-01/{merchantId}/invoices/{invoiceId}/finalize:
+    post:
+      description: Finalize an invoice by id
+      operationId: finalizeInvoice
+      parameters:
+        - description: invoice id
+          in: path
+          name: invoiceId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invoice"
+          description: Invoice
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Invoice not found
+      security:
+        - apiKey: []
+      summary: Finalize an invoice
+      tags:
+        - Invoices
+        - Public
+  /api/2024-03-01/{merchantId}/invoices/{invoiceId}/notifications:
+    get:
+      description: List invoice notifications
+      operationId: listInvoiceNotifications
+      parameters:
+        - description: pagination offset
+          in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - description: pagination limit
+          in: query
+          name: limit
+          schema:
+            type: integer
+            format: int32
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: invoice id
+          in: path
+          name: invoiceId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InvoiceNotificationPage"
+          description: List of invoice notifications
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+      security:
+        - apiKey: []
+      summary: List invoice notifications
+      tags:
+        - Invoices
+        - Public
+    post:
+      description: Notify a customer of an invoice
+      operationId: createInvoiceNotification
+      parameters:
+        - description: invoice id
+          in: path
+          name: invoiceId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InvoiceNotificationInput"
+        description: The notification request
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InvoiceNotification"
+          description: Invoice Notification
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Invoice not found
+      security:
+        - apiKey: []
+      summary: Notify a customer of an invoice
+      tags:
+        - Invoices
+        - Public
+  /api/2024-03-01/{merchantId}/invoices/{invoiceId}/refresh-url:
+    post:
+      description: Refresh an invoice url
+      operationId: refreshInvoiceUrl
+      parameters:
+        - description: invoice id
+          in: path
+          name: invoiceId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invoice"
+          description: Invoice
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Invoice not found
+      security:
+        - apiKey: []
+      summary: Refresh an invoice url
+      tags:
+        - Invoices
+        - Public
+  /api/2024-03-01/{merchantId}/invoices/{invoiceId}/void:
+    post:
+      description: Void an invoice by id
+      operationId: voidInvoice
+      parameters:
+        - description: invoice id
+          in: path
+          name: invoiceId
+          required: true
+          schema:
+            type: string
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invoice"
+          description: Invoice
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Invoice not found
+      security:
+        - apiKey: []
+      summary: Void an open invoice
+      tags:
+        - Invoices
+        - Public
   /api/2024-03-01/{merchantId}/notification-subscriptions:
     get:
       description: List notification subscriptions.
@@ -827,6 +2215,7 @@ paths:
       summary: List notification subscriptions.
       tags:
         - Notifications
+        - Public
     post:
       description: Create a new notification subscription.
       operationId: createNotificationSubscription
@@ -862,6 +2251,7 @@ paths:
       summary: Create a new notification subscription.
       tags:
         - Notifications
+        - Public
   /api/2024-03-01/{merchantId}/notification-subscriptions/{id}:
     get:
       description: Get a notification subscription by ID
@@ -897,6 +2287,180 @@ paths:
       summary: Get a notification subscription
       tags:
         - Notifications
+        - Public
+  /api/2024-03-01/{merchantId}/orders:
+    get:
+      description: Search for orders with filters
+      operationId: getOrders
+      parameters:
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: pagination offset
+          in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - description: pagination limit
+          in: query
+          name: limit
+          schema:
+            type: integer
+            format: int32
+        - description: amount greater than or equal to
+          in: query
+          name: amountGte
+          schema:
+            type: string
+        - description: amount less than or equal to
+          in: query
+          name: amountLte
+          schema:
+            type: string
+        - description: filter by reference
+          in: query
+          name: reference
+          schema:
+            type: string
+        - description: filter by currency
+          in: query
+          name: currency
+          schema:
+            type: string
+        - description: filter by status
+          in: query
+          name: status
+          schema:
+            type: string
+        - description: filter by payment methods
+          in: query
+          name: paymentMethods
+          schema:
+            type: array
+            items:
+              type: string
+        - description: search query
+          in: query
+          name: q
+          schema:
+            type: string
+        - description: filter by customer account id
+          in: query
+          name: customerAccountId
+          schema:
+            type: string
+        - description: created after (inclusive)
+          in: query
+          name: createdAtGte
+          schema:
+            type: string
+        - description: created before (inclusive)
+          in: query
+          name: createdAtLte
+          schema:
+            type: string
+        - description: filter by address name
+          in: query
+          name: addressName
+          schema:
+            type: string
+        - description: filter by address phone number
+          in: query
+          name: addressPhoneNumber
+          schema:
+            type: string
+        - description: filter by address company
+          in: query
+          name: addressCompany
+          schema:
+            type: string
+        - description: filter by address line 1
+          in: query
+          name: addressLine1
+          schema:
+            type: string
+        - description: filter by address line 2
+          in: query
+          name: addressLine2
+          schema:
+            type: string
+        - description: filter by address city
+          in: query
+          name: addressCity
+          schema:
+            type: string
+        - description: filter by address state
+          in: query
+          name: addressState
+          schema:
+            type: string
+        - description: filter by address postcode
+          in: query
+          name: addressPostcode
+          schema:
+            type: string
+        - description: filter by address country code
+          in: query
+          name: addressCountryCode
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrdersPage"
+          description: List of orders matching the search criteria
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+      security:
+        - apiKey: []
+      summary: Search orders
+      tags:
+        - Orders
+        - Public
+  /api/2024-03-01/{merchantId}/orders/{id}:
+    get:
+      description: Retrieve a specific order by its ID
+      operationId: getOrderById
+      parameters:
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: order id
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+          description: Order details
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+        "404":
+          description: Order not found
+      security:
+        - apiKey: []
+      summary: Get order by ID
+      tags:
+        - Orders
+        - Public
   /api/2024-03-01/{merchantId}/payment-links:
     get:
       description: List payment links
@@ -936,6 +2500,7 @@ paths:
       summary: List payment links
       tags:
         - Payment Links
+        - Public
     post:
       description: Creates a new payment link. User can choose whether to make it
         reusable
@@ -977,6 +2542,7 @@ paths:
       summary: Create new payment link
       tags:
         - Payment Links
+        - Public
   /api/2024-03-01/{merchantId}/payment-links/{paymentLinkId}:
     delete:
       description: Deactivate a payment link
@@ -1012,6 +2578,7 @@ paths:
       summary: Deactivate a payment link
       tags:
         - Payment Links
+        - Public
     get:
       description: Get a payment link by id
       operationId: getPaymentLink
@@ -1046,6 +2613,7 @@ paths:
       summary: Get a payment link
       tags:
         - Payment Links
+        - Public
   /api/2024-03-01/{merchantId}/payment-methods:
     get:
       description: Get all available payment methods for the merchant
@@ -1066,6 +2634,18 @@ paths:
           name: includeInactive
           schema:
             type: boolean
+        - description: pagination offset
+          in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - description: pagination limit
+          in: query
+          name: limit
+          schema:
+            type: integer
+            format: int32
         - description: The merchant id
           in: path
           name: merchantId
@@ -1088,6 +2668,49 @@ paths:
       summary: Get payment methods
       tags:
         - Payment Methods
+        - Public
+  /api/2024-03-01/{merchantId}/payment-sessions/{paymentSessionId}/shipment-tracking:
+    post:
+      operationId: createShipmentTracking
+      parameters:
+        - description: merchant id
+          in: path
+          name: merchantId
+          required: true
+          schema:
+            type: string
+        - description: payment session id
+          in: path
+          name: paymentSessionId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ShipmentTrackingCreateInput"
+        description: Input for adding new shipment tracking
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ShipmentTracking"
+          description: Shipment tracking entry created successfully
+        "400":
+          description: Validation failed
+        "401":
+          description: Unauthorized
+        "403":
+          description: User does not have permission
+      security:
+        - apiKey: []
+      summary: Create a shipment tracking entry for a payment session
+      tags:
+        - Shipment Tracking
+        - Public
   /api/2024-03-01/{merchantId}/payment-settings:
     post:
       description: Get available payment methods and their relevant settings.
@@ -1135,6 +2758,7 @@ paths:
       summary: Get payment settings for a merchant
       tags:
         - Payment Settings
+        - Public
   /api/2024-03-01/{merchantId}/statements/export:
     post:
       description: Export statements in different formats.
@@ -1167,6 +2791,7 @@ paths:
       summary: Export a statement
       tags:
         - Statement Exports
+        - Public
   /api/2024-03-01/{merchantId}/themes:
     get:
       description: List all themes
@@ -1206,6 +2831,7 @@ paths:
       summary: List themes
       tags:
         - Themes
+        - Public
     post:
       description: Creates a new theme
       operationId: createTheme
@@ -1241,6 +2867,7 @@ paths:
       summary: Create a new theme
       tags:
         - Themes
+        - Public
   /api/2024-03-01/{merchantId}/themes/{themeId}:
     get:
       description: Get a theme by ID
@@ -1276,6 +2903,7 @@ paths:
       summary: Get a theme
       tags:
         - Themes
+        - Public
     patch:
       description: Update a theme
       operationId: updateTheme
@@ -1319,9 +2947,10 @@ paths:
       summary: Update a theme
       tags:
         - Themes
+        - Public
   /api/2024-03-01/{merchantId}/webhooks:
     get:
-      description: Get all webhook
+      description: Get all webhooks
       operationId: listWebhooks
       parameters:
         - description: Merchant ID
@@ -1348,16 +2977,17 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/WebhookPage"
-          description: The webhook
+          description: The webhooks
         "401":
           description: Unauthorized
         "403":
           description: User does not have permission
       security:
         - apiKey: []
-      summary: Get all webhook
+      summary: Get all webhooks
       tags:
         - Webhooks
+        - Public
     post:
       description: Create a new webhook
       operationId: createWebhook
@@ -1393,6 +3023,7 @@ paths:
       summary: Create a new webhook
       tags:
         - Webhooks
+        - Public
   /api/2024-03-01/{merchantId}/webhooks/{webhookId}:
     get:
       description: Get a webhook by id
@@ -1428,6 +3059,7 @@ paths:
       summary: Get a webhook by id
       tags:
         - Webhooks
+        - Public
     patch:
       description: Update a webhook
       operationId: updateWebhook
@@ -1469,6 +3101,7 @@ paths:
       summary: Update a webhook
       tags:
         - Webhooks
+        - Public
 components:
   schemas:
     AccountStatement:
@@ -1837,98 +3470,6 @@ components:
         - UNPAID
         - PARTIALLY_PAID
         - PAID
-    ActionType:
-      type: string
-      description: The action performed
-      enum:
-        - GLOBAL_PAYMENT_METHOD_UPDATED
-        - MERCHANT_CREATED
-        - MERCHANT_DETAILS_UPDATED
-        - MERCHANT_LEGAL_DETAILS_CREATED
-        - MERCHANT_LEGAL_DETAILS_UPDATED
-        - MERCHANT_STATUS_UPDATED
-        - MERCHANT_ONBOARDING_COMPLETED
-        - MERCHANT_CLIENT_UPDATED
-        - MERCHANT_PLUGIN_ACTIVATED
-        - MERCHANT_PLUGIN_DEACTIVATED
-        - MERCHANT_PRICING_RATE_CREATED
-        - MERCHANT_USER_ADDED
-        - MERCHANT_USER_UPDATED
-        - MERCHANT_WEBHOOK_CREATED
-        - MERCHANT_WEBHOOK_UPDATED
-        - MERCHANT_PAYMENT_METHOD_UPDATED
-        - MERCHANT_PAYMENT_METHOD_CONNECTION_UPDATED
-        - MERCHANT_ADDRESS_UPDATED
-        - MERCHANT_BANK_ACCOUNT_UPDATED
-        - MERCHANT_CREDENTIALS_CREATED
-        - MERCHANT_CREDENTIALS_DELETED
-        - MERCHANT_CREDENTIALS_REQUESTED
-        - MERCHANT_CREDENTIALS_SECRET_ROTATED
-        - MERCHANT_ACCOUNTING_REPORT_DOWNLOAD
-        - MERCHANT_APPLE_PAY_REGISTERED
-        - MERCHANT_APPLE_PAY_UNREGISTERED
-        - MERCHANT_PRIMARY_EMAIL_UPDATED
-        - MERCHANT_USER_POLICIES_UPDATED
-        - PASSFORT_COMPANY_PROFILE_FETCHED
-        - MERCHANT_KYC_APPROVED
-        - MERCHANT_KYC_STATUS_UPDATED
-        - MERCHANT_MODULR_CUSTOMER_CREATED
-        - MERCHANT_MODULR_CUSTOMER_UPDATED
-        - MERCHANT_MODULR_ACCOUNT_CREATED
-        - MERCHANT_MODULR_ACCOUNT_UPDATED
-        - MERCHANT_STATEMENT_EXPORTED
-        - ONBOARDING_APPLICANT_CREATED
-        - ONBOARDING_APPLICANT_UPDATED
-        - APPLICANT_STATUS_UPDATED
-        - ON_NETWORK_GLOBAL_SETTING_UPDATED
-        - ON_NETWORK_MERCHANT_SETTING_UPDATED
-        - ORDER_CREATED
-        - ORDER_UPDATED
-        - ORDER_STATUS_CHANGE
-        - ORDER_REPORT_DOWNLOAD
-        - PAYMENT_CREATED
-        - PAYMENT_UPDATED
-        - USER_EMAIL_UPDATED
-        - USER_CREATED
-        - USER_PASSWORD_CHANGED
-        - USER_PASSWORD_CHANGE_REQUESTED
-        - USER_LOGOUT
-        - IDENTITY_PROVIDER_USER_CREATED
-        - AUTH0_USER_CREATED
-        - AUTH0_USER_UPDATED
-        - LEDGER_MANUAL_ADJUSTMENT
-        - LEDGER_REVERSAL
-        - USER_CONSENT_GIVEN
-        - PAYMENT_LINK_CREATED
-        - PAYMENT_LINK_UPDATED
-        - REIMBURSEMENT_CREATED
-        - FEE_DELETED
-        - CHECKOUT_CREATED
-        - CHECKOUT_UPDATED
-        - CHECKOUT_TEMPLATE_CREATED
-        - CHECKOUT_TEMPLATE_UPDATED
-        - MERCHANT_COMMUNICATION_PREFERENCES_UPDATED
-        - THEME_CREATED
-        - THEME_UPDATED
-        - DOCUMENT_CREATED
-        - DOCUMENT_UPDATED
-        - ACCOUNT_STATEMENT_CREATED
-        - ACCOUNT_STATEMENT_UPDATED
-        - ACCOUNT_STATEMENT_PLUGIN_PAGE_VISITED
-    ActionTypeInput:
-      type: string
-      description: The action performed
-      enum:
-        - MERCHANT_PLUGIN_ACTIVATED
-        - MERCHANT_PLUGIN_DEACTIVATED
-        - ACCOUNT_STATEMENT_PLUGIN_PAGE_VISITED
-    ActorType:
-      type: string
-      description: Who is performing the action
-      enum:
-        - INTERNAL
-        - EXTERNAL
-        - SYSTEM
     Address:
       type: object
       properties:
@@ -2036,6 +3577,7 @@ components:
         - MOTO
         - DASHBOARD_MOTO
         - DASHBOARD_PAYMENT_LINK
+        - HOSTED_INVOICE
         - MAGENTO_CHECKOUT
         - MAGENTO_MOTO
         - MAGENTO_PAYMENT_LINK
@@ -2044,6 +3586,110 @@ components:
         - PAY_NOW_IN_PERSON
         - PAY_NOW_MOTO
         - PAY_NOW_PAYMENT_LINK
+    CardPaymentMethodSettings:
+      type: object
+      description: Card payment method settings object
+      properties:
+        initializationToken:
+          type: string
+          description: Card field initialization token
+        liveStatus:
+          type: integer
+          format: int32
+          description: Card live status
+      required:
+        - liveStatus
+    ChaserPlan:
+      type: object
+      description: Chaser Plan object
+      properties:
+        id:
+          type: string
+          description: The unique ID of the chaser plan.
+        name:
+          type: string
+          description: The name of the chaser plan.
+        schedules:
+          type: array
+          description: The schedules of the chaser plan.
+          items:
+            $ref: "#/components/schemas/ChaserPlanSchedule"
+      required:
+        - id
+        - name
+        - schedules
+    ChaserPlanCreateInput:
+      type: object
+      description: The input to create a new chaser plan.
+      properties:
+        name:
+          type: string
+          description: The name for the chaser plan.
+          maxLength: 255
+          minLength: 1
+        schedules:
+          type: array
+          description: The schedules for the chaser plan.
+          items:
+            $ref: "#/components/schemas/ChaserPlanScheduleCreateInput"
+      required:
+        - name
+        - schedules
+    ChaserPlanPage:
+      type: object
+      description: A page of chaser plans
+      properties:
+        pageable:
+          $ref: "#/components/schemas/Pageable"
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/ChaserPlan"
+        total:
+          type: integer
+          format: int32
+      required:
+        - pageable
+        - results
+        - total
+    ChaserPlanSchedule:
+      type: object
+      description: Chaser Plan Schedule object
+      properties:
+        id:
+          type: string
+          description: The unique ID of the schedule.
+        notificationChannel:
+          type: string
+          description: The notification channel type for the schedule.
+          enum:
+            - EMAIL
+            - SMS
+        offsetTimeInSeconds:
+          type: integer
+          format: int64
+          description: The offset from due date that the schedule will trigger at.
+      required:
+        - id
+        - notificationChannel
+        - offsetTimeInSeconds
+    ChaserPlanScheduleCreateInput:
+      type: object
+      description: The input to create a new schedule for a chaser plan.
+      properties:
+        notificationChannel:
+          type: string
+          description: The notification channel type for the schedule.
+          enum:
+            - EMAIL
+            - SMS
+        offsetTimeInSeconds:
+          type: integer
+          format: int64
+          description: The offset from due date that the schedule will trigger at.
+      required:
+        - notificationChannel
+        - offsetTimeInSeconds
     Checkout:
       type: object
       description: Checkout object
@@ -2094,6 +3740,9 @@ components:
             id for the ACCOUNT_STATEMENT mode.The associated PaymentLink's id for
             the PAYMENT_LINK mode.The checkout's id for the CHECKOUT and VIRTUAL_TERMINAL
             mode.
+        originUrl:
+          type: string
+          description: The URL that the customer was on when the checkout was created.
         paymentLinkId:
           type: string
           deprecated: true
@@ -2168,6 +3817,8 @@ components:
           $ref: "#/components/schemas/PaymentCaptureType"
         customerFields:
           $ref: "#/components/schemas/CheckoutCustomerFields"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimit"
     CheckoutApplePaySettingsInput:
       type: object
       description: The Apple Pay settings to be used for the checkout.
@@ -2176,6 +3827,8 @@ components:
           $ref: "#/components/schemas/PaymentCaptureType"
         customerFields:
           $ref: "#/components/schemas/CheckoutCustomerFieldsInput"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimitInput"
     CheckoutApplePaySettingsUpdateInput:
       type: object
       description: The Apple Pay settings to be used for the checkout.
@@ -2184,6 +3837,8 @@ components:
           $ref: "#/components/schemas/PaymentCaptureType"
         customerFields:
           $ref: "#/components/schemas/CheckoutCustomerFieldsUpdateInput"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimitUpdateInput"
     CheckoutCardSettings:
       type: object
       description: The Card settings to be used for the checkout.
@@ -2192,6 +3847,8 @@ components:
           $ref: "#/components/schemas/PaymentCaptureType"
         customerFields:
           $ref: "#/components/schemas/CheckoutCustomerFields"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimit"
     CheckoutCardSettingsInput:
       type: object
       description: The Card settings to be used for the checkout.
@@ -2200,6 +3857,8 @@ components:
           $ref: "#/components/schemas/PaymentCaptureType"
         customerFields:
           $ref: "#/components/schemas/CheckoutCustomerFieldsInput"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimitInput"
     CheckoutCardSettingsUpdateInput:
       type: object
       description: The Card settings to be used for the checkout.
@@ -2208,6 +3867,32 @@ components:
           $ref: "#/components/schemas/PaymentCaptureType"
         customerFields:
           $ref: "#/components/schemas/CheckoutCustomerFieldsUpdateInput"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimitUpdateInput"
+    CheckoutClearpaySettings:
+      type: object
+      description: The Clearpay settings to be used for the checkout.
+      properties:
+        customerFields:
+          $ref: "#/components/schemas/CheckoutCustomerFields"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimit"
+    CheckoutClearpaySettingsInput:
+      type: object
+      description: The Clearpay settings to be used for the checkout.
+      properties:
+        customerFields:
+          $ref: "#/components/schemas/CheckoutCustomerFieldsInput"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimitInput"
+    CheckoutClearpaySettingsUpdateInput:
+      type: object
+      description: The Clearpay settings to be used for the checkout.
+      properties:
+        customerFields:
+          $ref: "#/components/schemas/CheckoutCustomerFieldsUpdateInput"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimitUpdateInput"
     CheckoutCreateInput:
       type: object
       description: The input to create a new checkout.
@@ -2254,6 +3939,9 @@ components:
           description: ID related to this checkout mode. Required for the ACCOUNT_STATEMENT
             mode and should be set to the AccountStatement's ID.Automatically set
             for all other modes.
+        originUrl:
+          type: string
+          description: The URL that the customer was on when the checkout was created.
         pendingUrl:
           type: string
           description: |-
@@ -2345,6 +4033,8 @@ components:
           $ref: "#/components/schemas/PaymentCaptureType"
         customerFields:
           $ref: "#/components/schemas/CheckoutCustomerFields"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimit"
     CheckoutGooglePaySettingsInput:
       type: object
       description: The Google Pay settings to be used for the checkout.
@@ -2353,6 +4043,8 @@ components:
           $ref: "#/components/schemas/PaymentCaptureType"
         customerFields:
           $ref: "#/components/schemas/CheckoutCustomerFieldsInput"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimitInput"
     CheckoutGooglePaySettingsUpdateInput:
       type: object
       description: The Google Pay settings to be used for the checkout.
@@ -2361,6 +4053,32 @@ components:
           $ref: "#/components/schemas/PaymentCaptureType"
         customerFields:
           $ref: "#/components/schemas/CheckoutCustomerFieldsUpdateInput"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimitUpdateInput"
+    CheckoutKlarnaSettings:
+      type: object
+      description: The Klarna settings to be used for the checkout.
+      properties:
+        customerFields:
+          $ref: "#/components/schemas/CheckoutCustomerFields"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimit"
+    CheckoutKlarnaSettingsInput:
+      type: object
+      description: The Klarna settings to be used for the checkout.
+      properties:
+        customerFields:
+          $ref: "#/components/schemas/CheckoutCustomerFieldsInput"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimitInput"
+    CheckoutKlarnaSettingsUpdateInput:
+      type: object
+      description: The Klarna settings to be used for the checkout.
+      properties:
+        customerFields:
+          $ref: "#/components/schemas/CheckoutCustomerFieldsUpdateInput"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimitUpdateInput"
     CheckoutMode:
       type: string
       description: The mode of the checkout.
@@ -2369,8 +4087,10 @@ components:
         - PAYMENT_LINK
         - ACCOUNT_STATEMENT
         - VIRTUAL_TERMINAL
+        - INVOICE
     CheckoutPage:
       type: object
+      description: A page of checkouts
       properties:
         pageable:
           $ref: "#/components/schemas/Pageable"
@@ -2393,6 +4113,8 @@ components:
           $ref: "#/components/schemas/PaymentCaptureType"
         customerFields:
           $ref: "#/components/schemas/CheckoutCustomerFields"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimit"
     CheckoutPayByBankSettingsInput:
       type: object
       description: The Pay by Bank settings to be used for the checkout.
@@ -2401,6 +4123,8 @@ components:
           $ref: "#/components/schemas/PaymentCaptureType"
         customerFields:
           $ref: "#/components/schemas/CheckoutCustomerFieldsInput"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimitInput"
     CheckoutPayByBankSettingsUpdateInput:
       type: object
       description: The Pay by Bank settings to be used for the checkout.
@@ -2409,6 +4133,36 @@ components:
           $ref: "#/components/schemas/PaymentCaptureType"
         customerFields:
           $ref: "#/components/schemas/CheckoutCustomerFieldsUpdateInput"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimitUpdateInput"
+    CheckoutPaymentMethodLimit:
+      type: object
+      description: The payment method limits to be used for the checkout.
+      properties:
+        total:
+          type: array
+          items:
+            $ref: "#/components/schemas/CheckoutPaymentMethodTotalLimit"
+      required:
+        - total
+    CheckoutPaymentMethodLimitInput:
+      type: object
+      description: The payment method limits to be used for the checkout.
+      properties:
+        total:
+          type: array
+          items:
+            $ref: "#/components/schemas/CheckoutPaymentMethodTotalLimit"
+      required:
+        - total
+    CheckoutPaymentMethodLimitUpdateInput:
+      type: object
+      description: The payment method limits to be used for the checkout.
+      properties:
+        total:
+          type: array
+          items:
+            $ref: "#/components/schemas/CheckoutPaymentMethodTotalLimit"
     CheckoutPaymentMethodSettings:
       type: object
       description: The payment method settings to be used for the checkout.
@@ -2417,10 +4171,16 @@ components:
           $ref: "#/components/schemas/CheckoutApplePaySettings"
         card:
           $ref: "#/components/schemas/CheckoutCardSettings"
+        clearpay:
+          $ref: "#/components/schemas/CheckoutClearpaySettings"
         googlePay:
           $ref: "#/components/schemas/CheckoutGooglePaySettings"
+        klarna:
+          $ref: "#/components/schemas/CheckoutKlarnaSettings"
         payByBank:
           $ref: "#/components/schemas/CheckoutPayByBankSettings"
+        zopaRetailFinance:
+          $ref: "#/components/schemas/CheckoutZopaRetailFinanceSettings"
     CheckoutPaymentMethodSettingsInput:
       type: object
       description: The payment method settings to be used for the checkout.
@@ -2429,10 +4189,16 @@ components:
           $ref: "#/components/schemas/CheckoutApplePaySettingsInput"
         card:
           $ref: "#/components/schemas/CheckoutCardSettingsInput"
+        clearpay:
+          $ref: "#/components/schemas/CheckoutClearpaySettingsInput"
         googlePay:
           $ref: "#/components/schemas/CheckoutGooglePaySettingsInput"
+        klarna:
+          $ref: "#/components/schemas/CheckoutKlarnaSettingsInput"
         payByBank:
           $ref: "#/components/schemas/CheckoutPayByBankSettingsInput"
+        zopaRetailFinance:
+          $ref: "#/components/schemas/CheckoutZopaRetailFinanceSettingsInput"
     CheckoutPaymentMethodSettingsUpdateInput:
       type: object
       description: The payment method settings to be used for the checkout.
@@ -2441,10 +4207,31 @@ components:
           $ref: "#/components/schemas/CheckoutApplePaySettingsUpdateInput"
         card:
           $ref: "#/components/schemas/CheckoutCardSettingsUpdateInput"
+        clearpay:
+          $ref: "#/components/schemas/CheckoutClearpaySettingsUpdateInput"
         googlePay:
           $ref: "#/components/schemas/CheckoutGooglePaySettingsUpdateInput"
+        klarna:
+          $ref: "#/components/schemas/CheckoutKlarnaSettingsUpdateInput"
         payByBank:
           $ref: "#/components/schemas/CheckoutPayByBankSettingsUpdateInput"
+        zopaRetailFinance:
+          $ref: "#/components/schemas/CheckoutZopaRetailFinanceSettingsUpdateInput"
+    CheckoutPaymentMethodTotalLimit:
+      type: object
+      description: The total amount limits for a specific currency to be used for
+        the payment method.
+      properties:
+        currency:
+          type: string
+        max:
+          type: string
+        min:
+          type: string
+      required:
+        - currency
+        - max
+        - min
     CheckoutReferenceType:
       type: string
       description: "The reference type for the checkout. This can be fixed or editable.\
@@ -2533,24 +4320,26 @@ components:
       type: object
       description: The input for creating a checkout template.
       example:
-        name: My Checkout Template
-        source: API
         amountType: FIXED
-        referenceType: FIXED
-        enabledPaymentMethods:
-          - CARD
-          - APPLE_PAY
-          - PAY_BY_BANK
-        notifyCustomer: false
-        notifyMerchant: false
         customerFields:
+          optional:
+            - PHONE_NUMBER
           required:
             - GIVEN_NAME
             - SURNAME
             - EMAIL
-          optional:
-            - PHONE_NUMBER
+        enabledPaymentMethods:
+          - CARD
+          - APPLE_PAY
+          - PAY_BY_BANK
+          - CLEARPAY
+          - KLARNA
+        name: My Checkout Template
+        notifyCustomer: false
+        notifyMerchant: false
         paymentMethodSettings: null
+        referenceType: FIXED
+        source: API
       properties:
         amountType:
           $ref: "#/components/schemas/CheckoutAmountType"
@@ -2564,6 +4353,8 @@ components:
             - APPLE_PAY
             - GOOGLE_PAY
             - PAY_BY_BANK
+            - KLARNA
+            - CLEARPAY
           items:
             $ref: "#/components/schemas/PaymentMethod"
           uniqueItems: true
@@ -2576,6 +4367,8 @@ components:
             - APPLE_PAY
             - GOOGLE_PAY
             - PAY_BY_BANK
+            - KLARNA
+            - CLEARPAY
           items:
             $ref: "#/components/schemas/PaymentMethod"
         mode:
@@ -2603,6 +4396,7 @@ components:
         - name
     CheckoutTemplatePage:
       type: object
+      description: A page of checkout templates
       properties:
         pageable:
           $ref: "#/components/schemas/Pageable"
@@ -2621,22 +4415,22 @@ components:
       type: object
       description: The input for updating a checkout template.
       example:
-        name: My Checkout Template Updated
         amountType: FIXED
-        referenceType: FIXED
-        enabledPaymentMethods:
-          - CARD
-          - PAY_BY_BANK
-        notifyCustomer: false
-        notifyMerchant: false
         customerFields:
+          optional:
+            - PHONE_NUMBER
           required:
             - GIVEN_NAME
             - SURNAME
             - EMAIL
-          optional:
-            - PHONE_NUMBER
+        enabledPaymentMethods:
+          - CARD
+          - PAY_BY_BANK
+        name: My Checkout Template Updated
+        notifyCustomer: false
+        notifyMerchant: false
         paymentMethodSettings: null
+        referenceType: FIXED
       properties:
         amountType:
           $ref: "#/components/schemas/CheckoutAmountType"
@@ -2662,6 +4456,8 @@ components:
             - APPLE_PAY
             - GOOGLE_PAY
             - PAY_BY_BANK
+            - CLEARPAY
+            - KLARNA
           items:
             $ref: "#/components/schemas/PaymentMethod"
         name:
@@ -2681,6 +4477,30 @@ components:
           $ref: "#/components/schemas/CheckoutPaymentMethodSettingsUpdateInput"
         referenceType:
           $ref: "#/components/schemas/CheckoutReferenceType"
+    CheckoutZopaRetailFinanceSettings:
+      type: object
+      description: The Zopa Retail Finance settings to be used for the checkout.
+      properties:
+        customerFields:
+          $ref: "#/components/schemas/CheckoutCustomerFields"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimit"
+    CheckoutZopaRetailFinanceSettingsInput:
+      type: object
+      description: The Zopa retail finance settings to be used for the checkout.
+      properties:
+        customerFields:
+          $ref: "#/components/schemas/CheckoutCustomerFieldsInput"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimitInput"
+    CheckoutZopaRetailFinanceSettingsUpdateInput:
+      type: object
+      description: The Zopa retail finance settings to be used for the checkout.
+      properties:
+        customerFields:
+          $ref: "#/components/schemas/CheckoutCustomerFieldsUpdateInput"
+        limits:
+          $ref: "#/components/schemas/CheckoutPaymentMethodLimitUpdateInput"
     Connection:
       type: object
       description: The connection.
@@ -2721,7 +4541,10 @@ components:
         mapping:
           GOOGLE_PAY: "#/components/schemas/GooglePayConnectionData"
           KLARNA: "#/components/schemas/KlarnaConnectionData"
+          MAGENTO: "#/components/schemas/MagentoConnectionData"
           MAGENTO_PROXY: "#/components/schemas/MagentoProxyConnectionData"
+          WOOCOMMERCE: "#/components/schemas/WoocommerceConnectionData"
+          ZOPA_RETAIL_FINANCE: "#/components/schemas/ZopaRetailFinanceConnectionData"
         propertyName: type
       properties:
         type:
@@ -2735,7 +4558,10 @@ components:
         mapping:
           GOOGLE_PAY: "#/components/schemas/GooglePayConnectionDataInput"
           KLARNA: "#/components/schemas/KlarnaConnectionDataInput"
+          MAGENTO: "#/components/schemas/MagentoConnectionDataInput"
           MAGENTO_PROXY: "#/components/schemas/MagentoProxyConnectionDataInput"
+          WOOCOMMERCE: "#/components/schemas/WoocommerceConnectionDataInput"
+          ZOPA_RETAIL_FINANCE: "#/components/schemas/ZopaRetailFinanceConnectionDataInput"
         propertyName: type
       properties:
         type:
@@ -2750,6 +4576,7 @@ components:
         - HMAC_SHA1
     ConnectionPage:
       type: object
+      description: A page of connections
       properties:
         pageable:
           $ref: "#/components/schemas/Pageable"
@@ -2775,8 +4602,260 @@ components:
       description: The connection type.
       enum:
         - MAGENTO_PROXY
+        - MAGENTO
         - GOOGLE_PAY
         - KLARNA
+        - WOOCOMMERCE
+        - ZOPA_RETAIL_FINANCE
+    CreditNote:
+      type: object
+      description: Credit note object
+      properties:
+        appliedToInvoiceIds:
+          type: array
+          description: The invoices this credit note was applied to.
+          items:
+            type: string
+            description: The invoices this credit note was applied to.
+          uniqueItems: true
+        creditNoteDate:
+          type: string
+          format: date-time
+          description: The date and time for the credit note.
+        creditNoteNumber:
+          type: string
+          description: The number of the credit note.
+        id:
+          type: string
+          description: The unique ID of the credit note.
+        invoiceId:
+          type: string
+          description: The ID of the invoice this credit note is for.
+        items:
+          type: array
+          description: The items in the credit note.
+          items:
+            $ref: "#/components/schemas/CreditNoteItem"
+        merchantId:
+          type: string
+          description: The ID of the merchant that owns this credit note.
+        pendingRefundIds:
+          type: array
+          description: The pending refunds still processing for this credit note.
+          items:
+            type: string
+            description: The pending refunds still processing for this credit note.
+          uniqueItems: true
+        reason:
+          type: string
+          description: The reason for creating a credit note
+          enum:
+            - FRAUD
+            - DISCOUNT
+            - DUPLICATE
+            - RETURN
+            - OTHER
+        refundIds:
+          type: array
+          description: The refunds created for this credit note.
+          items:
+            type: string
+            description: The refunds created for this credit note.
+          uniqueItems: true
+        status:
+          $ref: "#/components/schemas/CreditNoteStatus"
+        subtotal:
+          $ref: "#/components/schemas/Money"
+        taxAmount:
+          $ref: "#/components/schemas/Money"
+        total:
+          $ref: "#/components/schemas/Money"
+      required:
+        - appliedToInvoiceIds
+        - creditNoteDate
+        - creditNoteNumber
+        - id
+        - invoiceId
+        - items
+        - merchantId
+        - pendingRefundIds
+        - reason
+        - refundIds
+        - status
+        - subtotal
+        - total
+    CreditNoteCreateInput:
+      type: object
+      description: Input for creating a new credit note
+      properties:
+        creditNoteDate:
+          type: string
+          format: date-time
+          description: The created date of the credit note.
+        creditNoteNumber:
+          type: string
+          description: The number of the credit note.
+          maxLength: 255
+          minLength: 1
+        invoiceId:
+          type: string
+          description: The ID of the invoice this credit note is for.
+        items:
+          type: array
+          description: The items in the credit note.
+          items:
+            $ref: "#/components/schemas/CreditNoteItemCreateInput"
+        reason:
+          type: string
+          description: The reason for creating a credit note
+          enum:
+            - FRAUD
+            - DISCOUNT
+            - DUPLICATE
+            - RETURN
+            - OTHER
+        taxAmount:
+          $ref: "#/components/schemas/MoneyInput"
+        total:
+          $ref: "#/components/schemas/MoneyInput"
+      required:
+        - creditNoteDate
+        - creditNoteNumber
+        - invoiceId
+        - items
+        - reason
+        - total
+    CreditNoteDownload:
+      type: object
+      description: Credit note download object
+      properties:
+        expiresAt:
+          type: string
+          format: date-time
+          description: The date and time when the url expires
+        url:
+          type: string
+          description: The url to download the credit note
+      required:
+        - expiresAt
+        - url
+    CreditNoteItem:
+      type: object
+      description: Credit note item object
+      properties:
+        id:
+          type: string
+          description: The unique ID of the credit note item.
+        invoiceItemId:
+          type: string
+          description: The ID of the invoice item this credit note item is for.
+        merchantId:
+          type: string
+          description: The ID of the merchant that owns this credit note item.
+        name:
+          type: string
+          description: The name of the credit note item.
+        subtotal:
+          $ref: "#/components/schemas/Money"
+        taxAmount:
+          $ref: "#/components/schemas/Money"
+        taxRate:
+          type: string
+          description: The tax rate of the credit note item.
+        total:
+          $ref: "#/components/schemas/Money"
+      required:
+        - id
+        - merchantId
+        - name
+        - subtotal
+        - total
+    CreditNoteItemCreateInput:
+      type: object
+      description: Input for creating a new credit note item
+      properties:
+        invoiceItemId:
+          type: string
+          description: The ID of the invoice item this credit note item is for.
+        merchantId:
+          type: string
+          description: The ID of the merchant that owns this credit note item.
+        name:
+          type: string
+          description: The name of the credit note item.
+        taxAmount:
+          $ref: "#/components/schemas/MoneyInput"
+        taxRate:
+          type: string
+          description: The tax rate of the credit note item.
+        total:
+          $ref: "#/components/schemas/MoneyInput"
+      required:
+        - merchantId
+        - name
+        - total
+    CreditNotePage:
+      type: object
+      description: A page of credit notes
+      properties:
+        pageable:
+          $ref: "#/components/schemas/Pageable"
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/CreditNote"
+        total:
+          type: integer
+          format: int32
+      required:
+        - pageable
+        - results
+        - total
+    CreditNoteStatus:
+      type: string
+      description: The status of a credit note
+      enum:
+        - DRAFT
+        - OPEN
+        - APPLIED
+        - VOIDED
+    CreditNoteUpdateInput:
+      type: object
+      description: Input for creating a new credit note
+      properties:
+        creditNoteDate:
+          type: string
+          format: date-time
+          description: The created date of the credit note.
+        creditNoteNumber:
+          type: string
+          description: The number of the credit note.
+          maxLength: 255
+          minLength: 1
+        items:
+          type: array
+          description: The items in the credit note.
+          items:
+            $ref: "#/components/schemas/CreditNoteItemCreateInput"
+        reason:
+          type: string
+          description: The reason for creating a credit note
+          enum:
+            - FRAUD
+            - DISCOUNT
+            - DUPLICATE
+            - RETURN
+            - OTHER
+        taxAmount:
+          $ref: "#/components/schemas/MoneyInput"
+        total:
+          $ref: "#/components/schemas/MoneyInput"
+      required:
+        - creditNoteDate
+        - creditNoteNumber
+        - items
+        - reason
+        - total
     Customer:
       type: object
       properties:
@@ -2792,6 +4871,160 @@ components:
         surname:
           type: string
           description: The customer's surname.
+    CustomerAccount:
+      type: object
+      description: Customer account object
+      properties:
+        billingAddress:
+          $ref: "#/components/schemas/CustomerAccountAddress"
+        email:
+          type: string
+          description: Email of the customer.
+        givenName:
+          type: string
+          description: Given name of the customer.
+        id:
+          type: string
+          description: The unique ID of the customer.
+        organizationName:
+          type: string
+          description: Customer's organisation name.
+        phoneNumber:
+          type: string
+          description: Phone of the customer.
+        reference:
+          type: string
+          description: Customer's reference.
+        shippingAddress:
+          $ref: "#/components/schemas/CustomerAccountAddress"
+        surname:
+          type: string
+          description: Surname of the customer.
+        vatNumber:
+          type: string
+          description: Customer's VAT number.
+      required:
+        - id
+    CustomerAccountAddress:
+      type: object
+      description: Customer account address object
+      properties:
+        city:
+          type: string
+          description: City of the address
+        company:
+          type: string
+          description: Customer's company name
+        countryCode:
+          type: string
+          description: Two letter ISO 3166-1 alpha-2 country code.
+        line1:
+          type: string
+          description: First line of the address
+        line2:
+          type: string
+          description: Second line of the address
+        name:
+          type: string
+          description: Customer's name
+        phoneNumber:
+          type: string
+          description: Customer's phone number
+        postcode:
+          type: string
+          description: Postal code of the address
+        state:
+          type: string
+          description: State or province of the address
+      required:
+        - city
+        - countryCode
+        - line1
+        - name
+        - postcode
+    CustomerAccountAddressCreateInput:
+      type: object
+      description: The input to create a customer account address.
+      properties:
+        city:
+          type: string
+          description: City of the address
+        company:
+          type: string
+          description: Customer's company name
+        countryCode:
+          type: string
+          description: Two letter ISO 3166-1 alpha-2 country code.
+        line1:
+          type: string
+          description: First line of the address
+        line2:
+          type: string
+          description: Second line of the address
+        name:
+          type: string
+          description: Customer's name
+        phoneNumber:
+          type: string
+          description: Customer's phone number
+        postcode:
+          type: string
+          description: Postal code of the address
+        state:
+          type: string
+          description: State or province of the address
+      required:
+        - city
+        - countryCode
+        - line1
+        - name
+        - postcode
+    CustomerAccountCreateInput:
+      type: object
+      description: The input to create a new customer account.
+      properties:
+        billingAddress:
+          $ref: "#/components/schemas/CustomerAccountAddressCreateInput"
+        email:
+          type: string
+          description: Email of the customer.
+        givenName:
+          type: string
+          description: Given name of the customer.
+        organizationName:
+          type: string
+          description: Customer's organisation name.
+        phoneNumber:
+          type: string
+          description: Phone of the customer.
+        reference:
+          type: string
+          description: Customer's reference.
+        shippingAddress:
+          $ref: "#/components/schemas/CustomerAccountAddressCreateInput"
+        surname:
+          type: string
+          description: Surname of the customer.
+        vatNumber:
+          type: string
+          description: Customer's VAT number.
+    CustomerAccountPage:
+      type: object
+      description: A page of customer accounts
+      properties:
+        pageable:
+          $ref: "#/components/schemas/Pageable"
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/CustomerAccount"
+        total:
+          type: integer
+          format: int32
+      required:
+        - pageable
+        - results
+        - total
     CustomerInput:
       type: object
       description: The customer's details.
@@ -2854,6 +5087,545 @@ components:
       required:
         - externalMerchantId
         - type
+    Invoice:
+      type: object
+      description: Invoice object
+      properties:
+        amountCredited:
+          $ref: "#/components/schemas/Money"
+        amountPaid:
+          $ref: "#/components/schemas/Money"
+        amountPending:
+          $ref: "#/components/schemas/Money"
+        amountRemaining:
+          $ref: "#/components/schemas/Money"
+        chaserPlanId:
+          type: string
+          description: Chaser plan id this invoice is assigned with.
+        customerAccount:
+          $ref: "#/components/schemas/InvoiceCustomerAccount"
+        customerNotes:
+          type: string
+          description: Notes that is shown on the invoice to the customer.
+        dueDate:
+          type: string
+          format: date-time
+          description: The date and time when the invoice is due for.
+        id:
+          type: string
+          description: The unique ID of the invoice.
+        invoiceDate:
+          type: string
+          format: date-time
+          description: The date and time for the invoice.
+        invoiceNumber:
+          type: string
+          description: The number of the invoice.
+        invoiceUrl:
+          type: string
+          description: Hosted invoice url to view and pay the invoice
+        invoiceUrlExpiresAt:
+          type: string
+          format: date-time
+          description: The datetime when the hosted invoice url expires.
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/InvoiceItem"
+        merchant:
+          $ref: "#/components/schemas/InvoiceMerchant"
+        merchantId:
+          type: string
+          description: The ID of the merchant that owns this invoice.
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+            description: Key value pairs to store additional information about the
+              invoice.
+          description: Key value pairs to store additional information about the invoice.
+        paidDate:
+          type: string
+          format: date-time
+          description: The date and time when the invoice was paid on.
+        status:
+          $ref: "#/components/schemas/InvoiceStatus"
+        subtotal:
+          $ref: "#/components/schemas/Money"
+        taxAmount:
+          $ref: "#/components/schemas/Money"
+        total:
+          $ref: "#/components/schemas/Money"
+      required:
+        - amountCredited
+        - amountPaid
+        - amountPending
+        - amountRemaining
+        - customerAccount
+        - id
+        - invoiceDate
+        - invoiceNumber
+        - invoiceUrl
+        - invoiceUrlExpiresAt
+        - items
+        - merchant
+        - merchantId
+        - metadata
+        - status
+        - subtotal
+        - total
+    InvoiceCreateInput:
+      type: object
+      description: The input to create a new invoice.
+      properties:
+        chaserPlanId:
+          type: string
+          description: The ID of the chaser plan to use.
+        customerAccountId:
+          type: string
+          description: The ID of the customer account to invoice.
+        customerNotes:
+          type: string
+          description: Customer notes to be added to the invoice. This will be shown
+            to the customer on the invoice.
+          maxLength: 255
+          minLength: 0
+        dueDate:
+          type: string
+          format: date-time
+          description: The date invoice is due for.
+        invoiceDate:
+          type: string
+          format: date-time
+          description: The created date of the invoice.
+        invoiceNumber:
+          type: string
+          description: The number of the invoice.
+          example: "1234567"
+          maxLength: 255
+          minLength: 1
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/InvoiceItemCreateInput"
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+            default: "{}"
+            description: Key value pairs to store additional information about the
+              invoice.
+            example: "{\"key1\":\"value1\",\"key2\":\"value2\"}"
+          default: {}
+          description: Key value pairs to store additional information about the invoice.
+          example:
+            key1: value1
+            key2: value2
+        taxAmount:
+          $ref: "#/components/schemas/MoneyInput"
+        total:
+          $ref: "#/components/schemas/MoneyInput"
+      required:
+        - customerAccountId
+        - invoiceDate
+        - invoiceNumber
+        - items
+        - total
+    InvoiceCustomerAccount:
+      type: object
+      description: Invoice customer account object
+      properties:
+        billingAddress:
+          $ref: "#/components/schemas/InvoiceCustomerAccountAddress"
+        email:
+          type: string
+          description: The email address of the customer.
+        givenName:
+          type: string
+          description: The given name of the customer.
+        id:
+          type: string
+          description: The ID of the customer account.
+        organizationName:
+          type: string
+          description: The organization name of the customer account.
+        phoneNumber:
+          type: string
+          description: The phone number of the customer.
+        reference:
+          type: string
+          description: The reference for the customer account.
+        shippingAddress:
+          $ref: "#/components/schemas/InvoiceCustomerAccountAddress"
+        surname:
+          type: string
+          description: The surname of the customer.
+        vatNumber:
+          type: string
+          description: The VAT number of the customer account.
+      required:
+        - id
+    InvoiceCustomerAccountAddress:
+      type: object
+      description: Invoice customer account address object
+      properties:
+        city:
+          type: string
+          description: The city of the address.
+        company:
+          type: string
+          description: The company name of the customer.
+        countryCode:
+          type: string
+          description: The country code of the address.
+        line1:
+          type: string
+          description: The first line of the address.
+        line2:
+          type: string
+          description: The second line of the address.
+        name:
+          type: string
+          description: The name of the customer.
+        phoneNumber:
+          type: string
+          description: The phone number of the customer.
+        postcode:
+          type: string
+          description: The postcode of the address.
+        state:
+          type: string
+          description: The state of the address.
+      required:
+        - city
+        - countryCode
+        - line1
+        - name
+        - postcode
+    InvoiceDownload:
+      type: object
+      description: Invoice download object
+      properties:
+        expiresAt:
+          type: string
+          format: date-time
+          description: The date and time when the url expires
+        url:
+          type: string
+          description: The url to download the invoice
+      required:
+        - expiresAt
+        - url
+    InvoiceItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique ID for the item.
+        name:
+          type: string
+          description: The name of the item.
+        price:
+          $ref: "#/components/schemas/Money"
+        priceWithTax:
+          $ref: "#/components/schemas/Money"
+        quantity:
+          type: string
+          description: The quantity of the item.
+        sku:
+          type: string
+          description: Stock keeping unit
+        subtotal:
+          $ref: "#/components/schemas/Money"
+        supplyDate:
+          $ref: "#/components/schemas/InvoiceItemSupplyDateDto"
+        tax:
+          $ref: "#/components/schemas/Money"
+        taxRate:
+          type: string
+          description: The percent of tax applied.
+        total:
+          $ref: "#/components/schemas/Money"
+      required:
+        - id
+        - name
+        - price
+        - quantity
+        - sku
+        - subtotal
+        - total
+    InvoiceItemCreateInput:
+      type: object
+      description: An item in the invoice
+      properties:
+        name:
+          type: string
+          description: The name of the item.
+          maxLength: 255
+          minLength: 1
+        price:
+          $ref: "#/components/schemas/MoneyInput"
+        priceWithTax:
+          $ref: "#/components/schemas/MoneyInput"
+        quantity:
+          type: string
+          description: The quantity of the item being purchased.
+        sku:
+          type: string
+          description: Stock keeping unit
+          maxLength: 128
+          minLength: 1
+        supplyDate:
+          $ref: "#/components/schemas/InvoiceItemSupplyDateInputDto"
+        tax:
+          $ref: "#/components/schemas/MoneyInput"
+        taxRate:
+          type: string
+          description: The percent of tax applied.
+        total:
+          $ref: "#/components/schemas/MoneyInput"
+      required:
+        - name
+        - price
+        - quantity
+        - sku
+        - total
+    InvoiceItemSupplyDateDto:
+      type: object
+      description: The date when the item was supplied.
+      properties:
+        end:
+          type: string
+          format: date-time
+          description: The end date when the item was supplied.
+        start:
+          type: string
+          format: date-time
+          description: The start date when the item was supplied.
+      required:
+        - start
+    InvoiceItemSupplyDateInputDto:
+      type: object
+      properties:
+        end:
+          type: string
+          format: date-time
+          description: The end date when the item was supplied.
+        start:
+          type: string
+          format: date-time
+          description: The start date when the item was supplied.
+      required:
+        - start
+    InvoiceMerchant:
+      type: object
+      description: Invoice merchant object
+      properties:
+        address:
+          $ref: "#/components/schemas/InvoiceMerchantAddress"
+        companyNumber:
+          type: string
+          description: The company number for the merchant of the invoice.
+        legalName:
+          type: string
+          description: The legal name for the merchant of the invoice.
+        phoneNumber:
+          type: string
+          description: The phone number for the merchant of the invoice.
+        vatNumber:
+          type: string
+          description: The vat number for the merchant of the invoice.
+      required:
+        - address
+        - companyNumber
+        - legalName
+    InvoiceMerchantAddress:
+      type: object
+      description: Invoice merchant address object
+      properties:
+        cityOrTown:
+          type: string
+          description: The city or town of the address.
+        countryCode:
+          type: string
+          description: The country code of the address.
+        line1:
+          type: string
+          description: The first line of the address.
+        line2:
+          type: string
+          description: The second line of the address.
+        province:
+          type: string
+          description: The province of the address.
+        zipOrPostcode:
+          type: string
+          description: The zip or postcode of the address.
+      required:
+        - cityOrTown
+        - countryCode
+        - line1
+        - zipOrPostcode
+    InvoiceNotification:
+      type: object
+      description: Invoice notification object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: The datetime when notification was created.
+        email:
+          type: string
+          description: The email address used in the notification.
+        givenName:
+          type: string
+          description: The given name used in the notification.
+        id:
+          type: string
+          description: The unique identifier of the notification.
+        phoneNumber:
+          type: string
+          description: The phone number used in the notification.
+        sentBy:
+          $ref: "#/components/schemas/InvoiceNotificationSentBy"
+        status:
+          type: string
+          description: The status of the notification.
+          enum:
+            - PENDING
+            - DELIVERED
+            - FAILED
+        surname:
+          type: string
+          description: The surname used in the notification.
+        type:
+          type: string
+          description: The type of the notification.
+          enum:
+            - EMAIL
+            - SMS
+      required:
+        - createdAt
+        - id
+        - status
+        - type
+    InvoiceNotificationInput:
+      type: object
+      description: The input to notify a customer of an invoice.
+      properties:
+        type:
+          type: string
+          enum:
+            - EMAIL
+            - SMS
+      required:
+        - type
+    InvoiceNotificationPage:
+      type: object
+      description: A page of invoice notifications
+      properties:
+        pageable:
+          $ref: "#/components/schemas/Pageable"
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/InvoiceNotification"
+        total:
+          type: integer
+          format: int32
+      required:
+        - pageable
+        - results
+        - total
+    InvoiceNotificationSentBy:
+      type: object
+      description: Invoice notification sent by
+      properties:
+        givenName:
+          type: string
+          description: The given name of the sender.
+        id:
+          type: string
+          description: The unique identifier of the sender.
+        surname:
+          type: string
+          description: The surname of the sender.
+      required:
+        - id
+    InvoicePage:
+      type: object
+      description: A page of invoices
+      properties:
+        pageable:
+          $ref: "#/components/schemas/Pageable"
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/Invoice"
+        total:
+          type: integer
+          format: int32
+      required:
+        - pageable
+        - results
+        - total
+    InvoiceStatus:
+      type: string
+      description: The status of the invoice.
+      enum:
+        - DRAFT
+        - OPEN
+        - PARTIALLY_PAID
+        - PAID
+        - OVERPAID
+        - VOIDED
+    InvoiceUpdateInputDto:
+      type: object
+      properties:
+        customerNotes:
+          type: string
+          description: Customer notes to be added to the invoice. This will be shown
+            to the customer on the invoice.
+          maxLength: 255
+          minLength: 0
+        dueDate:
+          type: string
+          format: date-time
+          description: The date invoice is due for.
+        invoiceDate:
+          type: string
+          format: date-time
+          description: The created date of the invoice.
+        invoiceNumber:
+          type: string
+          maxLength: 255
+          minLength: 1
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/InvoiceItemCreateInput"
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+            default: "{}"
+            description: Key value pairs to store additional information about the
+              invoice.
+            example: "{\"key1\":\"value1\",\"key2\":\"value2\"}"
+          default: {}
+          description: Key value pairs to store additional information about the invoice.
+          example:
+            key1: value1
+            key2: value2
+        taxAmount:
+          $ref: "#/components/schemas/MoneyInput"
+        total:
+          $ref: "#/components/schemas/MoneyInput"
+      required:
+        - invoiceDate
+        - invoiceNumber
+        - items
+        - total
     Item:
       type: object
       description: List of items that the customer is purchasing.
@@ -2971,80 +5743,63 @@ components:
         - apiUsername
         - sdkClientIdentifier
         - type
-    LogCreateInput:
+    KlarnaPaymentMethodSettings:
       type: object
-      description: The log to create
+      description: Klarna payment method settings object
       properties:
-        actionType:
-          $ref: "#/components/schemas/ActionTypeInput"
-        currentData:
-          type: object
-          additionalProperties:
-            type: object
-        reason:
+        clientIdentifier:
           type: string
-        resourceId:
-          type: string
-      required:
-        - actionType
-        - currentData
-        - resourceId
-    LogRecord:
+          description: Client identifier
+    MagentoConnectionData:
       type: object
-      description: A log record
-      properties:
-        actionType:
-          $ref: "#/components/schemas/ActionType"
-        actorType:
-          $ref: "#/components/schemas/ActorType"
-        createdAt:
-          type: string
-          format: date-time
-          description: The creation timestamp
-        currentValue:
-          type: object
-          additionalProperties:
-            type: object
-            description: The current log record value
-          description: The current log record value
-        id:
-          type: string
-          description: The log record ID
-        ipAddress:
-          type: string
-          description: The IP address
-        merchantId:
-          type: string
-          description: The merchant ID
-        previousValue:
-          type: object
-          additionalProperties:
-            type: object
-            description: The previous log record value
-          description: The previous log record value
-        principalId:
-          type: string
-          description: The principal ID
-        reason:
-          type: string
-          description: The reason for the log record
-        resource:
-          type: string
-          description: The resource being accessed
-        resourceId:
-          type: string
-          description: The resource ID
-        resourceType:
-          $ref: "#/components/schemas/ResourceType"
+      allOf:
+        - $ref: "#/components/schemas/ConnectionData"
+        - type: object
+          properties:
+            accessToken:
+              type: string
+            accessTokenSecret:
+              type: string
+            baseUrl:
+              type: string
+            consumerKey:
+              type: string
+            consumerSecret:
+              type: string
+            displayName:
+              type: string
+            oauthSignatureMethod:
+              $ref: "#/components/schemas/ConnectionOauthSignatureMethod"
+      description: Data for the magento connection.
       required:
-        - actionType
-        - actorType
-        - createdAt
-        - currentValue
-        - id
-        - principalId
-        - resourceId
-        - resourceType
+        - displayName
+        - type
+    MagentoConnectionDataInput:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/ConnectionDataInput"
+        - type: object
+          properties:
+            accessToken:
+              type: string
+            accessTokenSecret:
+              type: string
+            baseUrl:
+              type: string
+            consumerKey:
+              type: string
+            consumerSecret:
+              type: string
+            oauthSignatureMethod:
+              $ref: "#/components/schemas/ConnectionOauthSignatureMethod"
+      description: Data for the magento connection.
+      required:
+        - accessToken
+        - accessTokenSecret
+        - baseUrl
+        - consumerKey
+        - consumerSecret
+        - type
     MagentoProxyConnectionData:
       type: object
       allOf:
@@ -3095,6 +5850,45 @@ components:
         - consumerKey
         - consumerSecret
         - type
+    MerchantDomains:
+      type: object
+      description: Merchant domains object
+      properties:
+        domain:
+          type: string
+        id:
+          type: string
+      required:
+        - domain
+        - id
+    MerchantDomainsCreateInput:
+      type: object
+      description: Merchant domains create input object
+      properties:
+        domainsToAdd:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+      required:
+        - domainsToAdd
+    MerchantDomainsPage:
+      type: object
+      description: A page of merchant domains
+      properties:
+        pageable:
+          $ref: "#/components/schemas/Pageable"
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/MerchantDomains"
+        total:
+          type: integer
+          format: int32
+      required:
+        - pageable
+        - results
+        - total
     MerchantLogoWithUrls:
       type: object
       description: Merchant logo with urls
@@ -3290,6 +6084,7 @@ components:
         - recipients
     NotificationSubscriptionPage:
       type: object
+      description: A page of notification subscriptions
       properties:
         pageable:
           $ref: "#/components/schemas/Pageable"
@@ -3336,128 +6131,63 @@ components:
         - MERCHANT_REFUND_SUCCEEDED
         - MERCHANT_PAYMENT_VOIDED
         - MERCHANT_WEEKEND_DISBURSEMENT_REPORT
-    PageCheckout:
+        - MERCHANT_PAY_IN_RECEIVED
+    Order:
       type: object
+      description: Order object
       properties:
-        pageable:
-          $ref: "#/components/schemas/Pageable"
-        results:
+        amount:
+          $ref: "#/components/schemas/Money"
+        billingAddress:
+          $ref: "#/components/schemas/Address"
+        createdAt:
+          type: string
+          format: date-time
+          description: The datetime when the order was created.
+        customer:
+          $ref: "#/components/schemas/Customer"
+        customerAccountId:
+          type: string
+          description: The ID of the customer account that owns this order.
+        items:
           type: array
           items:
-            $ref: "#/components/schemas/Checkout"
-        total:
-          type: integer
-          format: int32
+            $ref: "#/components/schemas/Item"
+        lastPaymentId:
+          type: string
+          description: The ID of the last payment made on this order.
+        lastPaymentMethod:
+          $ref: "#/components/schemas/PaymentMethod"
+        lastPaymentStatus:
+          $ref: "#/components/schemas/PaymentStatus"
+        merchantId:
+          type: string
+          description: The ID of the merchant that owns this order.
+        paymentSessionId:
+          type: string
+          description: The ID of the payment session that the order was created in.
+        reference:
+          type: string
+          description: The unique reference of the order.
+        shippingAddress:
+          $ref: "#/components/schemas/Address"
       required:
-        - pageable
-        - results
-        - total
-    PageCheckoutTemplate:
+        - amount
+        - createdAt
+        - items
+        - merchantId
+        - paymentSessionId
+        - reference
+    OrdersPage:
       type: object
+      description: A page of orders
       properties:
         pageable:
           $ref: "#/components/schemas/Pageable"
         results:
           type: array
           items:
-            $ref: "#/components/schemas/CheckoutTemplate"
-        total:
-          type: integer
-          format: int32
-      required:
-        - pageable
-        - results
-        - total
-    PageConnection:
-      type: object
-      properties:
-        pageable:
-          $ref: "#/components/schemas/Pageable"
-        results:
-          type: array
-          items:
-            $ref: "#/components/schemas/Connection"
-        total:
-          type: integer
-          format: int32
-      required:
-        - pageable
-        - results
-        - total
-    PageNotificationSubscription:
-      type: object
-      properties:
-        pageable:
-          $ref: "#/components/schemas/Pageable"
-        results:
-          type: array
-          items:
-            $ref: "#/components/schemas/NotificationSubscription"
-        total:
-          type: integer
-          format: int32
-      required:
-        - pageable
-        - results
-        - total
-    PagePaymentLink:
-      type: object
-      properties:
-        pageable:
-          $ref: "#/components/schemas/Pageable"
-        results:
-          type: array
-          items:
-            $ref: "#/components/schemas/PaymentLink"
-        total:
-          type: integer
-          format: int32
-      required:
-        - pageable
-        - results
-        - total
-    PagePaymentMethodDetail:
-      type: object
-      description: Payment methods and their settings
-      properties:
-        pageable:
-          $ref: "#/components/schemas/Pageable"
-        results:
-          type: array
-          items:
-            $ref: "#/components/schemas/PaymentMethodDetail"
-        total:
-          type: integer
-          format: int32
-      required:
-        - pageable
-        - results
-        - total
-    PageTheme:
-      type: object
-      properties:
-        pageable:
-          $ref: "#/components/schemas/Pageable"
-        results:
-          type: array
-          items:
-            $ref: "#/components/schemas/Theme"
-        total:
-          type: integer
-          format: int32
-      required:
-        - pageable
-        - results
-        - total
-    PageWebhook:
-      type: object
-      properties:
-        pageable:
-          $ref: "#/components/schemas/Pageable"
-        results:
-          type: array
-          items:
-            $ref: "#/components/schemas/Webhook"
+            $ref: "#/components/schemas/Order"
         total:
           type: integer
           format: int32
@@ -3666,6 +6396,7 @@ components:
           $ref: "#/components/schemas/ApplicationSource"
     PaymentLinkPage:
       type: object
+      description: A page of payment links
       properties:
         pageable:
           $ref: "#/components/schemas/Pageable"
@@ -3702,6 +6433,7 @@ components:
         - GOOGLE_PAY
         - PAY_BY_BANK
         - KLARNA
+        - ZOPA_RETAIL_FINANCE
     PaymentMethodAsset:
       type: object
       description: Payment method assets object
@@ -3747,6 +6479,7 @@ components:
         - summaryUrl
     PaymentMethodDetailsPage:
       type: object
+      description: A page of payment method details
       properties:
         pageable:
           $ref: "#/components/schemas/Pageable"
@@ -3784,10 +6517,16 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/PaymentMethodAsset"
+        card:
+          $ref: "#/components/schemas/CardPaymentMethodSettings"
         description:
           type: string
         displayName:
           type: string
+        klarna:
+          $ref: "#/components/schemas/KlarnaPaymentMethodSettings"
+        zopaRetailFinance:
+          $ref: "#/components/schemas/ZopaRetailFinancePaymentMethodSettings"
       required:
         - assets
         - description
@@ -3854,6 +6593,10 @@ components:
           type: string
           description: The ID of the merchant that the payment session was created
             for.
+        originUrl:
+          type: string
+          description: The URL that the customer was on when the payment session was
+            created.
         paymentLinkId:
           type: string
           description: The ID of the payment link that the payment session was created
@@ -3917,6 +6660,10 @@ components:
           type: object
           additionalProperties:
             type: string
+        originUrl:
+          type: string
+          description: The URL that the customer was on when the payment session was
+            created.
         paymentCaptureType:
           $ref: "#/components/schemas/PaymentCaptureType"
         paymentMethod:
@@ -3965,7 +6712,7 @@ components:
         merchant:
           $ref: "#/components/schemas/PaymentSettingsMerchant"
         paymentMethods:
-          $ref: "#/components/schemas/PagePaymentMethodDetail"
+          $ref: "#/components/schemas/PaymentMethodDetailsPage"
       required:
         - merchant
         - paymentMethods
@@ -4135,37 +6882,95 @@ components:
         - PENDING
         - SUCCEEDED
         - FAILED
-    ResourceType:
-      type: string
-      description: The resource an action was performed upon
-      enum:
-        - GlobalPaymentMethod
-        - Applicant
-        - User
-        - Merchant
-        - MerchantLegalDetails
-        - MerchantUser
-        - MerchantPaymentMethod
-        - MerchantPricingRate
-        - MerchantAddress
-        - MerchantBankAccount
-        - MerchantCredentials
-        - MerchantWebhook
-        - Onboarding
-        - OnNetworkGlobalSetting
-        - OnNetworkMerchantSetting
-        - Order
-        - Payment
-        - Ledger
-        - MerchantAccountingReport
-        - PaymentLink
-        - Reimbursement
-        - Fee
-        - Checkout
-        - CheckoutTemplate
-        - Theme
-        - Document
-        - AccountStatement
+    ShipmentTracking:
+      type: object
+      description: Shipment tracking object
+      properties:
+        id:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ShipmentTrackingItem"
+        trackingDetail:
+          type: array
+          items:
+            $ref: "#/components/schemas/ShipmentTrackingDetail"
+      required:
+        - id
+        - items
+        - trackingDetail
+    ShipmentTrackingCreateInput:
+      type: object
+      description: Shipment tracking create input object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ShipmentTrackingItemInput"
+        trackingDetail:
+          type: array
+          items:
+            $ref: "#/components/schemas/ShipmentTrackingDetailInput"
+      required:
+        - items
+        - trackingDetail
+    ShipmentTrackingDetail:
+      type: object
+      description: Shipment tracking detail
+      properties:
+        carrierCode:
+          type: string
+        title:
+          type: string
+        trackingNumber:
+          type: string
+      required:
+        - carrierCode
+        - title
+        - trackingNumber
+    ShipmentTrackingDetailInput:
+      type: object
+      description: Shipment tracking detail
+      properties:
+        carrierCode:
+          type: string
+        title:
+          type: string
+        trackingNumber:
+          type: string
+      required:
+        - carrierCode
+        - title
+        - trackingNumber
+    ShipmentTrackingItem:
+      type: object
+      description: Shipment tracking item
+      properties:
+        name:
+          type: string
+        quantity:
+          type: string
+        sku:
+          type: string
+      required:
+        - name
+        - quantity
+        - sku
+    ShipmentTrackingItemInput:
+      type: object
+      description: Shipment tracking item
+      properties:
+        name:
+          type: string
+        quantity:
+          type: string
+        sku:
+          type: string
+      required:
+        - name
+        - quantity
+        - sku
     StartEnd:
       type: object
       description: Date range for the export.
@@ -4468,6 +7273,7 @@ components:
         - size768x1024
     ThemePage:
       type: object
+      description: A page of themes
       properties:
         pageable:
           $ref: "#/components/schemas/Pageable"
@@ -4702,6 +7508,7 @@ components:
       example: "[\"PAYMENT_SUCCEEDED\"]"
     WebhookPage:
       type: object
+      description: A page of webhooks
       properties:
         pageable:
           $ref: "#/components/schemas/Pageable"
@@ -4748,6 +7555,94 @@ components:
           type: string
           description: The URL to send the webhook event to.
           example: https://example.com/new/webhook
+    WoocommerceConnectionData:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/ConnectionData"
+        - type: object
+          properties:
+            baseUrl:
+              type: string
+            consumerKey:
+              type: string
+            consumerSecret:
+              type: string
+            displayName:
+              type: string
+      description: Data for the Woocommerce connection.
+      required:
+        - displayName
+        - type
+    WoocommerceConnectionDataInput:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/ConnectionDataInput"
+        - type: object
+          properties:
+            baseUrl:
+              type: string
+            consumerKey:
+              type: string
+            consumerSecret:
+              type: string
+      description: Data for the WooCommerce connection.
+      required:
+        - baseUrl
+        - consumerKey
+        - consumerSecret
+        - type
+    ZopaRetailFinanceConnectionData:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/ConnectionData"
+        - type: object
+          properties:
+            authenticationNumber:
+              type: string
+            oauthClientId:
+              type: string
+            oauthClientSecret:
+              type: string
+            retailerId:
+              type: string
+            sdkApiKey:
+              type: string
+            tokenNumber:
+              type: string
+      description: Data for the Zopa Retail Finance Connection.
+      required:
+        - type
+    ZopaRetailFinanceConnectionDataInput:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/ConnectionDataInput"
+        - type: object
+          properties:
+            authenticationNumber:
+              type: string
+            oauthClientId:
+              type: string
+            oauthClientSecret:
+              type: string
+            sdkApiKey:
+              type: string
+            tokenNumber:
+              type: string
+      description: Data for the Zopa retail finance connection.
+      required:
+        - authenticationNumber
+        - oauthClientId
+        - oauthClientSecret
+        - tokenNumber
+        - type
+    ZopaRetailFinancePaymentMethodSettings:
+      type: object
+      description: Zopa retail finance payment method settings object
+      properties:
+        sdkApiKey:
+          type: string
+          description: Zopa Retail Finance SDK API Key used for initialising the frontend
+            SDK
   securitySchemes:
     apiKey:
       bearerFormat: JWT

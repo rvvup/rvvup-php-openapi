@@ -6,7 +6,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | ------------- | ------------- | ------------- |
 | [**createWebhook()**](WebhooksApi.md#createWebhook) | **POST** /api/2024-03-01/{merchantId}/webhooks | Create a new webhook |
 | [**getWebhook()**](WebhooksApi.md#getWebhook) | **GET** /api/2024-03-01/{merchantId}/webhooks/{webhookId} | Get a webhook by id |
-| [**listWebhooks()**](WebhooksApi.md#listWebhooks) | **GET** /api/2024-03-01/{merchantId}/webhooks | Get all webhook |
+| [**listWebhooks()**](WebhooksApi.md#listWebhooks) | **GET** /api/2024-03-01/{merchantId}/webhooks | Get all webhooks |
 | [**updateWebhook()**](WebhooksApi.md#updateWebhook) | **PATCH** /api/2024-03-01/{merchantId}/webhooks/{webhookId} | Update a webhook |
 
 
@@ -140,9 +140,9 @@ try {
 listWebhooks($merchant_id, $offset, $limit): \Rvvup\Api\Model\WebhookPage
 ```
 
-Get all webhook
+Get all webhooks
 
-Get all webhook
+Get all webhooks
 
 ### Example
 

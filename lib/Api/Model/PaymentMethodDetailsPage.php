@@ -36,6 +36,7 @@ use \Rvvup\ObjectSerializer;
  * PaymentMethodDetailsPage Class Doc Comment
  *
  * @category Class
+ * @description A page of payment method details
  * @package  Rvvup
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

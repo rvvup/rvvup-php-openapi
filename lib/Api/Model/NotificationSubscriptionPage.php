@@ -36,6 +36,7 @@ use \Rvvup\ObjectSerializer;
  * NotificationSubscriptionPage Class Doc Comment
  *
  * @category Class
+ * @description A page of notification subscriptions
  * @package  Rvvup
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

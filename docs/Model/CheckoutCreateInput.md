@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **metadata** | **array<string,string>** | Key value pairs to store additional information about the checkout. | [optional]
 **mode** | [**\Rvvup\Api\Model\CheckoutMode**](CheckoutMode.md) |  | [optional]
 **mode_id** | **string** | ID related to this checkout mode. Required for the ACCOUNT_STATEMENT mode and should be set to the AccountStatement&#39;s ID.Automatically set for all other modes. | [optional]
+**origin_url** | **string** | The URL that the customer was on when the checkout was created. | [optional]
 **pending_url** | **string** | The URL to redirect the user to if the checkout falls into a pending payment flow.                          This field supports the template variable &#x60;{{CHECKOUT_ID}}&#x60; which will be replaced with the                          created checkouts ID. | [optional]
 **reference** | **string** | Your reference to identify the checkout and the subsequently created payment sessions. | [optional]
 **source** | [**\Rvvup\Api\Model\ApplicationSource**](ApplicationSource.md) |  | [optional]

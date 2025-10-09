@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **id** | **string** | The unique ID for the payment session. |
 **items** | [**\Rvvup\Api\Model\Item[]**](Item.md) | List of items that the customer is purchasing. |
 **merchant_id** | **string** | The ID of the merchant that the payment session was created for. |
+**origin_url** | **string** | The URL that the customer was on when the payment session was created. | [optional]
 **payment_link_id** | **string** | The ID of the payment link that the payment session was created from. | [optional]
 **payments** | [**\Rvvup\Api\Model\Payment[]**](Payment.md) | List of payments that have been made for the payment session. |
 **requires_shipping** | **bool** | Whether the customer is required to provide a shipping address. | [optional]

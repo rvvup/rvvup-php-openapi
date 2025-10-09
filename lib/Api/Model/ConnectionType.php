@@ -46,9 +46,15 @@ class ConnectionType
      */
     public const MAGENTO_PROXY = 'MAGENTO_PROXY';
 
+    public const MAGENTO = 'MAGENTO';
+
     public const GOOGLE_PAY = 'GOOGLE_PAY';
 
     public const KLARNA = 'KLARNA';
+
+    public const WOOCOMMERCE = 'WOOCOMMERCE';
+
+    public const ZOPA_RETAIL_FINANCE = 'ZOPA_RETAIL_FINANCE';
 
     /**
      * Gets allowable values of the enum
@@ -58,8 +64,11 @@ class ConnectionType
     {
         return [
             self::MAGENTO_PROXY,
+            self::MAGENTO,
             self::GOOGLE_PAY,
-            self::KLARNA
+            self::KLARNA,
+            self::WOOCOMMERCE,
+            self::ZOPA_RETAIL_FINANCE
         ];
     }
 }
