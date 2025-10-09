@@ -68,6 +68,7 @@ class CheckoutCreateInput implements ModelInterface, ArrayAccess, \JsonSerializa
         'metadata' => 'array<string,string>',
         'mode' => '\Rvvup\Api\Model\CheckoutMode',
         'mode_id' => 'string',
+        'origin_url' => 'string',
         'pending_url' => 'string',
         'reference' => 'string',
         'source' => '\Rvvup\Api\Model\ApplicationSource',
@@ -91,6 +92,7 @@ class CheckoutCreateInput implements ModelInterface, ArrayAccess, \JsonSerializa
         'metadata' => null,
         'mode' => null,
         'mode_id' => null,
+        'origin_url' => null,
         'pending_url' => null,
         'reference' => null,
         'source' => null,
@@ -112,6 +114,7 @@ class CheckoutCreateInput implements ModelInterface, ArrayAccess, \JsonSerializa
         'metadata' => false,
         'mode' => false,
         'mode_id' => false,
+        'origin_url' => false,
         'pending_url' => false,
         'reference' => false,
         'source' => false,
@@ -213,6 +216,7 @@ class CheckoutCreateInput implements ModelInterface, ArrayAccess, \JsonSerializa
         'metadata' => 'metadata',
         'mode' => 'mode',
         'mode_id' => 'modeId',
+        'origin_url' => 'originUrl',
         'pending_url' => 'pendingUrl',
         'reference' => 'reference',
         'source' => 'source',
@@ -234,6 +238,7 @@ class CheckoutCreateInput implements ModelInterface, ArrayAccess, \JsonSerializa
         'metadata' => 'setMetadata',
         'mode' => 'setMode',
         'mode_id' => 'setModeId',
+        'origin_url' => 'setOriginUrl',
         'pending_url' => 'setPendingUrl',
         'reference' => 'setReference',
         'source' => 'setSource',
@@ -255,6 +260,7 @@ class CheckoutCreateInput implements ModelInterface, ArrayAccess, \JsonSerializa
         'metadata' => 'getMetadata',
         'mode' => 'getMode',
         'mode_id' => 'getModeId',
+        'origin_url' => 'getOriginUrl',
         'pending_url' => 'getPendingUrl',
         'reference' => 'getReference',
         'source' => 'getSource',
@@ -327,6 +333,7 @@ class CheckoutCreateInput implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('mode', $data ?? [], null);
         $this->setIfExists('mode_id', $data ?? [], null);
+        $this->setIfExists('origin_url', $data ?? [], null);
         $this->setIfExists('pending_url', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('source', $data ?? [], null);
@@ -622,6 +629,33 @@ class CheckoutCreateInput implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable mode_id cannot be null');
         }
         $this->container['mode_id'] = $mode_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_url
+     *
+     * @return string|null
+     */
+    public function getOriginUrl()
+    {
+        return $this->container['origin_url'];
+    }
+
+    /**
+     * Sets origin_url
+     *
+     * @param string|null $origin_url The URL that the customer was on when the checkout was created.
+     *
+     * @return self
+     */
+    public function setOriginUrl($origin_url)
+    {
+        if (is_null($origin_url)) {
+            throw new \InvalidArgumentException('non-nullable origin_url cannot be null');
+        }
+        $this->container['origin_url'] = $origin_url;
 
         return $this;
     }

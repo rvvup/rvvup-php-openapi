@@ -36,6 +36,7 @@ use \Rvvup\ObjectSerializer;
  * ThemePage Class Doc Comment
  *
  * @category Class
+ * @description A page of themes
  * @package  Rvvup
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -10,7 +10,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 ## `listPaymentMethods()`
 
 ```php
-listPaymentMethods($merchant_id, $currency, $amount, $include_inactive): \Rvvup\Api\Model\PaymentMethodDetailsPage
+listPaymentMethods($merchant_id, $currency, $amount, $include_inactive, $offset, $limit): \Rvvup\Api\Model\PaymentMethodDetailsPage
 ```
 
 Get payment methods
@@ -38,9 +38,11 @@ $merchant_id = 'merchant_id_example'; // string | The merchant id
 $currency = 'currency_example'; // string | The transaction currency
 $amount = 'amount_example'; // string | The transaction amount
 $include_inactive = True; // bool | Include inactive payment methods
+$offset = 56; // int | pagination offset
+$limit = 56; // int | pagination limit
 
 try {
-    $result = $apiInstance->listPaymentMethods($merchant_id, $currency, $amount, $include_inactive);
+    $result = $apiInstance->listPaymentMethods($merchant_id, $currency, $amount, $include_inactive, $offset, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentMethodsApi->listPaymentMethods: ', $e->getMessage(), PHP_EOL;
@@ -55,6 +57,8 @@ try {
 | **currency** | **string**| The transaction currency | [optional] |
 | **amount** | **string**| The transaction amount | [optional] |
 | **include_inactive** | **bool**| Include inactive payment methods | [optional] |
+| **offset** | **int**| pagination offset | [optional] |
+| **limit** | **int**| pagination limit | [optional] |
 
 ### Return type
 

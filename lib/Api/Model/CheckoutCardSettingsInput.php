@@ -60,7 +60,8 @@ class CheckoutCardSettingsInput implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'capture_type' => '\Rvvup\Api\Model\PaymentCaptureType',
-        'customer_fields' => '\Rvvup\Api\Model\CheckoutCustomerFieldsInput'
+        'customer_fields' => '\Rvvup\Api\Model\CheckoutCustomerFieldsInput',
+        'limits' => '\Rvvup\Api\Model\CheckoutPaymentMethodLimitInput'
     ];
 
     /**
@@ -72,7 +73,8 @@ class CheckoutCardSettingsInput implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'capture_type' => null,
-        'customer_fields' => null
+        'customer_fields' => null,
+        'limits' => null
     ];
 
     /**
@@ -82,7 +84,8 @@ class CheckoutCardSettingsInput implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPINullables = [
         'capture_type' => false,
-        'customer_fields' => false
+        'customer_fields' => false,
+        'limits' => false
     ];
 
     /**
@@ -172,7 +175,8 @@ class CheckoutCardSettingsInput implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'capture_type' => 'captureType',
-        'customer_fields' => 'customerFields'
+        'customer_fields' => 'customerFields',
+        'limits' => 'limits'
     ];
 
     /**
@@ -182,7 +186,8 @@ class CheckoutCardSettingsInput implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'capture_type' => 'setCaptureType',
-        'customer_fields' => 'setCustomerFields'
+        'customer_fields' => 'setCustomerFields',
+        'limits' => 'setLimits'
     ];
 
     /**
@@ -192,7 +197,8 @@ class CheckoutCardSettingsInput implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'capture_type' => 'getCaptureType',
-        'customer_fields' => 'getCustomerFields'
+        'customer_fields' => 'getCustomerFields',
+        'limits' => 'getLimits'
     ];
 
     /**
@@ -254,6 +260,7 @@ class CheckoutCardSettingsInput implements ModelInterface, ArrayAccess, \JsonSer
     {
         $this->setIfExists('capture_type', $data ?? [], null);
         $this->setIfExists('customer_fields', $data ?? [], null);
+        $this->setIfExists('limits', $data ?? [], null);
     }
 
     /**
@@ -348,6 +355,33 @@ class CheckoutCardSettingsInput implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable customer_fields cannot be null');
         }
         $this->container['customer_fields'] = $customer_fields;
+
+        return $this;
+    }
+
+    /**
+     * Gets limits
+     *
+     * @return \Rvvup\Api\Model\CheckoutPaymentMethodLimitInput|null
+     */
+    public function getLimits()
+    {
+        return $this->container['limits'];
+    }
+
+    /**
+     * Sets limits
+     *
+     * @param \Rvvup\Api\Model\CheckoutPaymentMethodLimitInput|null $limits limits
+     *
+     * @return self
+     */
+    public function setLimits($limits)
+    {
+        if (is_null($limits)) {
+            throw new \InvalidArgumentException('non-nullable limits cannot be null');
+        }
+        $this->container['limits'] = $limits;
 
         return $this;
     }

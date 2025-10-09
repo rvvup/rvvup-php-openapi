@@ -36,6 +36,7 @@ use \Rvvup\ObjectSerializer;
  * WebhookPage Class Doc Comment
  *
  * @category Class
+ * @description A page of webhooks
  * @package  Rvvup
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

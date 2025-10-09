@@ -36,6 +36,7 @@ use \Rvvup\ObjectSerializer;
  * CheckoutTemplatePage Class Doc Comment
  *
  * @category Class
+ * @description A page of checkout templates
  * @package  Rvvup
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

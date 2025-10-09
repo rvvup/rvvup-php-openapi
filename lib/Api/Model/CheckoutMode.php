@@ -52,6 +52,8 @@ class CheckoutMode
 
     public const VIRTUAL_TERMINAL = 'VIRTUAL_TERMINAL';
 
+    public const INVOICE = 'INVOICE';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -62,7 +64,8 @@ class CheckoutMode
             self::CHECKOUT,
             self::PAYMENT_LINK,
             self::ACCOUNT_STATEMENT,
-            self::VIRTUAL_TERMINAL
+            self::VIRTUAL_TERMINAL,
+            self::INVOICE
         ];
     }
 }

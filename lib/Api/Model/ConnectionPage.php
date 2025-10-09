@@ -36,6 +36,7 @@ use \Rvvup\ObjectSerializer;
  * ConnectionPage Class Doc Comment
  *
  * @category Class
+ * @description A page of connections
  * @package  Rvvup
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

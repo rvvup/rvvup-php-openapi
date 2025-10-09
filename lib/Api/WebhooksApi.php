@@ -798,7 +798,7 @@ class WebhooksApi
     /**
      * Operation listWebhooks
      *
-     * Get all webhook
+     * Get all webhooks
      *
      * @param  string $merchant_id Merchant ID (required)
      * @param  int $offset pagination offset (optional)
@@ -818,7 +818,7 @@ class WebhooksApi
     /**
      * Operation listWebhooksWithHttpInfo
      *
-     * Get all webhook
+     * Get all webhooks
      *
      * @param  string $merchant_id Merchant ID (required)
      * @param  int $offset pagination offset (optional)
@@ -945,7 +945,7 @@ class WebhooksApi
     /**
      * Operation listWebhooksAsync
      *
-     * Get all webhook
+     * Get all webhooks
      *
      * @param  string $merchant_id Merchant ID (required)
      * @param  int $offset pagination offset (optional)
@@ -968,7 +968,7 @@ class WebhooksApi
     /**
      * Operation listWebhooksAsyncWithHttpInfo
      *
-     * Get all webhook
+     * Get all webhooks
      *
      * @param  string $merchant_id Merchant ID (required)
      * @param  int $offset pagination offset (optional)

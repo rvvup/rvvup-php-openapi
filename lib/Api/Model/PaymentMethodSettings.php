@@ -60,8 +60,11 @@ class PaymentMethodSettings implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPITypes = [
         'assets' => '\Rvvup\Api\Model\PaymentMethodAsset[]',
+        'card' => '\Rvvup\Api\Model\CardPaymentMethodSettings',
         'description' => 'string',
-        'display_name' => 'string'
+        'display_name' => 'string',
+        'klarna' => '\Rvvup\Api\Model\KlarnaPaymentMethodSettings',
+        'zopa_retail_finance' => '\Rvvup\Api\Model\ZopaRetailFinancePaymentMethodSettings'
     ];
 
     /**
@@ -73,8 +76,11 @@ class PaymentMethodSettings implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPIFormats = [
         'assets' => null,
+        'card' => null,
         'description' => null,
-        'display_name' => null
+        'display_name' => null,
+        'klarna' => null,
+        'zopa_retail_finance' => null
     ];
 
     /**
@@ -84,8 +90,11 @@ class PaymentMethodSettings implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static array $openAPINullables = [
         'assets' => false,
+        'card' => false,
         'description' => false,
-        'display_name' => false
+        'display_name' => false,
+        'klarna' => false,
+        'zopa_retail_finance' => false
     ];
 
     /**
@@ -175,8 +184,11 @@ class PaymentMethodSettings implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $attributeMap = [
         'assets' => 'assets',
+        'card' => 'card',
         'description' => 'description',
-        'display_name' => 'displayName'
+        'display_name' => 'displayName',
+        'klarna' => 'klarna',
+        'zopa_retail_finance' => 'zopaRetailFinance'
     ];
 
     /**
@@ -186,8 +198,11 @@ class PaymentMethodSettings implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $setters = [
         'assets' => 'setAssets',
+        'card' => 'setCard',
         'description' => 'setDescription',
-        'display_name' => 'setDisplayName'
+        'display_name' => 'setDisplayName',
+        'klarna' => 'setKlarna',
+        'zopa_retail_finance' => 'setZopaRetailFinance'
     ];
 
     /**
@@ -197,8 +212,11 @@ class PaymentMethodSettings implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $getters = [
         'assets' => 'getAssets',
+        'card' => 'getCard',
         'description' => 'getDescription',
-        'display_name' => 'getDisplayName'
+        'display_name' => 'getDisplayName',
+        'klarna' => 'getKlarna',
+        'zopa_retail_finance' => 'getZopaRetailFinance'
     ];
 
     /**
@@ -259,8 +277,11 @@ class PaymentMethodSettings implements ModelInterface, ArrayAccess, \JsonSeriali
     public function __construct(array $data = null)
     {
         $this->setIfExists('assets', $data ?? [], null);
+        $this->setIfExists('card', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('display_name', $data ?? [], null);
+        $this->setIfExists('klarna', $data ?? [], null);
+        $this->setIfExists('zopa_retail_finance', $data ?? [], null);
     }
 
     /**
@@ -342,6 +363,33 @@ class PaymentMethodSettings implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
+     * Gets card
+     *
+     * @return \Rvvup\Api\Model\CardPaymentMethodSettings|null
+     */
+    public function getCard()
+    {
+        return $this->container['card'];
+    }
+
+    /**
+     * Sets card
+     *
+     * @param \Rvvup\Api\Model\CardPaymentMethodSettings|null $card card
+     *
+     * @return self
+     */
+    public function setCard($card)
+    {
+        if (is_null($card)) {
+            throw new \InvalidArgumentException('non-nullable card cannot be null');
+        }
+        $this->container['card'] = $card;
+
+        return $this;
+    }
+
+    /**
      * Gets description
      *
      * @return string
@@ -391,6 +439,60 @@ class PaymentMethodSettings implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable display_name cannot be null');
         }
         $this->container['display_name'] = $display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets klarna
+     *
+     * @return \Rvvup\Api\Model\KlarnaPaymentMethodSettings|null
+     */
+    public function getKlarna()
+    {
+        return $this->container['klarna'];
+    }
+
+    /**
+     * Sets klarna
+     *
+     * @param \Rvvup\Api\Model\KlarnaPaymentMethodSettings|null $klarna klarna
+     *
+     * @return self
+     */
+    public function setKlarna($klarna)
+    {
+        if (is_null($klarna)) {
+            throw new \InvalidArgumentException('non-nullable klarna cannot be null');
+        }
+        $this->container['klarna'] = $klarna;
+
+        return $this;
+    }
+
+    /**
+     * Gets zopa_retail_finance
+     *
+     * @return \Rvvup\Api\Model\ZopaRetailFinancePaymentMethodSettings|null
+     */
+    public function getZopaRetailFinance()
+    {
+        return $this->container['zopa_retail_finance'];
+    }
+
+    /**
+     * Sets zopa_retail_finance
+     *
+     * @param \Rvvup\Api\Model\ZopaRetailFinancePaymentMethodSettings|null $zopa_retail_finance zopa_retail_finance
+     *
+     * @return self
+     */
+    public function setZopaRetailFinance($zopa_retail_finance)
+    {
+        if (is_null($zopa_retail_finance)) {
+            throw new \InvalidArgumentException('non-nullable zopa_retail_finance cannot be null');
+        }
+        $this->container['zopa_retail_finance'] = $zopa_retail_finance;
 
         return $this;
     }

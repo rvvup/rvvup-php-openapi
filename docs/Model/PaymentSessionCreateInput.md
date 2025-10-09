@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **external_reference** | **string** | Your reference to identify the payment session. | [optional]
 **items** | [**\Rvvup\Api\Model\ItemInput[]**](ItemInput.md) | List of items that the customer is purchasing. | [optional]
 **metadata** | **array<string,string>** |  | [optional]
+**origin_url** | **string** | The URL that the customer was on when the payment session was created. | [optional]
 **payment_capture_type** | [**\Rvvup\Api\Model\PaymentCaptureType**](PaymentCaptureType.md) |  | [optional]
 **payment_method** | [**\Rvvup\Api\Model\PaymentMethod**](PaymentMethod.md) |  |
 **payment_type** | [**\Rvvup\Api\Model\PaymentType**](PaymentType.md) |  | [optional]

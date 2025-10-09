@@ -60,6 +60,8 @@ class NotificationType
 
     public const WEEKEND_DISBURSEMENT_REPORT = 'MERCHANT_WEEKEND_DISBURSEMENT_REPORT';
 
+    public const PAY_IN_RECEIVED = 'MERCHANT_PAY_IN_RECEIVED';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -74,7 +76,8 @@ class NotificationType
             self::PAYMENT_DECLINED,
             self::REFUND_SUCCEEDED,
             self::PAYMENT_VOIDED,
-            self::WEEKEND_DISBURSEMENT_REPORT
+            self::WEEKEND_DISBURSEMENT_REPORT,
+            self::PAY_IN_RECEIVED
         ];
     }
 }

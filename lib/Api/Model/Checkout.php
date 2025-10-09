@@ -72,6 +72,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'metadata' => 'array<string,string>',
         'mode' => '\Rvvup\Api\Model\CheckoutMode',
         'mode_id' => 'string',
+        'origin_url' => 'string',
         'payment_link_id' => 'string',
         'payment_session_ids' => 'string[]',
         'pending_url' => 'string',
@@ -105,6 +106,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'metadata' => null,
         'mode' => null,
         'mode_id' => null,
+        'origin_url' => null,
         'payment_link_id' => null,
         'payment_session_ids' => null,
         'pending_url' => null,
@@ -136,6 +138,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'metadata' => false,
         'mode' => false,
         'mode_id' => false,
+        'origin_url' => false,
         'payment_link_id' => false,
         'payment_session_ids' => false,
         'pending_url' => false,
@@ -247,6 +250,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'metadata' => 'metadata',
         'mode' => 'mode',
         'mode_id' => 'modeId',
+        'origin_url' => 'originUrl',
         'payment_link_id' => 'paymentLinkId',
         'payment_session_ids' => 'paymentSessionIds',
         'pending_url' => 'pendingUrl',
@@ -278,6 +282,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'metadata' => 'setMetadata',
         'mode' => 'setMode',
         'mode_id' => 'setModeId',
+        'origin_url' => 'setOriginUrl',
         'payment_link_id' => 'setPaymentLinkId',
         'payment_session_ids' => 'setPaymentSessionIds',
         'pending_url' => 'setPendingUrl',
@@ -309,6 +314,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'metadata' => 'getMetadata',
         'mode' => 'getMode',
         'mode_id' => 'getModeId',
+        'origin_url' => 'getOriginUrl',
         'payment_link_id' => 'getPaymentLinkId',
         'payment_session_ids' => 'getPaymentSessionIds',
         'pending_url' => 'getPendingUrl',
@@ -391,6 +397,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('mode', $data ?? [], null);
         $this->setIfExists('mode_id', $data ?? [], null);
+        $this->setIfExists('origin_url', $data ?? [], null);
         $this->setIfExists('payment_link_id', $data ?? [], null);
         $this->setIfExists('payment_session_ids', $data ?? [], null);
         $this->setIfExists('pending_url', $data ?? [], null);
@@ -837,6 +844,33 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable mode_id cannot be null');
         }
         $this->container['mode_id'] = $mode_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_url
+     *
+     * @return string|null
+     */
+    public function getOriginUrl()
+    {
+        return $this->container['origin_url'];
+    }
+
+    /**
+     * Sets origin_url
+     *
+     * @param string|null $origin_url The URL that the customer was on when the checkout was created.
+     *
+     * @return self
+     */
+    public function setOriginUrl($origin_url)
+    {
+        if (is_null($origin_url)) {
+            throw new \InvalidArgumentException('non-nullable origin_url cannot be null');
+        }
+        $this->container['origin_url'] = $origin_url;
 
         return $this;
     }

@@ -60,7 +60,7 @@ class PaymentSettings implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'merchant' => '\Rvvup\Api\Model\PaymentSettingsMerchant',
-        'payment_methods' => '\Rvvup\Api\Model\PagePaymentMethodDetail'
+        'payment_methods' => '\Rvvup\Api\Model\PaymentMethodDetailsPage'
     ];
 
     /**
@@ -334,7 +334,7 @@ class PaymentSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets payment_methods
      *
-     * @return \Rvvup\Api\Model\PagePaymentMethodDetail
+     * @return \Rvvup\Api\Model\PaymentMethodDetailsPage
      */
     public function getPaymentMethods()
     {
@@ -344,7 +344,7 @@ class PaymentSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payment_methods
      *
-     * @param \Rvvup\Api\Model\PagePaymentMethodDetail $payment_methods payment_methods
+     * @param \Rvvup\Api\Model\PaymentMethodDetailsPage $payment_methods payment_methods
      *
      * @return self
      */
