@@ -61,6 +61,7 @@ class PaymentLinkCreateInput implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $openAPITypes = [
         'amount' => '\Rvvup\Api\Model\MoneyInput',
         'checkout_template_id' => 'string',
+        'items' => '\Rvvup\Api\Model\ItemInput[]',
         'reference' => 'string',
         'reusable' => 'bool',
         'source' => '\Rvvup\Api\Model\ApplicationSource'
@@ -76,6 +77,7 @@ class PaymentLinkCreateInput implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $openAPIFormats = [
         'amount' => null,
         'checkout_template_id' => null,
+        'items' => null,
         'reference' => null,
         'reusable' => null,
         'source' => null
@@ -89,6 +91,7 @@ class PaymentLinkCreateInput implements ModelInterface, ArrayAccess, \JsonSerial
     protected static array $openAPINullables = [
         'amount' => false,
         'checkout_template_id' => false,
+        'items' => false,
         'reference' => false,
         'reusable' => false,
         'source' => false
@@ -182,6 +185,7 @@ class PaymentLinkCreateInput implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $attributeMap = [
         'amount' => 'amount',
         'checkout_template_id' => 'checkoutTemplateId',
+        'items' => 'items',
         'reference' => 'reference',
         'reusable' => 'reusable',
         'source' => 'source'
@@ -195,6 +199,7 @@ class PaymentLinkCreateInput implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $setters = [
         'amount' => 'setAmount',
         'checkout_template_id' => 'setCheckoutTemplateId',
+        'items' => 'setItems',
         'reference' => 'setReference',
         'reusable' => 'setReusable',
         'source' => 'setSource'
@@ -208,6 +213,7 @@ class PaymentLinkCreateInput implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $getters = [
         'amount' => 'getAmount',
         'checkout_template_id' => 'getCheckoutTemplateId',
+        'items' => 'getItems',
         'reference' => 'getReference',
         'reusable' => 'getReusable',
         'source' => 'getSource'
@@ -272,6 +278,7 @@ class PaymentLinkCreateInput implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('checkout_template_id', $data ?? [], null);
+        $this->setIfExists('items', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('reusable', $data ?? [], false);
         $this->setIfExists('source', $data ?? [], null);
@@ -377,6 +384,33 @@ class PaymentLinkCreateInput implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable checkout_template_id cannot be null');
         }
         $this->container['checkout_template_id'] = $checkout_template_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets items
+     *
+     * @return \Rvvup\Api\Model\ItemInput[]|null
+     */
+    public function getItems()
+    {
+        return $this->container['items'];
+    }
+
+    /**
+     * Sets items
+     *
+     * @param \Rvvup\Api\Model\ItemInput[]|null $items items
+     *
+     * @return self
+     */
+    public function setItems($items)
+    {
+        if (is_null($items)) {
+            throw new \InvalidArgumentException('non-nullable items cannot be null');
+        }
+        $this->container['items'] = $items;
 
         return $this;
     }

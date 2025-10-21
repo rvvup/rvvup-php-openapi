@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **restriction** | [**\Rvvup\Api\Model\ItemRestriction**](ItemRestriction.md) |  | [optional]
 **sku** | **string** | Stock keeping unit - the unique identifier for the item. |
 **tax** | [**\Rvvup\Api\Model\MoneyInput**](MoneyInput.md) |  | [optional]
+**tax_rate** | **string** | The tax rate applied to the item, represented as a numeric string. | [optional]
 **total** | [**\Rvvup\Api\Model\MoneyInput**](MoneyInput.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
