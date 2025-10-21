@@ -440,7 +440,9 @@ Class | Method | HTTP request | Description
 - [WoocommerceConnectionDataInput](docs/Model/WoocommerceConnectionDataInput.md)
 - [ZopaRetailFinanceConnectionData](docs/Model/ZopaRetailFinanceConnectionData.md)
 - [ZopaRetailFinanceConnectionDataInput](docs/Model/ZopaRetailFinanceConnectionDataInput.md)
+- [ZopaRetailFinancePageSettings](docs/Model/ZopaRetailFinancePageSettings.md)
 - [ZopaRetailFinancePaymentMethodSettings](docs/Model/ZopaRetailFinancePaymentMethodSettings.md)
+- [ZopaRetailFinanceWidgetSettings](docs/Model/ZopaRetailFinanceWidgetSettings.md)
 
 ## Authorization
 

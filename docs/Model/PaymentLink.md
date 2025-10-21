@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **checkout_template_id** | **string** | The ID of the checkout template to use for this payment link.                          If not provided, the default template will be used. | [optional]
 **created_at** | **\DateTime** | The datetime when the payment link was created. |
 **id** | **string** | The unique ID of the payment link. |
+**items** | [**\Rvvup\Api\Model\Item[]**](Item.md) |  |
 **merchant_id** | **string** | The ID of the merchant that owns this checkout. |
 **reference** | **string** | Your reference to identify the payment link and subsequently created checkouts                          and payment sessions. | [optional]
 **reusable** | **bool** | Whether the payment link can be reused for multiple payments. |

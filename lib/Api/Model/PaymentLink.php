@@ -64,6 +64,7 @@ class PaymentLink implements ModelInterface, ArrayAccess, \JsonSerializable
         'checkout_template_id' => 'string',
         'created_at' => '\DateTime',
         'id' => 'string',
+        'items' => '\Rvvup\Api\Model\Item[]',
         'merchant_id' => 'string',
         'reference' => 'string',
         'reusable' => 'bool',
@@ -86,6 +87,7 @@ class PaymentLink implements ModelInterface, ArrayAccess, \JsonSerializable
         'checkout_template_id' => null,
         'created_at' => 'date-time',
         'id' => null,
+        'items' => null,
         'merchant_id' => null,
         'reference' => null,
         'reusable' => null,
@@ -106,6 +108,7 @@ class PaymentLink implements ModelInterface, ArrayAccess, \JsonSerializable
         'checkout_template_id' => false,
         'created_at' => false,
         'id' => false,
+        'items' => false,
         'merchant_id' => false,
         'reference' => false,
         'reusable' => false,
@@ -206,6 +209,7 @@ class PaymentLink implements ModelInterface, ArrayAccess, \JsonSerializable
         'checkout_template_id' => 'checkoutTemplateId',
         'created_at' => 'createdAt',
         'id' => 'id',
+        'items' => 'items',
         'merchant_id' => 'merchantId',
         'reference' => 'reference',
         'reusable' => 'reusable',
@@ -226,6 +230,7 @@ class PaymentLink implements ModelInterface, ArrayAccess, \JsonSerializable
         'checkout_template_id' => 'setCheckoutTemplateId',
         'created_at' => 'setCreatedAt',
         'id' => 'setId',
+        'items' => 'setItems',
         'merchant_id' => 'setMerchantId',
         'reference' => 'setReference',
         'reusable' => 'setReusable',
@@ -246,6 +251,7 @@ class PaymentLink implements ModelInterface, ArrayAccess, \JsonSerializable
         'checkout_template_id' => 'getCheckoutTemplateId',
         'created_at' => 'getCreatedAt',
         'id' => 'getId',
+        'items' => 'getItems',
         'merchant_id' => 'getMerchantId',
         'reference' => 'getReference',
         'reusable' => 'getReusable',
@@ -317,6 +323,7 @@ class PaymentLink implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('checkout_template_id', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('items', $data ?? [], null);
         $this->setIfExists('merchant_id', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('reusable', $data ?? [], null);
@@ -361,6 +368,9 @@ class PaymentLink implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['items'] === null) {
+            $invalidProperties[] = "'items' can't be null";
         }
         if ($this->container['merchant_id'] === null) {
             $invalidProperties[] = "'merchant_id' can't be null";
@@ -526,6 +536,33 @@ class PaymentLink implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets items
+     *
+     * @return \Rvvup\Api\Model\Item[]
+     */
+    public function getItems()
+    {
+        return $this->container['items'];
+    }
+
+    /**
+     * Sets items
+     *
+     * @param \Rvvup\Api\Model\Item[] $items items
+     *
+     * @return self
+     */
+    public function setItems($items)
+    {
+        if (is_null($items)) {
+            throw new \InvalidArgumentException('non-nullable items cannot be null');
+        }
+        $this->container['items'] = $items;
 
         return $this;
     }

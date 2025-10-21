@@ -1,6 +1,6 @@
 <?php
 /**
- * ZopaRetailFinancePaymentMethodSettings
+ * ZopaRetailFinancePageSettings
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Rvvup\ObjectSerializer;
 
 /**
- * ZopaRetailFinancePaymentMethodSettings Class Doc Comment
+ * ZopaRetailFinancePageSettings Class Doc Comment
  *
  * @category Class
- * @description Zopa retail finance payment method settings object
+ * @description Zopa retail finance page level settings object
  * @package  Rvvup
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ZopaRetailFinancePaymentMethodSettings implements ModelInterface, ArrayAccess, \JsonSerializable
+class ZopaRetailFinancePageSettings implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class ZopaRetailFinancePaymentMethodSettings implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ZopaRetailFinancePaymentMethodSettings';
+    protected static $openAPIModelName = 'ZopaRetailFinancePageSettings';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,7 @@ class ZopaRetailFinancePaymentMethodSettings implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'product' => '\Rvvup\Api\Model\ZopaRetailFinancePageSettings',
-        'sdk_api_key' => 'string'
+        'widget' => '\Rvvup\Api\Model\ZopaRetailFinanceWidgetSettings'
     ];
 
     /**
@@ -71,8 +70,7 @@ class ZopaRetailFinancePaymentMethodSettings implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'product' => null,
-        'sdk_api_key' => null
+        'widget' => null
     ];
 
     /**
@@ -81,8 +79,7 @@ class ZopaRetailFinancePaymentMethodSettings implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'product' => false,
-        'sdk_api_key' => false
+        'widget' => false
     ];
 
     /**
@@ -171,8 +168,7 @@ class ZopaRetailFinancePaymentMethodSettings implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'product' => 'product',
-        'sdk_api_key' => 'sdkApiKey'
+        'widget' => 'widget'
     ];
 
     /**
@@ -181,8 +177,7 @@ class ZopaRetailFinancePaymentMethodSettings implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'product' => 'setProduct',
-        'sdk_api_key' => 'setSdkApiKey'
+        'widget' => 'setWidget'
     ];
 
     /**
@@ -191,8 +186,7 @@ class ZopaRetailFinancePaymentMethodSettings implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'product' => 'getProduct',
-        'sdk_api_key' => 'getSdkApiKey'
+        'widget' => 'getWidget'
     ];
 
     /**
@@ -252,8 +246,7 @@ class ZopaRetailFinancePaymentMethodSettings implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('product', $data ?? [], null);
-        $this->setIfExists('sdk_api_key', $data ?? [], null);
+        $this->setIfExists('widget', $data ?? [], null);
     }
 
     /**
@@ -283,6 +276,9 @@ class ZopaRetailFinancePaymentMethodSettings implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
+        if ($this->container['widget'] === null) {
+            $invalidProperties[] = "'widget' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,55 +295,28 @@ class ZopaRetailFinancePaymentMethodSettings implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets product
+     * Gets widget
      *
-     * @return \Rvvup\Api\Model\ZopaRetailFinancePageSettings|null
+     * @return \Rvvup\Api\Model\ZopaRetailFinanceWidgetSettings
      */
-    public function getProduct()
+    public function getWidget()
     {
-        return $this->container['product'];
+        return $this->container['widget'];
     }
 
     /**
-     * Sets product
+     * Sets widget
      *
-     * @param \Rvvup\Api\Model\ZopaRetailFinancePageSettings|null $product product
+     * @param \Rvvup\Api\Model\ZopaRetailFinanceWidgetSettings $widget widget
      *
      * @return self
      */
-    public function setProduct($product)
+    public function setWidget($widget)
     {
-        if (is_null($product)) {
-            throw new \InvalidArgumentException('non-nullable product cannot be null');
+        if (is_null($widget)) {
+            throw new \InvalidArgumentException('non-nullable widget cannot be null');
         }
-        $this->container['product'] = $product;
-
-        return $this;
-    }
-
-    /**
-     * Gets sdk_api_key
-     *
-     * @return string|null
-     */
-    public function getSdkApiKey()
-    {
-        return $this->container['sdk_api_key'];
-    }
-
-    /**
-     * Sets sdk_api_key
-     *
-     * @param string|null $sdk_api_key Zopa Retail Finance SDK API Key used for initialising the frontend SDK
-     *
-     * @return self
-     */
-    public function setSdkApiKey($sdk_api_key)
-    {
-        if (is_null($sdk_api_key)) {
-            throw new \InvalidArgumentException('non-nullable sdk_api_key cannot be null');
-        }
-        $this->container['sdk_api_key'] = $sdk_api_key;
+        $this->container['widget'] = $widget;
 
         return $this;
     }

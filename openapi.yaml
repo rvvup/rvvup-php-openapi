@@ -5691,6 +5691,10 @@ components:
           minLength: 1
         tax:
           $ref: "#/components/schemas/MoneyInput"
+        taxRate:
+          type: string
+          description: "The tax rate applied to the item, represented as a numeric\
+            \ string."
         total:
           $ref: "#/components/schemas/MoneyInput"
       required:
@@ -6334,6 +6338,10 @@ components:
         id:
           type: string
           description: The unique ID of the payment link.
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/Item"
         merchantId:
           type: string
           description: The ID of the merchant that owns this checkout.
@@ -6360,6 +6368,7 @@ components:
         - checkoutIds
         - createdAt
         - id
+        - items
         - merchantId
         - reusable
         - source
@@ -6379,6 +6388,10 @@ components:
                                      If not provided, the default template will be used.
                                      If provided, the template must be available to the merchant.
           example: null
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ItemInput"
         reference:
           type: string
           description: |-
@@ -7635,14 +7648,33 @@ components:
         - oauthClientSecret
         - tokenNumber
         - type
+    ZopaRetailFinancePageSettings:
+      type: object
+      description: Zopa retail finance page level settings object
+      properties:
+        widget:
+          $ref: "#/components/schemas/ZopaRetailFinanceWidgetSettings"
+      required:
+        - widget
     ZopaRetailFinancePaymentMethodSettings:
       type: object
       description: Zopa retail finance payment method settings object
       properties:
+        product:
+          $ref: "#/components/schemas/ZopaRetailFinancePageSettings"
         sdkApiKey:
           type: string
           description: Zopa Retail Finance SDK API Key used for initialising the frontend
             SDK
+    ZopaRetailFinanceWidgetSettings:
+      type: object
+      description: Zopa retail finance widget settings object
+      properties:
+        enabled:
+          type: boolean
+          description: Is the widget enabled
+      required:
+        - enabled
   securitySchemes:
     apiKey:
       bearerFormat: JWT

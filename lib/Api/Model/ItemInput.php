@@ -66,6 +66,7 @@ class ItemInput implements ModelInterface, ArrayAccess, \JsonSerializable
         'restriction' => '\Rvvup\Api\Model\ItemRestriction',
         'sku' => 'string',
         'tax' => '\Rvvup\Api\Model\MoneyInput',
+        'tax_rate' => 'string',
         'total' => '\Rvvup\Api\Model\MoneyInput'
     ];
 
@@ -84,6 +85,7 @@ class ItemInput implements ModelInterface, ArrayAccess, \JsonSerializable
         'restriction' => null,
         'sku' => null,
         'tax' => null,
+        'tax_rate' => null,
         'total' => null
     ];
 
@@ -100,6 +102,7 @@ class ItemInput implements ModelInterface, ArrayAccess, \JsonSerializable
         'restriction' => false,
         'sku' => false,
         'tax' => false,
+        'tax_rate' => false,
         'total' => false
     ];
 
@@ -196,6 +199,7 @@ class ItemInput implements ModelInterface, ArrayAccess, \JsonSerializable
         'restriction' => 'restriction',
         'sku' => 'sku',
         'tax' => 'tax',
+        'tax_rate' => 'taxRate',
         'total' => 'total'
     ];
 
@@ -212,6 +216,7 @@ class ItemInput implements ModelInterface, ArrayAccess, \JsonSerializable
         'restriction' => 'setRestriction',
         'sku' => 'setSku',
         'tax' => 'setTax',
+        'tax_rate' => 'setTaxRate',
         'total' => 'setTotal'
     ];
 
@@ -228,6 +233,7 @@ class ItemInput implements ModelInterface, ArrayAccess, \JsonSerializable
         'restriction' => 'getRestriction',
         'sku' => 'getSku',
         'tax' => 'getTax',
+        'tax_rate' => 'getTaxRate',
         'total' => 'getTotal'
     ];
 
@@ -295,6 +301,7 @@ class ItemInput implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('restriction', $data ?? [], null);
         $this->setIfExists('sku', $data ?? [], null);
         $this->setIfExists('tax', $data ?? [], null);
+        $this->setIfExists('tax_rate', $data ?? [], null);
         $this->setIfExists('total', $data ?? [], null);
     }
 
@@ -570,6 +577,33 @@ class ItemInput implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable tax cannot be null');
         }
         $this->container['tax'] = $tax;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_rate
+     *
+     * @return string|null
+     */
+    public function getTaxRate()
+    {
+        return $this->container['tax_rate'];
+    }
+
+    /**
+     * Sets tax_rate
+     *
+     * @param string|null $tax_rate The tax rate applied to the item, represented as a numeric string.
+     *
+     * @return self
+     */
+    public function setTaxRate($tax_rate)
+    {
+        if (is_null($tax_rate)) {
+            throw new \InvalidArgumentException('non-nullable tax_rate cannot be null');
+        }
+        $this->container['tax_rate'] = $tax_rate;
 
         return $this;
     }
