@@ -250,7 +250,7 @@ class CardPaymentMethodSettings implements ModelInterface, ArrayAccess, \JsonSer
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('initialization_token', $data ?? [], null);
         $this->setIfExists('live_status', $data ?? [], null);
