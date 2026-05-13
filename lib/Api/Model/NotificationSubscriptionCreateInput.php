@@ -274,7 +274,7 @@ class NotificationSubscriptionCreateInput implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('active_from', $data ?? [], null);
         $this->setIfExists('active_to', $data ?? [], null);
