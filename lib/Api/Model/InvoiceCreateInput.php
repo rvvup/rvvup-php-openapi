@@ -298,7 +298,7 @@ class InvoiceCreateInput implements ModelInterface, ArrayAccess, \JsonSerializab
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('chaser_plan_id', $data ?? [], null);
         $this->setIfExists('customer_account_id', $data ?? [], null);

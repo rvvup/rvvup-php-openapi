@@ -250,7 +250,7 @@ class CheckoutClearpaySettingsInput implements ModelInterface, ArrayAccess, \Jso
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('customer_fields', $data ?? [], null);
         $this->setIfExists('limits', $data ?? [], null);

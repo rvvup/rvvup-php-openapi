@@ -249,7 +249,7 @@ class CheckoutCustomerFields implements ModelInterface, ArrayAccess, \JsonSerial
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('optional', $data ?? [], null);
         $this->setIfExists('required', $data ?? [], null);
