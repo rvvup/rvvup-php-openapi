@@ -5,6 +5,9 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**applyCreditNote()**](PublicApi.md#applyCreditNote) | **POST** /api/2024-03-01/{merchantId}/credit-notes/{creditNoteId}/apply | Apply a credit note to an invoice |
+| [**callList()**](PublicApi.md#callList) | **GET** /api/2024-03-01/{merchantId}/transfers | List transfers |
+| [**checkConfirmationOfPayee()**](PublicApi.md#checkConfirmationOfPayee) | **POST** /api/2024-03-01/{merchantId}/confirmation-of-payee | Confirmation of Payee check |
+| [**create()**](PublicApi.md#create) | **POST** /api/2024-03-01/{merchantId}/transfers | Create a transfer |
 | [**createAccountStatement()**](PublicApi.md#createAccountStatement) | **POST** /api/2024-03-01/{merchantId}/accounts/statements | Create a new account statement |
 | [**createChaserPlan()**](PublicApi.md#createChaserPlan) | **POST** /api/2024-03-01/{merchantId}/chaser-plans | Create new chaser plan |
 | [**createCheckout()**](PublicApi.md#createCheckout) | **POST** /api/2024-03-01/{merchantId}/checkouts | Create new checkout |
@@ -12,12 +15,14 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | [**createConnection()**](PublicApi.md#createConnection) | **PUT** /api/2024-03-01/{merchantId}/connections | Create a new connection or updates an existing connection. |
 | [**createCreditNote()**](PublicApi.md#createCreditNote) | **POST** /api/2024-03-01/{merchantId}/credit-notes | Create new credit note |
 | [**createCustomerAccount()**](PublicApi.md#createCustomerAccount) | **POST** /api/2024-03-01/{merchantId}/customer-accounts | Create a customer account |
+| [**createExternalPayee()**](PublicApi.md#createExternalPayee) | **POST** /api/2024-03-01/{merchantId}/external-payees | Create an external payee |
 | [**createInvoice()**](PublicApi.md#createInvoice) | **POST** /api/2024-03-01/{merchantId}/invoices | Create new invoice |
 | [**createInvoiceNotification()**](PublicApi.md#createInvoiceNotification) | **POST** /api/2024-03-01/{merchantId}/invoices/{invoiceId}/notifications | Notify a customer of an invoice |
 | [**createMerchantDomains()**](PublicApi.md#createMerchantDomains) | **POST** /api/2024-03-01/{merchantId}/domains | Create new merchant domains |
 | [**createNotificationSubscription()**](PublicApi.md#createNotificationSubscription) | **POST** /api/2024-03-01/{merchantId}/notification-subscriptions | Create a new notification subscription. |
 | [**createPaymentLink()**](PublicApi.md#createPaymentLink) | **POST** /api/2024-03-01/{merchantId}/payment-links | Create new payment link |
 | [**createPaymentSession()**](PublicApi.md#createPaymentSession) | **POST** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions | Create a payment session |
+| [**createQuote()**](PublicApi.md#createQuote) | **POST** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions/{paymentSessionId}/zopa-retail-finance/quote | Submit a Zopa Retail Finance Quote |
 | [**createRefund()**](PublicApi.md#createRefund) | **POST** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions/{paymentSessionId}/refunds | Create a refund |
 | [**createShipmentTracking()**](PublicApi.md#createShipmentTracking) | **POST** /api/2024-03-01/{merchantId}/payment-sessions/{paymentSessionId}/shipment-tracking | Create a shipment tracking entry for a payment session |
 | [**createShipmentTrackingWithCheckout()**](PublicApi.md#createShipmentTrackingWithCheckout) | **POST** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions/{paymentSessionId}/shipment-tracking | Create a shipment tracking entry for a payment session |
@@ -34,6 +39,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | [**exportStatement()**](PublicApi.md#exportStatement) | **POST** /api/2024-03-01/{merchantId}/statements/export | Export a statement |
 | [**finalizeCreditNote()**](PublicApi.md#finalizeCreditNote) | **POST** /api/2024-03-01/{merchantId}/credit-notes/{creditNoteId}/finalize | Finalize a credit note |
 | [**finalizeInvoice()**](PublicApi.md#finalizeInvoice) | **POST** /api/2024-03-01/{merchantId}/invoices/{invoiceId}/finalize | Finalize an invoice |
+| [**find()**](PublicApi.md#find) | **GET** /api/2024-03-01/{merchantId}/transfers/{transferId} | Get a transfer |
 | [**getAccountStatement()**](PublicApi.md#getAccountStatement) | **GET** /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId} | Get an account statement |
 | [**getChaserPlan()**](PublicApi.md#getChaserPlan) | **GET** /api/2024-03-01/{merchantId}/chaser-plans/{chaserPlanId} | Get a chaser plan |
 | [**getCheckout()**](PublicApi.md#getCheckout) | **GET** /api/2024-03-01/{merchantId}/checkouts/{checkoutId} | Get a checkout |
@@ -44,13 +50,19 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | [**getCreditNote()**](PublicApi.md#getCreditNote) | **GET** /api/2024-03-01/{merchantId}/credit-notes/{creditNoteId} | Get a credit note |
 | [**getCustomerAccount()**](PublicApi.md#getCustomerAccount) | **GET** /api/2024-03-01/{merchantId}/customer-accounts/{customerAccountId} | Get a customer account |
 | [**getCustomerAccounts()**](PublicApi.md#getCustomerAccounts) | **GET** /api/2024-03-01/{merchantId}/customer-accounts | Get customer accounts |
+| [**getDisbursementBatch()**](PublicApi.md#getDisbursementBatch) | **GET** /api/2024-03-01/{merchantId}/disbursements/{disbursementBatchId} | Get a disbursement batch |
+| [**getExternalPayee()**](PublicApi.md#getExternalPayee) | **GET** /api/2024-03-01/{merchantId}/external-payees/{payeeId} | Get an external payee |
 | [**getInvoice()**](PublicApi.md#getInvoice) | **GET** /api/2024-03-01/{merchantId}/invoices/{invoiceId} | Get a invoice |
+| [**getLoanTerms()**](PublicApi.md#getLoanTerms) | **GET** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-methods/zopa-retail-finance/loan-terms | Get Zopa Retail Finance Loan Terms |
 | [**getNotificationSubscription()**](PublicApi.md#getNotificationSubscription) | **GET** /api/2024-03-01/{merchantId}/notification-subscriptions/{id} | Get a notification subscription |
 | [**getOrderById()**](PublicApi.md#getOrderById) | **GET** /api/2024-03-01/{merchantId}/orders/{id} | Get order by ID |
 | [**getOrders()**](PublicApi.md#getOrders) | **GET** /api/2024-03-01/{merchantId}/orders | Search orders |
 | [**getPaymentLink()**](PublicApi.md#getPaymentLink) | **GET** /api/2024-03-01/{merchantId}/payment-links/{paymentLinkId} | Get a payment link |
+| [**getPaymentMethodToken()**](PublicApi.md#getPaymentMethodToken) | **GET** /api/2024-03-01/{merchantId}/payment-method-tokens/{id} | Get a saved payment method token |
 | [**getPaymentSession()**](PublicApi.md#getPaymentSession) | **GET** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions/{paymentSessionId} | Get a payment session |
 | [**getPaymentSettings()**](PublicApi.md#getPaymentSettings) | **POST** /api/2024-03-01/{merchantId}/payment-settings | Get payment settings for a merchant |
+| [**getRepresentativeExample()**](PublicApi.md#getRepresentativeExample) | **GET** /api/2024-03-01/{merchantId}/payment-methods/zopa-retail-finance/representative-example | Get Zopa Retail Finance Representative Example |
+| [**getSavedToken()**](PublicApi.md#getSavedToken) | **GET** /api/2024-03-01/{merchantId}/payment-sessions/{paymentSessionId}/saved-token | Get the saved payment method token for a payment session |
 | [**getTheme()**](PublicApi.md#getTheme) | **GET** /api/2024-03-01/{merchantId}/themes/{themeId} | Get a theme |
 | [**getThemeForAccountStatement()**](PublicApi.md#getThemeForAccountStatement) | **GET** /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId}/theme | Get the theme for an account statement |
 | [**getThemeForCheckout()**](PublicApi.md#getThemeForCheckout) | **GET** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/theme | Get the theme for a checkout |
@@ -62,16 +74,20 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | [**listConnections()**](PublicApi.md#listConnections) | **GET** /api/2024-03-01/{merchantId}/connections | List connections |
 | [**listCreditNotes()**](PublicApi.md#listCreditNotes) | **GET** /api/2024-03-01/{merchantId}/credit-notes | List credit notes |
 | [**listCreditNotesForInvoice()**](PublicApi.md#listCreditNotesForInvoice) | **GET** /api/2024-03-01/{merchantId}/invoices/{invoiceId}/credit-notes | List credit notes for an invoice |
+| [**listExternalPayees()**](PublicApi.md#listExternalPayees) | **GET** /api/2024-03-01/{merchantId}/external-payees | List external payees |
 | [**listInvoiceNotifications()**](PublicApi.md#listInvoiceNotifications) | **GET** /api/2024-03-01/{merchantId}/invoices/{invoiceId}/notifications | List invoice notifications |
 | [**listInvoices()**](PublicApi.md#listInvoices) | **GET** /api/2024-03-01/{merchantId}/invoices | List invoices |
 | [**listInvoicesForCustomerAccount()**](PublicApi.md#listInvoicesForCustomerAccount) | **GET** /api/2024-03-01/{merchantId}/customer-accounts/{customerAccountId}/invoices | Get list of invoices for customer account |
 | [**listMerchantDomains()**](PublicApi.md#listMerchantDomains) | **GET** /api/2024-03-01/{merchantId}/domains | List merchant domains |
 | [**listNotificationSubscriptions()**](PublicApi.md#listNotificationSubscriptions) | **GET** /api/2024-03-01/{merchantId}/notification-subscriptions | List notification subscriptions. |
+| [**listPayees()**](PublicApi.md#listPayees) | **GET** /api/2024-03-01/{merchantId}/payees | List payees |
 | [**listPaymentLinks()**](PublicApi.md#listPaymentLinks) | **GET** /api/2024-03-01/{merchantId}/payment-links | List payment links |
 | [**listPaymentMethods()**](PublicApi.md#listPaymentMethods) | **GET** /api/2024-03-01/{merchantId}/payment-methods | Get payment methods |
 | [**listThemes()**](PublicApi.md#listThemes) | **GET** /api/2024-03-01/{merchantId}/themes | List themes |
 | [**listWebhooks()**](PublicApi.md#listWebhooks) | **GET** /api/2024-03-01/{merchantId}/webhooks | Get all webhooks |
+| [**previewAccountStatementPayment()**](PublicApi.md#previewAccountStatementPayment) | **POST** /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId}/payment-preview | Preview payment with credit note application |
 | [**refreshInvoiceUrl()**](PublicApi.md#refreshInvoiceUrl) | **POST** /api/2024-03-01/{merchantId}/invoices/{invoiceId}/refresh-url | Refresh an invoice url |
+| [**revokePaymentMethodToken()**](PublicApi.md#revokePaymentMethodToken) | **DELETE** /api/2024-03-01/{merchantId}/payment-method-tokens/{id} | Revoke a saved payment method token |
 | [**updateCheckoutTemplate()**](PublicApi.md#updateCheckoutTemplate) | **PATCH** /api/2024-03-01/{merchantId}/checkout-templates/{checkoutTemplateId} | Update a checkout template |
 | [**updateCreditNote()**](PublicApi.md#updateCreditNote) | **PUT** /api/2024-03-01/{merchantId}/credit-notes/{creditNoteId} | Update a credit note |
 | [**updateInvoice()**](PublicApi.md#updateInvoice) | **PUT** /api/2024-03-01/{merchantId}/invoices/{invoiceId} | Update an invoice |
@@ -79,6 +95,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | [**updateWebhook()**](PublicApi.md#updateWebhook) | **PATCH** /api/2024-03-01/{merchantId}/webhooks/{webhookId} | Update a webhook |
 | [**voidCreditNote()**](PublicApi.md#voidCreditNote) | **POST** /api/2024-03-01/{merchantId}/credit-notes/{creditNoteId}/void | Void a credit note |
 | [**voidInvoice()**](PublicApi.md#voidInvoice) | **POST** /api/2024-03-01/{merchantId}/invoices/{invoiceId}/void | Void an open invoice |
+| [**zopaRetailFinanceFulfil()**](PublicApi.md#zopaRetailFinanceFulfil) | **POST** /api/2024-03-01/{merchantId}/payment-sessions/{paymentSessionId}/fulfil | Fulfil Zopa Retail Finance Order |
 
 
 ## `applyCreditNote()`
@@ -137,6 +154,196 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `callList()`
+
+```php
+callList($merchant_id, $offset, $limit): \Rvvup\Api\Model\TransferPage
+```
+
+List transfers
+
+List transfers for the given merchant
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: apiKey
+$config = Rvvup\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Rvvup\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | merchant id
+$offset = 56; // int | pagination offset
+$limit = 20; // int | pagination limit
+
+try {
+    $result = $apiInstance->callList($merchant_id, $offset, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->callList: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| merchant id | |
+| **offset** | **int**| pagination offset | [optional] |
+| **limit** | **int**| pagination limit | [optional] [default to 20] |
+
+### Return type
+
+[**\Rvvup\Api\Model\TransferPage**](../Model/TransferPage.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `checkConfirmationOfPayee()`
+
+```php
+checkConfirmationOfPayee($merchant_id, $confirmation_of_payee_check_input): \Rvvup\Api\Model\ConfirmationOfPayeeResult
+```
+
+Confirmation of Payee check
+
+Performs a Confirmation of Payee check against the supplied bank account details
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: apiKey
+$config = Rvvup\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Rvvup\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | Merchant ID
+$confirmation_of_payee_check_input = new \Rvvup\Api\Model\ConfirmationOfPayeeCheckInput(); // \Rvvup\Api\Model\ConfirmationOfPayeeCheckInput | The bank account details to check
+
+try {
+    $result = $apiInstance->checkConfirmationOfPayee($merchant_id, $confirmation_of_payee_check_input);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->checkConfirmationOfPayee: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| Merchant ID | |
+| **confirmation_of_payee_check_input** | [**\Rvvup\Api\Model\ConfirmationOfPayeeCheckInput**](../Model/ConfirmationOfPayeeCheckInput.md)| The bank account details to check | |
+
+### Return type
+
+[**\Rvvup\Api\Model\ConfirmationOfPayeeResult**](../Model/ConfirmationOfPayeeResult.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `create()`
+
+```php
+create($merchant_id, $idempotency_key, $transfer_create_input): \Rvvup\Api\Model\Transfer
+```
+
+Create a transfer
+
+Create a transfer from the given merchant to a destination merchant
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: apiKey
+$config = Rvvup\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Rvvup\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | merchant id
+$idempotency_key = 'idempotency_key_example'; // string | Idempotency Key
+$transfer_create_input = new \Rvvup\Api\Model\TransferCreateInput(); // \Rvvup\Api\Model\TransferCreateInput
+
+try {
+    $result = $apiInstance->create($merchant_id, $idempotency_key, $transfer_create_input);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->create: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| merchant id | |
+| **idempotency_key** | **string**| Idempotency Key | [optional] |
+| **transfer_create_input** | [**\Rvvup\Api\Model\TransferCreateInput**](../Model/TransferCreateInput.md)|  | [optional] |
+
+### Return type
+
+[**\Rvvup\Api\Model\Transfer**](../Model/Transfer.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -585,6 +792,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createExternalPayee()`
+
+```php
+createExternalPayee($merchant_id, $external_payee_create_input): \Rvvup\Api\Model\ExternalPayee
+```
+
+Create an external payee
+
+Register an external bank account as a payee. The payee is created in the CREATED state and cannot receive funds until it is activated.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: apiKey
+$config = Rvvup\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Rvvup\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | merchant id
+$external_payee_create_input = new \Rvvup\Api\Model\ExternalPayeeCreateInput(); // \Rvvup\Api\Model\ExternalPayeeCreateInput
+
+try {
+    $result = $apiInstance->createExternalPayee($merchant_id, $external_payee_create_input);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->createExternalPayee: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| merchant id | |
+| **external_payee_create_input** | [**\Rvvup\Api\Model\ExternalPayeeCreateInput**](../Model/ExternalPayeeCreateInput.md)|  | [optional] |
+
+### Return type
+
+[**\Rvvup\Api\Model\ExternalPayee**](../Model/ExternalPayee.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `createInvoice()`
 
 ```php
@@ -953,6 +1222,72 @@ try {
 ### Return type
 
 [**\Rvvup\Api\Model\PaymentSession**](../Model/PaymentSession.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createQuote()`
+
+```php
+createQuote($merchant_id, $checkout_id, $payment_session_id, $zopa_retail_finance_quote_request): \Rvvup\Api\Model\ZopaRetailFinanceQuoteResponse
+```
+
+Submit a Zopa Retail Finance Quote
+
+Submit customer affordability data to Zopa Retail Finance and receive the credit decision
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: apiKey
+$config = Rvvup\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Rvvup\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | The merchant id
+$checkout_id = 'checkout_id_example'; // string | The checkout id
+$payment_session_id = 'payment_session_id_example'; // string | The payment session id
+$zopa_retail_finance_quote_request = new \Rvvup\Api\Model\ZopaRetailFinanceQuoteRequest(); // \Rvvup\Api\Model\ZopaRetailFinanceQuoteRequest
+
+try {
+    $result = $apiInstance->createQuote($merchant_id, $checkout_id, $payment_session_id, $zopa_retail_finance_quote_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->createQuote: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| The merchant id | |
+| **checkout_id** | **string**| The checkout id | |
+| **payment_session_id** | **string**| The payment session id | |
+| **zopa_retail_finance_quote_request** | [**\Rvvup\Api\Model\ZopaRetailFinanceQuoteRequest**](../Model/ZopaRetailFinanceQuoteRequest.md)|  | [optional] |
+
+### Return type
+
+[**\Rvvup\Api\Model\ZopaRetailFinanceQuoteResponse**](../Model/ZopaRetailFinanceQuoteResponse.md)
 
 ### Authorization
 
@@ -1965,6 +2300,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `find()`
+
+```php
+find($merchant_id, $transfer_id): \Rvvup\Api\Model\Transfer
+```
+
+Get a transfer
+
+Get a transfer by ID
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: apiKey
+$config = Rvvup\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Rvvup\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | merchant id
+$transfer_id = 'transfer_id_example'; // string | transfer id
+
+try {
+    $result = $apiInstance->find($merchant_id, $transfer_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->find: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| merchant id | |
+| **transfer_id** | **string**| transfer id | |
+
+### Return type
+
+[**\Rvvup\Api\Model\Transfer**](../Model/Transfer.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getAccountStatement()`
 
 ```php
@@ -2595,6 +2992,130 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getDisbursementBatch()`
+
+```php
+getDisbursementBatch($merchant_id, $disbursement_batch_id): \Rvvup\Api\Model\DisbursementBatch
+```
+
+Get a disbursement batch
+
+Returns a disbursement batch with its constituent payments, refunds and fees.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: apiKey
+$config = Rvvup\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Rvvup\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | merchant id
+$disbursement_batch_id = 'disbursement_batch_id_example'; // string | disbursement batch id
+
+try {
+    $result = $apiInstance->getDisbursementBatch($merchant_id, $disbursement_batch_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getDisbursementBatch: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| merchant id | |
+| **disbursement_batch_id** | **string**| disbursement batch id | |
+
+### Return type
+
+[**\Rvvup\Api\Model\DisbursementBatch**](../Model/DisbursementBatch.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getExternalPayee()`
+
+```php
+getExternalPayee($merchant_id, $payee_id): \Rvvup\Api\Model\ExternalPayee
+```
+
+Get an external payee
+
+Fetch a single external payee by id, including its status and CoP outcome
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: apiKey
+$config = Rvvup\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Rvvup\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | merchant id
+$payee_id = 'payee_id_example'; // string | external payee id
+
+try {
+    $result = $apiInstance->getExternalPayee($merchant_id, $payee_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getExternalPayee: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| merchant id | |
+| **payee_id** | **string**| external payee id | |
+
+### Return type
+
+[**\Rvvup\Api\Model\ExternalPayee**](../Model/ExternalPayee.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getInvoice()`
 
 ```php
@@ -2643,6 +3164,70 @@ try {
 ### Return type
 
 [**\Rvvup\Api\Model\Invoice**](../Model/Invoice.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getLoanTerms()`
+
+```php
+getLoanTerms($merchant_id, $checkout_id, $amount): \Rvvup\Api\Model\ZopaRetailFinanceLoanTerms
+```
+
+Get Zopa Retail Finance Loan Terms
+
+Get calculated instalment breakdowns for the checkout amount
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: apiKey
+$config = Rvvup\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Rvvup\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | The merchant id
+$checkout_id = 'checkout_id_example'; // string | The checkout id
+$amount = 3.4; // float | Override amount in pounds
+
+try {
+    $result = $apiInstance->getLoanTerms($merchant_id, $checkout_id, $amount);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getLoanTerms: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| The merchant id | |
+| **checkout_id** | **string**| The checkout id | |
+| **amount** | **float**| Override amount in pounds | [optional] |
+
+### Return type
+
+[**\Rvvup\Api\Model\ZopaRetailFinanceLoanTerms**](../Model/ZopaRetailFinanceLoanTerms.md)
 
 ### Authorization
 
@@ -2945,6 +3530,66 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getPaymentMethodToken()`
+
+```php
+getPaymentMethodToken($merchant_id, $id): \Rvvup\Api\Model\PaymentMethodTokenDto
+```
+
+Get a saved payment method token
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: apiKey
+$config = Rvvup\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Rvvup\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | merchant id
+$id = 'id_example'; // string | payment method token id
+
+try {
+    $result = $apiInstance->getPaymentMethodToken($merchant_id, $id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getPaymentMethodToken: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| merchant id | |
+| **id** | **string**| payment method token id | |
+
+### Return type
+
+[**\Rvvup\Api\Model\PaymentMethodTokenDto**](../Model/PaymentMethodTokenDto.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getPaymentSession()`
 
 ```php
@@ -3071,6 +3716,126 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getRepresentativeExample()`
+
+```php
+getRepresentativeExample($merchant_id): \Rvvup\Api\Model\ZopaRetailFinanceRepresentativeExample
+```
+
+Get Zopa Retail Finance Representative Example
+
+Get the representative example disclosure for the merchant
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: apiKey
+$config = Rvvup\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Rvvup\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | The merchant id
+
+try {
+    $result = $apiInstance->getRepresentativeExample($merchant_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getRepresentativeExample: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| The merchant id | |
+
+### Return type
+
+[**\Rvvup\Api\Model\ZopaRetailFinanceRepresentativeExample**](../Model/ZopaRetailFinanceRepresentativeExample.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getSavedToken()`
+
+```php
+getSavedToken($merchant_id, $payment_session_id): \Rvvup\Api\Model\PaymentMethodTokenDto
+```
+
+Get the saved payment method token for a payment session
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: apiKey
+$config = Rvvup\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Rvvup\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | merchant id
+$payment_session_id = 'payment_session_id_example'; // string | payment session id
+
+try {
+    $result = $apiInstance->getSavedToken($merchant_id, $payment_session_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getSavedToken: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| merchant id | |
+| **payment_session_id** | **string**| payment session id | |
+
+### Return type
+
+[**\Rvvup\Api\Model\PaymentMethodTokenDto**](../Model/PaymentMethodTokenDto.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -3779,6 +4544,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listExternalPayees()`
+
+```php
+listExternalPayees($merchant_id, $offset, $limit): \Rvvup\Api\Model\ExternalPayeePage
+```
+
+List external payees
+
+List external payees for a merchant. Account numbers are masked to show only the last 4 digits.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: apiKey
+$config = Rvvup\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Rvvup\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | merchant id
+$offset = 56; // int | pagination offset
+$limit = 56; // int | pagination limit
+
+try {
+    $result = $apiInstance->listExternalPayees($merchant_id, $offset, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->listExternalPayees: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| merchant id | |
+| **offset** | **int**| pagination offset | [optional] |
+| **limit** | **int**| pagination limit | [optional] |
+
+### Return type
+
+[**\Rvvup\Api\Model\ExternalPayeePage**](../Model/ExternalPayeePage.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listInvoiceNotifications()`
 
 ```php
@@ -4107,6 +4936,72 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listPayees()`
+
+```php
+listPayees($merchant_id, $q, $offset, $limit): \Rvvup\Api\Model\PayeePage
+```
+
+List payees
+
+List allowed payee merchants for the given merchant
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: apiKey
+$config = Rvvup\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Rvvup\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | merchant id
+$q = 'q_example'; // string | search query to filter payees by name
+$offset = 56; // int | pagination offset
+$limit = 20; // int | maximum number of results
+
+try {
+    $result = $apiInstance->listPayees($merchant_id, $q, $offset, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->listPayees: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| merchant id | |
+| **q** | **string**| search query to filter payees by name | [optional] |
+| **offset** | **int**| pagination offset | [optional] |
+| **limit** | **int**| maximum number of results | [optional] [default to 20] |
+
+### Return type
+
+[**\Rvvup\Api\Model\PayeePage**](../Model/PayeePage.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listPaymentLinks()`
 
 ```php
@@ -4369,6 +5264,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `previewAccountStatementPayment()`
+
+```php
+previewAccountStatementPayment($merchant_id, $account_statement_id, $account_statement_payment_preview_input): \Rvvup\Api\Model\AccountStatementPaymentPreview
+```
+
+Preview payment with credit note application
+
+Computes the effect of applying selected credit notes against selected invoices, returning the effective per-invoice amounts and net total to pay.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: apiKey
+$config = Rvvup\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Rvvup\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | Merchant ID
+$account_statement_id = 'account_statement_id_example'; // string | Account Statement ID
+$account_statement_payment_preview_input = new \Rvvup\Api\Model\AccountStatementPaymentPreviewInput(); // \Rvvup\Api\Model\AccountStatementPaymentPreviewInput | The selected invoice and credit note IDs
+
+try {
+    $result = $apiInstance->previewAccountStatementPayment($merchant_id, $account_statement_id, $account_statement_payment_preview_input);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->previewAccountStatementPayment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| Merchant ID | |
+| **account_statement_id** | **string**| Account Statement ID | |
+| **account_statement_payment_preview_input** | [**\Rvvup\Api\Model\AccountStatementPaymentPreviewInput**](../Model/AccountStatementPaymentPreviewInput.md)| The selected invoice and credit note IDs | |
+
+### Return type
+
+[**\Rvvup\Api\Model\AccountStatementPaymentPreview**](../Model/AccountStatementPaymentPreview.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `refreshInvoiceUrl()`
 
 ```php
@@ -4426,6 +5385,65 @@ try {
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `revokePaymentMethodToken()`
+
+```php
+revokePaymentMethodToken($merchant_id, $id)
+```
+
+Revoke a saved payment method token
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: apiKey
+$config = Rvvup\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Rvvup\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | merchant id
+$id = 'id_example'; // string | payment method token id
+
+try {
+    $apiInstance->revokePaymentMethodToken($merchant_id, $id);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->revokePaymentMethodToken: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| merchant id | |
+| **id** | **string**| payment method token id | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -4869,6 +5887,70 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `zopaRetailFinanceFulfil()`
+
+```php
+zopaRetailFinanceFulfil($merchant_id, $payment_session_id, $zopa_retail_finance_fulfil_request): \Rvvup\Api\Model\ZopaRetailFinanceFulfilResponse
+```
+
+Fulfil Zopa Retail Finance Order
+
+Fulfils an order, transitioning it to Fulfilled in Zopa Retail Finance
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: apiKey
+$config = Rvvup\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Rvvup\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | The merchant id
+$payment_session_id = 'payment_session_id_example'; // string | The payment session id
+$zopa_retail_finance_fulfil_request = new \Rvvup\Api\Model\ZopaRetailFinanceFulfilRequest(); // \Rvvup\Api\Model\ZopaRetailFinanceFulfilRequest
+
+try {
+    $result = $apiInstance->zopaRetailFinanceFulfil($merchant_id, $payment_session_id, $zopa_retail_finance_fulfil_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->zopaRetailFinanceFulfil: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| The merchant id | |
+| **payment_session_id** | **string**| The payment session id | |
+| **zopa_retail_finance_fulfil_request** | [**\Rvvup\Api\Model\ZopaRetailFinanceFulfilRequest**](../Model/ZopaRetailFinanceFulfilRequest.md)|  | [optional] |
+
+### Return type
+
+[**\Rvvup\Api\Model\ZopaRetailFinanceFulfilResponse**](../Model/ZopaRetailFinanceFulfilResponse.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

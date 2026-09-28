@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**apple_pay** | [**\Rvvup\Api\Model\ApplePayPaymentMethodSettings**](ApplePayPaymentMethodSettings.md) |  | [optional]
 **assets** | [**\Rvvup\Api\Model\PaymentMethodAsset[]**](PaymentMethodAsset.md) |  |
 **card** | [**\Rvvup\Api\Model\CardPaymentMethodSettings**](CardPaymentMethodSettings.md) |  | [optional]
 **description** | **string** |  |

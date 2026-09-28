@@ -17,5 +17,6 @@ Name | Type | Description | Notes
 **summary** | [**\Rvvup\Api\Model\PaymentSummary**](PaymentSummary.md) |  |
 **updated_at** | **\DateTime** | The datetime when the payment was last updated. |
 **void_reason** | [**\Rvvup\Api\Model\PaymentVoidReason**](PaymentVoidReason.md) |  | [optional]
+**zopa_retail_finance** | [**\Rvvup\Api\Model\ZopaRetailFinancePaymentDetails**](ZopaRetailFinancePaymentDetails.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

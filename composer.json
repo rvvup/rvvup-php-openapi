@@ -1,6 +1,6 @@
 {
     "name": "rvvup/rvvup-php-openapi",
-    "description": "Rvvup Public API",
+    "description": "Zopa Payments Public API, previously the Rvvup API",
     "keywords": [
         "openapitools",
         "openapi-generator",

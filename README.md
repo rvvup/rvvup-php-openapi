@@ -1,8 +1,8 @@
 # Rvvup/Api
 
-Rvvup Public API
+Zopa Payments Public API, previously the Rvvup API
 
-For more information, please visit [https://rvvup.com](https://rvvup.com).
+For more information, please visit [https://zopa.com/business/payments](https://zopa.com/business/payments).
 
 ## Installation & Usage
 
@@ -83,6 +83,7 @@ Class | Method | HTTP request | Description
 *AccountStatementsApi* | [**getAccountStatement**](docs/Api/AccountStatementsApi.md#getaccountstatement) | **GET** /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId} | Get an account statement
 *AccountStatementsApi* | [**getCheckoutForAccountStatement**](docs/Api/AccountStatementsApi.md#getcheckoutforaccountstatement) | **GET** /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId}/checkouts/{checkoutId} | Get a checkout for an account statement
 *AccountStatementsApi* | [**getThemeForAccountStatement**](docs/Api/AccountStatementsApi.md#getthemeforaccountstatement) | **GET** /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId}/theme | Get the theme for an account statement
+*AccountStatementsApi* | [**previewAccountStatementPayment**](docs/Api/AccountStatementsApi.md#previewaccountstatementpayment) | **POST** /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId}/payment-preview | Preview payment with credit note application
 *ChaserPlansApi* | [**createChaserPlan**](docs/Api/ChaserPlansApi.md#createchaserplan) | **POST** /api/2024-03-01/{merchantId}/chaser-plans | Create new chaser plan
 *ChaserPlansApi* | [**getChaserPlan**](docs/Api/ChaserPlansApi.md#getchaserplan) | **GET** /api/2024-03-01/{merchantId}/chaser-plans/{chaserPlanId} | Get a chaser plan
 *ChaserPlansApi* | [**listChaserPlans**](docs/Api/ChaserPlansApi.md#listchaserplans) | **GET** /api/2024-03-01/{merchantId}/chaser-plans | List Chaser Plans
@@ -95,6 +96,7 @@ Class | Method | HTTP request | Description
 *CheckoutsApi* | [**getThemeForCheckout**](docs/Api/CheckoutsApi.md#getthemeforcheckout) | **GET** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/theme | Get the theme for a checkout
 *CheckoutsApi* | [**listCheckoutPaymentMethods**](docs/Api/CheckoutsApi.md#listcheckoutpaymentmethods) | **GET** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-methods | Get payment methods for a checkout
 *CheckoutsApi* | [**listCheckouts**](docs/Api/CheckoutsApi.md#listcheckouts) | **GET** /api/2024-03-01/{merchantId}/checkouts | List checkouts
+*ConfirmationOfPayeeApi* | [**checkConfirmationOfPayee**](docs/Api/ConfirmationOfPayeeApi.md#checkconfirmationofpayee) | **POST** /api/2024-03-01/{merchantId}/confirmation-of-payee | Confirmation of Payee check
 *ConnectionsApi* | [**createConnection**](docs/Api/ConnectionsApi.md#createconnection) | **PUT** /api/2024-03-01/{merchantId}/connections | Create a new connection or updates an existing connection.
 *ConnectionsApi* | [**disconnectConnection**](docs/Api/ConnectionsApi.md#disconnectconnection) | **DELETE** /api/2024-03-01/{merchantId}/connections/{connectionId} | Disconnect a connection
 *ConnectionsApi* | [**getConnection**](docs/Api/ConnectionsApi.md#getconnection) | **GET** /api/2024-03-01/{merchantId}/connections/{connectionId} | Get a connection
@@ -112,6 +114,10 @@ Class | Method | HTTP request | Description
 *CustomerAccountsApi* | [**getCustomerAccount**](docs/Api/CustomerAccountsApi.md#getcustomeraccount) | **GET** /api/2024-03-01/{merchantId}/customer-accounts/{customerAccountId} | Get a customer account
 *CustomerAccountsApi* | [**getCustomerAccounts**](docs/Api/CustomerAccountsApi.md#getcustomeraccounts) | **GET** /api/2024-03-01/{merchantId}/customer-accounts | Get customer accounts
 *CustomerAccountsApi* | [**listInvoicesForCustomerAccount**](docs/Api/CustomerAccountsApi.md#listinvoicesforcustomeraccount) | **GET** /api/2024-03-01/{merchantId}/customer-accounts/{customerAccountId}/invoices | Get list of invoices for customer account
+*DisbursementsApi* | [**getDisbursementBatch**](docs/Api/DisbursementsApi.md#getdisbursementbatch) | **GET** /api/2024-03-01/{merchantId}/disbursements/{disbursementBatchId} | Get a disbursement batch
+*ExternalPayeesApi* | [**createExternalPayee**](docs/Api/ExternalPayeesApi.md#createexternalpayee) | **POST** /api/2024-03-01/{merchantId}/external-payees | Create an external payee
+*ExternalPayeesApi* | [**getExternalPayee**](docs/Api/ExternalPayeesApi.md#getexternalpayee) | **GET** /api/2024-03-01/{merchantId}/external-payees/{payeeId} | Get an external payee
+*ExternalPayeesApi* | [**listExternalPayees**](docs/Api/ExternalPayeesApi.md#listexternalpayees) | **GET** /api/2024-03-01/{merchantId}/external-payees | List external payees
 *InvoicesApi* | [**createInvoice**](docs/Api/InvoicesApi.md#createinvoice) | **POST** /api/2024-03-01/{merchantId}/invoices | Create new invoice
 *InvoicesApi* | [**createInvoiceNotification**](docs/Api/InvoicesApi.md#createinvoicenotification) | **POST** /api/2024-03-01/{merchantId}/invoices/{invoiceId}/notifications | Notify a customer of an invoice
 *InvoicesApi* | [**deleteInvoice**](docs/Api/InvoicesApi.md#deleteinvoice) | **DELETE** /api/2024-03-01/{merchantId}/invoices/{invoiceId} | Delete a draft invoice
@@ -134,15 +140,22 @@ Class | Method | HTTP request | Description
 *NotificationsApi* | [**listNotificationSubscriptions**](docs/Api/NotificationsApi.md#listnotificationsubscriptions) | **GET** /api/2024-03-01/{merchantId}/notification-subscriptions | List notification subscriptions.
 *OrdersApi* | [**getOrderById**](docs/Api/OrdersApi.md#getorderbyid) | **GET** /api/2024-03-01/{merchantId}/orders/{id} | Get order by ID
 *OrdersApi* | [**getOrders**](docs/Api/OrdersApi.md#getorders) | **GET** /api/2024-03-01/{merchantId}/orders | Search orders
+*PayeesApi* | [**listPayees**](docs/Api/PayeesApi.md#listpayees) | **GET** /api/2024-03-01/{merchantId}/payees | List payees
 *PaymentLinksApi* | [**createPaymentLink**](docs/Api/PaymentLinksApi.md#createpaymentlink) | **POST** /api/2024-03-01/{merchantId}/payment-links | Create new payment link
 *PaymentLinksApi* | [**deactivatePaymentLink**](docs/Api/PaymentLinksApi.md#deactivatepaymentlink) | **DELETE** /api/2024-03-01/{merchantId}/payment-links/{paymentLinkId} | Deactivate a payment link
 *PaymentLinksApi* | [**getPaymentLink**](docs/Api/PaymentLinksApi.md#getpaymentlink) | **GET** /api/2024-03-01/{merchantId}/payment-links/{paymentLinkId} | Get a payment link
 *PaymentLinksApi* | [**listPaymentLinks**](docs/Api/PaymentLinksApi.md#listpaymentlinks) | **GET** /api/2024-03-01/{merchantId}/payment-links | List payment links
+*PaymentMethodTokensApi* | [**getPaymentMethodToken**](docs/Api/PaymentMethodTokensApi.md#getpaymentmethodtoken) | **GET** /api/2024-03-01/{merchantId}/payment-method-tokens/{id} | Get a saved payment method token
+*PaymentMethodTokensApi* | [**revokePaymentMethodToken**](docs/Api/PaymentMethodTokensApi.md#revokepaymentmethodtoken) | **DELETE** /api/2024-03-01/{merchantId}/payment-method-tokens/{id} | Revoke a saved payment method token
 *PaymentMethodsApi* | [**listPaymentMethods**](docs/Api/PaymentMethodsApi.md#listpaymentmethods) | **GET** /api/2024-03-01/{merchantId}/payment-methods | Get payment methods
 *PaymentSessionsApi* | [**createPaymentSession**](docs/Api/PaymentSessionsApi.md#createpaymentsession) | **POST** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions | Create a payment session
 *PaymentSessionsApi* | [**getPaymentSession**](docs/Api/PaymentSessionsApi.md#getpaymentsession) | **GET** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions/{paymentSessionId} | Get a payment session
+*PaymentSessionsApi* | [**getSavedToken**](docs/Api/PaymentSessionsApi.md#getsavedtoken) | **GET** /api/2024-03-01/{merchantId}/payment-sessions/{paymentSessionId}/saved-token | Get the saved payment method token for a payment session
 *PaymentSettingsApi* | [**getPaymentSettings**](docs/Api/PaymentSettingsApi.md#getpaymentsettings) | **POST** /api/2024-03-01/{merchantId}/payment-settings | Get payment settings for a merchant
 *PublicApi* | [**applyCreditNote**](docs/Api/PublicApi.md#applycreditnote) | **POST** /api/2024-03-01/{merchantId}/credit-notes/{creditNoteId}/apply | Apply a credit note to an invoice
+*PublicApi* | [**callList**](docs/Api/PublicApi.md#calllist) | **GET** /api/2024-03-01/{merchantId}/transfers | List transfers
+*PublicApi* | [**checkConfirmationOfPayee**](docs/Api/PublicApi.md#checkconfirmationofpayee) | **POST** /api/2024-03-01/{merchantId}/confirmation-of-payee | Confirmation of Payee check
+*PublicApi* | [**create**](docs/Api/PublicApi.md#create) | **POST** /api/2024-03-01/{merchantId}/transfers | Create a transfer
 *PublicApi* | [**createAccountStatement**](docs/Api/PublicApi.md#createaccountstatement) | **POST** /api/2024-03-01/{merchantId}/accounts/statements | Create a new account statement
 *PublicApi* | [**createChaserPlan**](docs/Api/PublicApi.md#createchaserplan) | **POST** /api/2024-03-01/{merchantId}/chaser-plans | Create new chaser plan
 *PublicApi* | [**createCheckout**](docs/Api/PublicApi.md#createcheckout) | **POST** /api/2024-03-01/{merchantId}/checkouts | Create new checkout
@@ -150,12 +163,14 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**createConnection**](docs/Api/PublicApi.md#createconnection) | **PUT** /api/2024-03-01/{merchantId}/connections | Create a new connection or updates an existing connection.
 *PublicApi* | [**createCreditNote**](docs/Api/PublicApi.md#createcreditnote) | **POST** /api/2024-03-01/{merchantId}/credit-notes | Create new credit note
 *PublicApi* | [**createCustomerAccount**](docs/Api/PublicApi.md#createcustomeraccount) | **POST** /api/2024-03-01/{merchantId}/customer-accounts | Create a customer account
+*PublicApi* | [**createExternalPayee**](docs/Api/PublicApi.md#createexternalpayee) | **POST** /api/2024-03-01/{merchantId}/external-payees | Create an external payee
 *PublicApi* | [**createInvoice**](docs/Api/PublicApi.md#createinvoice) | **POST** /api/2024-03-01/{merchantId}/invoices | Create new invoice
 *PublicApi* | [**createInvoiceNotification**](docs/Api/PublicApi.md#createinvoicenotification) | **POST** /api/2024-03-01/{merchantId}/invoices/{invoiceId}/notifications | Notify a customer of an invoice
 *PublicApi* | [**createMerchantDomains**](docs/Api/PublicApi.md#createmerchantdomains) | **POST** /api/2024-03-01/{merchantId}/domains | Create new merchant domains
 *PublicApi* | [**createNotificationSubscription**](docs/Api/PublicApi.md#createnotificationsubscription) | **POST** /api/2024-03-01/{merchantId}/notification-subscriptions | Create a new notification subscription.
 *PublicApi* | [**createPaymentLink**](docs/Api/PublicApi.md#createpaymentlink) | **POST** /api/2024-03-01/{merchantId}/payment-links | Create new payment link
 *PublicApi* | [**createPaymentSession**](docs/Api/PublicApi.md#createpaymentsession) | **POST** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions | Create a payment session
+*PublicApi* | [**createQuote**](docs/Api/PublicApi.md#createquote) | **POST** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions/{paymentSessionId}/zopa-retail-finance/quote | Submit a Zopa Retail Finance Quote
 *PublicApi* | [**createRefund**](docs/Api/PublicApi.md#createrefund) | **POST** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions/{paymentSessionId}/refunds | Create a refund
 *PublicApi* | [**createShipmentTracking**](docs/Api/PublicApi.md#createshipmenttracking) | **POST** /api/2024-03-01/{merchantId}/payment-sessions/{paymentSessionId}/shipment-tracking | Create a shipment tracking entry for a payment session
 *PublicApi* | [**createShipmentTrackingWithCheckout**](docs/Api/PublicApi.md#createshipmenttrackingwithcheckout) | **POST** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions/{paymentSessionId}/shipment-tracking | Create a shipment tracking entry for a payment session
@@ -172,6 +187,7 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**exportStatement**](docs/Api/PublicApi.md#exportstatement) | **POST** /api/2024-03-01/{merchantId}/statements/export | Export a statement
 *PublicApi* | [**finalizeCreditNote**](docs/Api/PublicApi.md#finalizecreditnote) | **POST** /api/2024-03-01/{merchantId}/credit-notes/{creditNoteId}/finalize | Finalize a credit note
 *PublicApi* | [**finalizeInvoice**](docs/Api/PublicApi.md#finalizeinvoice) | **POST** /api/2024-03-01/{merchantId}/invoices/{invoiceId}/finalize | Finalize an invoice
+*PublicApi* | [**find**](docs/Api/PublicApi.md#find) | **GET** /api/2024-03-01/{merchantId}/transfers/{transferId} | Get a transfer
 *PublicApi* | [**getAccountStatement**](docs/Api/PublicApi.md#getaccountstatement) | **GET** /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId} | Get an account statement
 *PublicApi* | [**getChaserPlan**](docs/Api/PublicApi.md#getchaserplan) | **GET** /api/2024-03-01/{merchantId}/chaser-plans/{chaserPlanId} | Get a chaser plan
 *PublicApi* | [**getCheckout**](docs/Api/PublicApi.md#getcheckout) | **GET** /api/2024-03-01/{merchantId}/checkouts/{checkoutId} | Get a checkout
@@ -182,13 +198,19 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**getCreditNote**](docs/Api/PublicApi.md#getcreditnote) | **GET** /api/2024-03-01/{merchantId}/credit-notes/{creditNoteId} | Get a credit note
 *PublicApi* | [**getCustomerAccount**](docs/Api/PublicApi.md#getcustomeraccount) | **GET** /api/2024-03-01/{merchantId}/customer-accounts/{customerAccountId} | Get a customer account
 *PublicApi* | [**getCustomerAccounts**](docs/Api/PublicApi.md#getcustomeraccounts) | **GET** /api/2024-03-01/{merchantId}/customer-accounts | Get customer accounts
+*PublicApi* | [**getDisbursementBatch**](docs/Api/PublicApi.md#getdisbursementbatch) | **GET** /api/2024-03-01/{merchantId}/disbursements/{disbursementBatchId} | Get a disbursement batch
+*PublicApi* | [**getExternalPayee**](docs/Api/PublicApi.md#getexternalpayee) | **GET** /api/2024-03-01/{merchantId}/external-payees/{payeeId} | Get an external payee
 *PublicApi* | [**getInvoice**](docs/Api/PublicApi.md#getinvoice) | **GET** /api/2024-03-01/{merchantId}/invoices/{invoiceId} | Get a invoice
+*PublicApi* | [**getLoanTerms**](docs/Api/PublicApi.md#getloanterms) | **GET** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-methods/zopa-retail-finance/loan-terms | Get Zopa Retail Finance Loan Terms
 *PublicApi* | [**getNotificationSubscription**](docs/Api/PublicApi.md#getnotificationsubscription) | **GET** /api/2024-03-01/{merchantId}/notification-subscriptions/{id} | Get a notification subscription
 *PublicApi* | [**getOrderById**](docs/Api/PublicApi.md#getorderbyid) | **GET** /api/2024-03-01/{merchantId}/orders/{id} | Get order by ID
 *PublicApi* | [**getOrders**](docs/Api/PublicApi.md#getorders) | **GET** /api/2024-03-01/{merchantId}/orders | Search orders
 *PublicApi* | [**getPaymentLink**](docs/Api/PublicApi.md#getpaymentlink) | **GET** /api/2024-03-01/{merchantId}/payment-links/{paymentLinkId} | Get a payment link
+*PublicApi* | [**getPaymentMethodToken**](docs/Api/PublicApi.md#getpaymentmethodtoken) | **GET** /api/2024-03-01/{merchantId}/payment-method-tokens/{id} | Get a saved payment method token
 *PublicApi* | [**getPaymentSession**](docs/Api/PublicApi.md#getpaymentsession) | **GET** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions/{paymentSessionId} | Get a payment session
 *PublicApi* | [**getPaymentSettings**](docs/Api/PublicApi.md#getpaymentsettings) | **POST** /api/2024-03-01/{merchantId}/payment-settings | Get payment settings for a merchant
+*PublicApi* | [**getRepresentativeExample**](docs/Api/PublicApi.md#getrepresentativeexample) | **GET** /api/2024-03-01/{merchantId}/payment-methods/zopa-retail-finance/representative-example | Get Zopa Retail Finance Representative Example
+*PublicApi* | [**getSavedToken**](docs/Api/PublicApi.md#getsavedtoken) | **GET** /api/2024-03-01/{merchantId}/payment-sessions/{paymentSessionId}/saved-token | Get the saved payment method token for a payment session
 *PublicApi* | [**getTheme**](docs/Api/PublicApi.md#gettheme) | **GET** /api/2024-03-01/{merchantId}/themes/{themeId} | Get a theme
 *PublicApi* | [**getThemeForAccountStatement**](docs/Api/PublicApi.md#getthemeforaccountstatement) | **GET** /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId}/theme | Get the theme for an account statement
 *PublicApi* | [**getThemeForCheckout**](docs/Api/PublicApi.md#getthemeforcheckout) | **GET** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/theme | Get the theme for a checkout
@@ -200,16 +222,20 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**listConnections**](docs/Api/PublicApi.md#listconnections) | **GET** /api/2024-03-01/{merchantId}/connections | List connections
 *PublicApi* | [**listCreditNotes**](docs/Api/PublicApi.md#listcreditnotes) | **GET** /api/2024-03-01/{merchantId}/credit-notes | List credit notes
 *PublicApi* | [**listCreditNotesForInvoice**](docs/Api/PublicApi.md#listcreditnotesforinvoice) | **GET** /api/2024-03-01/{merchantId}/invoices/{invoiceId}/credit-notes | List credit notes for an invoice
+*PublicApi* | [**listExternalPayees**](docs/Api/PublicApi.md#listexternalpayees) | **GET** /api/2024-03-01/{merchantId}/external-payees | List external payees
 *PublicApi* | [**listInvoiceNotifications**](docs/Api/PublicApi.md#listinvoicenotifications) | **GET** /api/2024-03-01/{merchantId}/invoices/{invoiceId}/notifications | List invoice notifications
 *PublicApi* | [**listInvoices**](docs/Api/PublicApi.md#listinvoices) | **GET** /api/2024-03-01/{merchantId}/invoices | List invoices
 *PublicApi* | [**listInvoicesForCustomerAccount**](docs/Api/PublicApi.md#listinvoicesforcustomeraccount) | **GET** /api/2024-03-01/{merchantId}/customer-accounts/{customerAccountId}/invoices | Get list of invoices for customer account
 *PublicApi* | [**listMerchantDomains**](docs/Api/PublicApi.md#listmerchantdomains) | **GET** /api/2024-03-01/{merchantId}/domains | List merchant domains
 *PublicApi* | [**listNotificationSubscriptions**](docs/Api/PublicApi.md#listnotificationsubscriptions) | **GET** /api/2024-03-01/{merchantId}/notification-subscriptions | List notification subscriptions.
+*PublicApi* | [**listPayees**](docs/Api/PublicApi.md#listpayees) | **GET** /api/2024-03-01/{merchantId}/payees | List payees
 *PublicApi* | [**listPaymentLinks**](docs/Api/PublicApi.md#listpaymentlinks) | **GET** /api/2024-03-01/{merchantId}/payment-links | List payment links
 *PublicApi* | [**listPaymentMethods**](docs/Api/PublicApi.md#listpaymentmethods) | **GET** /api/2024-03-01/{merchantId}/payment-methods | Get payment methods
 *PublicApi* | [**listThemes**](docs/Api/PublicApi.md#listthemes) | **GET** /api/2024-03-01/{merchantId}/themes | List themes
 *PublicApi* | [**listWebhooks**](docs/Api/PublicApi.md#listwebhooks) | **GET** /api/2024-03-01/{merchantId}/webhooks | Get all webhooks
+*PublicApi* | [**previewAccountStatementPayment**](docs/Api/PublicApi.md#previewaccountstatementpayment) | **POST** /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId}/payment-preview | Preview payment with credit note application
 *PublicApi* | [**refreshInvoiceUrl**](docs/Api/PublicApi.md#refreshinvoiceurl) | **POST** /api/2024-03-01/{merchantId}/invoices/{invoiceId}/refresh-url | Refresh an invoice url
+*PublicApi* | [**revokePaymentMethodToken**](docs/Api/PublicApi.md#revokepaymentmethodtoken) | **DELETE** /api/2024-03-01/{merchantId}/payment-method-tokens/{id} | Revoke a saved payment method token
 *PublicApi* | [**updateCheckoutTemplate**](docs/Api/PublicApi.md#updatecheckouttemplate) | **PATCH** /api/2024-03-01/{merchantId}/checkout-templates/{checkoutTemplateId} | Update a checkout template
 *PublicApi* | [**updateCreditNote**](docs/Api/PublicApi.md#updatecreditnote) | **PUT** /api/2024-03-01/{merchantId}/credit-notes/{creditNoteId} | Update a credit note
 *PublicApi* | [**updateInvoice**](docs/Api/PublicApi.md#updateinvoice) | **PUT** /api/2024-03-01/{merchantId}/invoices/{invoiceId} | Update an invoice
@@ -217,6 +243,7 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**updateWebhook**](docs/Api/PublicApi.md#updatewebhook) | **PATCH** /api/2024-03-01/{merchantId}/webhooks/{webhookId} | Update a webhook
 *PublicApi* | [**voidCreditNote**](docs/Api/PublicApi.md#voidcreditnote) | **POST** /api/2024-03-01/{merchantId}/credit-notes/{creditNoteId}/void | Void a credit note
 *PublicApi* | [**voidInvoice**](docs/Api/PublicApi.md#voidinvoice) | **POST** /api/2024-03-01/{merchantId}/invoices/{invoiceId}/void | Void an open invoice
+*PublicApi* | [**zopaRetailFinanceFulfil**](docs/Api/PublicApi.md#zoparetailfinancefulfil) | **POST** /api/2024-03-01/{merchantId}/payment-sessions/{paymentSessionId}/fulfil | Fulfil Zopa Retail Finance Order
 *RefundsApi* | [**createRefund**](docs/Api/RefundsApi.md#createrefund) | **POST** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions/{paymentSessionId}/refunds | Create a refund
 *ShipmentTrackingApi* | [**createShipmentTracking**](docs/Api/ShipmentTrackingApi.md#createshipmenttracking) | **POST** /api/2024-03-01/{merchantId}/payment-sessions/{paymentSessionId}/shipment-tracking | Create a shipment tracking entry for a payment session
 *ShipmentTrackingApi* | [**createShipmentTrackingWithCheckout**](docs/Api/ShipmentTrackingApi.md#createshipmenttrackingwithcheckout) | **POST** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions/{paymentSessionId}/shipment-tracking | Create a shipment tracking entry for a payment session
@@ -225,10 +252,17 @@ Class | Method | HTTP request | Description
 *ThemesApi* | [**getTheme**](docs/Api/ThemesApi.md#gettheme) | **GET** /api/2024-03-01/{merchantId}/themes/{themeId} | Get a theme
 *ThemesApi* | [**listThemes**](docs/Api/ThemesApi.md#listthemes) | **GET** /api/2024-03-01/{merchantId}/themes | List themes
 *ThemesApi* | [**updateTheme**](docs/Api/ThemesApi.md#updatetheme) | **PATCH** /api/2024-03-01/{merchantId}/themes/{themeId} | Update a theme
+*TransfersApi* | [**callList**](docs/Api/TransfersApi.md#calllist) | **GET** /api/2024-03-01/{merchantId}/transfers | List transfers
+*TransfersApi* | [**create**](docs/Api/TransfersApi.md#create) | **POST** /api/2024-03-01/{merchantId}/transfers | Create a transfer
+*TransfersApi* | [**find**](docs/Api/TransfersApi.md#find) | **GET** /api/2024-03-01/{merchantId}/transfers/{transferId} | Get a transfer
 *WebhooksApi* | [**createWebhook**](docs/Api/WebhooksApi.md#createwebhook) | **POST** /api/2024-03-01/{merchantId}/webhooks | Create a new webhook
 *WebhooksApi* | [**getWebhook**](docs/Api/WebhooksApi.md#getwebhook) | **GET** /api/2024-03-01/{merchantId}/webhooks/{webhookId} | Get a webhook by id
 *WebhooksApi* | [**listWebhooks**](docs/Api/WebhooksApi.md#listwebhooks) | **GET** /api/2024-03-01/{merchantId}/webhooks | Get all webhooks
 *WebhooksApi* | [**updateWebhook**](docs/Api/WebhooksApi.md#updatewebhook) | **PATCH** /api/2024-03-01/{merchantId}/webhooks/{webhookId} | Update a webhook
+*ZopaRetailFinanceApi* | [**createQuote**](docs/Api/ZopaRetailFinanceApi.md#createquote) | **POST** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions/{paymentSessionId}/zopa-retail-finance/quote | Submit a Zopa Retail Finance Quote
+*ZopaRetailFinanceApi* | [**getLoanTerms**](docs/Api/ZopaRetailFinanceApi.md#getloanterms) | **GET** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-methods/zopa-retail-finance/loan-terms | Get Zopa Retail Finance Loan Terms
+*ZopaRetailFinanceApi* | [**getRepresentativeExample**](docs/Api/ZopaRetailFinanceApi.md#getrepresentativeexample) | **GET** /api/2024-03-01/{merchantId}/payment-methods/zopa-retail-finance/representative-example | Get Zopa Retail Finance Representative Example
+*ZopaRetailFinanceApi* | [**zopaRetailFinanceFulfil**](docs/Api/ZopaRetailFinanceApi.md#zoparetailfinancefulfil) | **POST** /api/2024-03-01/{merchantId}/payment-sessions/{paymentSessionId}/fulfil | Fulfil Zopa Retail Finance Order
 
 ## Models
 
@@ -238,16 +272,24 @@ Class | Method | HTTP request | Description
 - [AccountStatementConnectionType](docs/Model/AccountStatementConnectionType.md)
 - [AccountStatementCreateInput](docs/Model/AccountStatementCreateInput.md)
 - [AccountStatementCreditNote](docs/Model/AccountStatementCreditNote.md)
+- [AccountStatementCreditNoteAllocation](docs/Model/AccountStatementCreditNoteAllocation.md)
 - [AccountStatementCreditNoteCreateInput](docs/Model/AccountStatementCreditNoteCreateInput.md)
 - [AccountStatementInvoice](docs/Model/AccountStatementInvoice.md)
+- [AccountStatementInvoiceAllocation](docs/Model/AccountStatementInvoiceAllocation.md)
 - [AccountStatementInvoiceCreateInput](docs/Model/AccountStatementInvoiceCreateInput.md)
 - [AccountStatementInvoiceStatus](docs/Model/AccountStatementInvoiceStatus.md)
 - [AccountStatementMagentoProxyConnection](docs/Model/AccountStatementMagentoProxyConnection.md)
 - [AccountStatementMagentoProxyConnectionInput](docs/Model/AccountStatementMagentoProxyConnectionInput.md)
+- [AccountStatementPaymentPreview](docs/Model/AccountStatementPaymentPreview.md)
+- [AccountStatementPaymentPreviewInput](docs/Model/AccountStatementPaymentPreviewInput.md)
 - [AccountStatementStatus](docs/Model/AccountStatementStatus.md)
 - [Address](docs/Model/Address.md)
 - [AddressInput](docs/Model/AddressInput.md)
+- [ApplePayExpressSettings](docs/Model/ApplePayExpressSettings.md)
+- [ApplePayPageSettings](docs/Model/ApplePayPageSettings.md)
+- [ApplePayPaymentMethodSettings](docs/Model/ApplePayPaymentMethodSettings.md)
 - [ApplicationSource](docs/Model/ApplicationSource.md)
+- [BankAccountType](docs/Model/BankAccountType.md)
 - [CardPaymentMethodSettings](docs/Model/CardPaymentMethodSettings.md)
 - [ChaserPlan](docs/Model/ChaserPlan.md)
 - [ChaserPlanCreateInput](docs/Model/ChaserPlanCreateInput.md)
@@ -255,6 +297,9 @@ Class | Method | HTTP request | Description
 - [ChaserPlanSchedule](docs/Model/ChaserPlanSchedule.md)
 - [ChaserPlanScheduleCreateInput](docs/Model/ChaserPlanScheduleCreateInput.md)
 - [Checkout](docs/Model/Checkout.md)
+- [CheckoutAmountConstraintType](docs/Model/CheckoutAmountConstraintType.md)
+- [CheckoutAmountRange](docs/Model/CheckoutAmountRange.md)
+- [CheckoutAmountRangeInput](docs/Model/CheckoutAmountRangeInput.md)
 - [CheckoutAmountType](docs/Model/CheckoutAmountType.md)
 - [CheckoutApplePaySettings](docs/Model/CheckoutApplePaySettings.md)
 - [CheckoutApplePaySettingsInput](docs/Model/CheckoutApplePaySettingsInput.md)
@@ -297,6 +342,8 @@ Class | Method | HTTP request | Description
 - [CheckoutZopaRetailFinanceSettings](docs/Model/CheckoutZopaRetailFinanceSettings.md)
 - [CheckoutZopaRetailFinanceSettingsInput](docs/Model/CheckoutZopaRetailFinanceSettingsInput.md)
 - [CheckoutZopaRetailFinanceSettingsUpdateInput](docs/Model/CheckoutZopaRetailFinanceSettingsUpdateInput.md)
+- [ConfirmationOfPayeeCheckInput](docs/Model/ConfirmationOfPayeeCheckInput.md)
+- [ConfirmationOfPayeeResult](docs/Model/ConfirmationOfPayeeResult.md)
 - [Connection](docs/Model/Connection.md)
 - [ConnectionCreateInput](docs/Model/ConnectionCreateInput.md)
 - [ConnectionData](docs/Model/ConnectionData.md)
@@ -305,6 +352,7 @@ Class | Method | HTTP request | Description
 - [ConnectionPage](docs/Model/ConnectionPage.md)
 - [ConnectionStatus](docs/Model/ConnectionStatus.md)
 - [ConnectionType](docs/Model/ConnectionType.md)
+- [CopMatchResult](docs/Model/CopMatchResult.md)
 - [CreditNote](docs/Model/CreditNote.md)
 - [CreditNoteCreateInput](docs/Model/CreditNoteCreateInput.md)
 - [CreditNoteDownload](docs/Model/CreditNoteDownload.md)
@@ -320,7 +368,15 @@ Class | Method | HTTP request | Description
 - [CustomerAccountCreateInput](docs/Model/CustomerAccountCreateInput.md)
 - [CustomerAccountPage](docs/Model/CustomerAccountPage.md)
 - [CustomerInput](docs/Model/CustomerInput.md)
+- [DisbursementBatch](docs/Model/DisbursementBatch.md)
+- [DisbursementBatchStatus](docs/Model/DisbursementBatchStatus.md)
+- [DisbursementFee](docs/Model/DisbursementFee.md)
+- [DisbursementPayment](docs/Model/DisbursementPayment.md)
+- [DisbursementRefund](docs/Model/DisbursementRefund.md)
 - [ExpressCheckoutDisplayIntent](docs/Model/ExpressCheckoutDisplayIntent.md)
+- [ExternalPayee](docs/Model/ExternalPayee.md)
+- [ExternalPayeeCreateInput](docs/Model/ExternalPayeeCreateInput.md)
+- [ExternalPayeePage](docs/Model/ExternalPayeePage.md)
 - [GooglePayConnectionData](docs/Model/GooglePayConnectionData.md)
 - [GooglePayConnectionDataInput](docs/Model/GooglePayConnectionDataInput.md)
 - [Invoice](docs/Model/Invoice.md)
@@ -357,6 +413,7 @@ Class | Method | HTTP request | Description
 - [MerchantLogoWithUrls](docs/Model/MerchantLogoWithUrls.md)
 - [Money](docs/Model/Money.md)
 - [MoneyInput](docs/Model/MoneyInput.md)
+- [NonNegativeMoneyInput](docs/Model/NonNegativeMoneyInput.md)
 - [NotificationSubscription](docs/Model/NotificationSubscription.md)
 - [NotificationSubscriptionConfiguration](docs/Model/NotificationSubscriptionConfiguration.md)
 - [NotificationSubscriptionConfigurationInput](docs/Model/NotificationSubscriptionConfigurationInput.md)
@@ -368,6 +425,8 @@ Class | Method | HTTP request | Description
 - [Order](docs/Model/Order.md)
 - [OrdersPage](docs/Model/OrdersPage.md)
 - [Pageable](docs/Model/Pageable.md)
+- [Payee](docs/Model/Payee.md)
+- [PayeePage](docs/Model/PayeePage.md)
 - [Payment](docs/Model/Payment.md)
 - [PaymentAction](docs/Model/PaymentAction.md)
 - [PaymentActionMethod](docs/Model/PaymentActionMethod.md)
@@ -386,6 +445,7 @@ Class | Method | HTTP request | Description
 - [PaymentMethodLimit](docs/Model/PaymentMethodLimit.md)
 - [PaymentMethodSettings](docs/Model/PaymentMethodSettings.md)
 - [PaymentMethodStatus](docs/Model/PaymentMethodStatus.md)
+- [PaymentMethodTokenDto](docs/Model/PaymentMethodTokenDto.md)
 - [PaymentMethodTotalLimit](docs/Model/PaymentMethodTotalLimit.md)
 - [PaymentSession](docs/Model/PaymentSession.md)
 - [PaymentSessionCreateInput](docs/Model/PaymentSessionCreateInput.md)
@@ -402,12 +462,18 @@ Class | Method | HTTP request | Description
 - [RefundCreateInput](docs/Model/RefundCreateInput.md)
 - [RefundFailureReason](docs/Model/RefundFailureReason.md)
 - [RefundStatus](docs/Model/RefundStatus.md)
+- [SavedTokenProvider](docs/Model/SavedTokenProvider.md)
+- [SavedTokenScope](docs/Model/SavedTokenScope.md)
+- [SavedTokenStatus](docs/Model/SavedTokenStatus.md)
+- [SavedTokenType](docs/Model/SavedTokenType.md)
 - [ShipmentTracking](docs/Model/ShipmentTracking.md)
 - [ShipmentTrackingCreateInput](docs/Model/ShipmentTrackingCreateInput.md)
 - [ShipmentTrackingDetail](docs/Model/ShipmentTrackingDetail.md)
 - [ShipmentTrackingDetailInput](docs/Model/ShipmentTrackingDetailInput.md)
 - [ShipmentTrackingItem](docs/Model/ShipmentTrackingItem.md)
 - [ShipmentTrackingItemInput](docs/Model/ShipmentTrackingItemInput.md)
+- [ShippingMethod](docs/Model/ShippingMethod.md)
+- [ShippingMethodInput](docs/Model/ShippingMethodInput.md)
 - [StartEnd](docs/Model/StartEnd.md)
 - [StatementExportRequest](docs/Model/StatementExportRequest.md)
 - [Theme](docs/Model/Theme.md)
@@ -430,6 +496,11 @@ Class | Method | HTTP request | Description
 - [ThemePaymentMethodSelectorCreateInput](docs/Model/ThemePaymentMethodSelectorCreateInput.md)
 - [ThemePaymentMethodSelectorUpdateInput](docs/Model/ThemePaymentMethodSelectorUpdateInput.md)
 - [ThemeUpdateInput](docs/Model/ThemeUpdateInput.md)
+- [Transfer](docs/Model/Transfer.md)
+- [TransferCreateInput](docs/Model/TransferCreateInput.md)
+- [TransferPage](docs/Model/TransferPage.md)
+- [TransferStatus](docs/Model/TransferStatus.md)
+- [TransferType](docs/Model/TransferType.md)
 - [Webhook](docs/Model/Webhook.md)
 - [WebhookCreateInput](docs/Model/WebhookCreateInput.md)
 - [WebhookEventType](docs/Model/WebhookEventType.md)
@@ -440,8 +511,24 @@ Class | Method | HTTP request | Description
 - [WoocommerceConnectionDataInput](docs/Model/WoocommerceConnectionDataInput.md)
 - [ZopaRetailFinanceConnectionData](docs/Model/ZopaRetailFinanceConnectionData.md)
 - [ZopaRetailFinanceConnectionDataInput](docs/Model/ZopaRetailFinanceConnectionDataInput.md)
+- [ZopaRetailFinanceFulfilRequest](docs/Model/ZopaRetailFinanceFulfilRequest.md)
+- [ZopaRetailFinanceFulfilResponse](docs/Model/ZopaRetailFinanceFulfilResponse.md)
+- [ZopaRetailFinanceIncomeType](docs/Model/ZopaRetailFinanceIncomeType.md)
+- [ZopaRetailFinanceLoanTerm](docs/Model/ZopaRetailFinanceLoanTerm.md)
+- [ZopaRetailFinanceLoanTerms](docs/Model/ZopaRetailFinanceLoanTerms.md)
 - [ZopaRetailFinancePageSettings](docs/Model/ZopaRetailFinancePageSettings.md)
+- [ZopaRetailFinancePaymentDetails](docs/Model/ZopaRetailFinancePaymentDetails.md)
 - [ZopaRetailFinancePaymentMethodSettings](docs/Model/ZopaRetailFinancePaymentMethodSettings.md)
+- [ZopaRetailFinanceQuote](docs/Model/ZopaRetailFinanceQuote.md)
+- [ZopaRetailFinanceQuoteAddress](docs/Model/ZopaRetailFinanceQuoteAddress.md)
+- [ZopaRetailFinanceQuoteCustomer](docs/Model/ZopaRetailFinanceQuoteCustomer.md)
+- [ZopaRetailFinanceQuoteDecision](docs/Model/ZopaRetailFinanceQuoteDecision.md)
+- [ZopaRetailFinanceQuoteOrder](docs/Model/ZopaRetailFinanceQuoteOrder.md)
+- [ZopaRetailFinanceQuoteRequest](docs/Model/ZopaRetailFinanceQuoteRequest.md)
+- [ZopaRetailFinanceQuoteResponse](docs/Model/ZopaRetailFinanceQuoteResponse.md)
+- [ZopaRetailFinanceRepresentativeExample](docs/Model/ZopaRetailFinanceRepresentativeExample.md)
+- [ZopaRetailFinanceResidentialStatus](docs/Model/ZopaRetailFinanceResidentialStatus.md)
+- [ZopaRetailFinanceTitle](docs/Model/ZopaRetailFinanceTitle.md)
 - [ZopaRetailFinanceWidgetSettings](docs/Model/ZopaRetailFinanceWidgetSettings.md)
 
 ## Authorization
@@ -462,7 +549,7 @@ vendor/bin/phpunit
 
 ## Author
 
-info@rvvup.com
+merchantsupport@zopa.com
 
 ## About this package
 
