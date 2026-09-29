@@ -8,6 +8,9 @@ Name | Type | Description | Notes
 **checkout_ids** | **string[]** | The IDs of the checkouts that were created for this payment link. |
 **checkout_template_id** | **string** | The ID of the checkout template to use for this payment link.                          If not provided, the default template will be used. | [optional]
 **created_at** | **\DateTime** | The datetime when the payment link was created. |
+**deposit_amount** | [**\Rvvup\Api\Model\Money**](Money.md) |  | [optional]
+**description** | **string** | A free-text description of the payment link and subsequently                          created checkouts and payment sessions. | [optional]
+**expires_at** | **\DateTime** | The datetime when the payment link expires. Null if the link has no expiry. | [optional]
 **id** | **string** | The unique ID of the payment link. |
 **items** | [**\Rvvup\Api\Model\Item[]**](Item.md) |  |
 **merchant_id** | **string** | The ID of the merchant that owns this checkout. |

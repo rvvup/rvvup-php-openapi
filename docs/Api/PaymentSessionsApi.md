@@ -6,6 +6,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | ------------- | ------------- | ------------- |
 | [**createPaymentSession()**](PaymentSessionsApi.md#createPaymentSession) | **POST** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions | Create a payment session |
 | [**getPaymentSession()**](PaymentSessionsApi.md#getPaymentSession) | **GET** /api/2024-03-01/{merchantId}/checkouts/{checkoutId}/payment-sessions/{paymentSessionId} | Get a payment session |
+| [**getSavedToken()**](PaymentSessionsApi.md#getSavedToken) | **GET** /api/2024-03-01/{merchantId}/payment-sessions/{paymentSessionId}/saved-token | Get the saved payment method token for a payment session |
 
 
 ## `createPaymentSession()`
@@ -122,6 +123,66 @@ try {
 ### Return type
 
 [**\Rvvup\Api\Model\PaymentSession**](../Model/PaymentSession.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getSavedToken()`
+
+```php
+getSavedToken($merchant_id, $payment_session_id): \Rvvup\Api\Model\PaymentMethodTokenDto
+```
+
+Get the saved payment method token for a payment session
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: apiKey
+$config = Rvvup\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Rvvup\Api\PaymentSessionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | merchant id
+$payment_session_id = 'payment_session_id_example'; // string | payment session id
+
+try {
+    $result = $apiInstance->getSavedToken($merchant_id, $payment_session_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PaymentSessionsApi->getSavedToken: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| merchant id | |
+| **payment_session_id** | **string**| payment session id | |
+
+### Return type
+
+[**\Rvvup\Api\Model\PaymentMethodTokenDto**](../Model/PaymentMethodTokenDto.md)
 
 ### Authorization
 

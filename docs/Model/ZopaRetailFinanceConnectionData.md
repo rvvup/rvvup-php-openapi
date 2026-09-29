@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **oauth_client_id** | **string** |  | [optional]
 **oauth_client_secret** | **string** |  | [optional]
 **retailer_id** | **string** |  | [optional]
+**retailer_uuid** | **string** |  | [optional]
 **sdk_api_key** | **string** |  | [optional]
 **token_number** | **string** |  | [optional]
 

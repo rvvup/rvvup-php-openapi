@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **checkout_template_id** | **string** | The ID of the checkout template to use for this checkout. |
 **created_at** | **\DateTime** | The datetime when the checkout was created. |
 **customer** | [**\Rvvup\Api\Model\Customer**](Customer.md) |  | [optional]
+**description** | **string** | A free-text description of the checkout and subsequently created payment sessions. | [optional]
 **expires_at** | **\DateTime** | The datetime when the checkout will expire. |
 **id** | **string** | The unique ID of the checkout. |
 **items** | [**\Rvvup\Api\Model\Item[]**](Item.md) |  |

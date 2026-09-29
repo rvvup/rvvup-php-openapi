@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**active_payment** | [**\Rvvup\Api\Model\Payment**](Payment.md) |  | [optional]
 **billing_address** | [**\Rvvup\Api\Model\Address**](Address.md) |  | [optional]
 **checkout_id** | **string** | The ID of the checkout that the payment session was created from. | [optional]
 **checkout_mode** | [**\Rvvup\Api\Model\CheckoutMode**](CheckoutMode.md) |  |
@@ -11,6 +12,7 @@ Name | Type | Description | Notes
 **created_at** | **\DateTime** | The datetime when the payment session was created. |
 **customer** | [**\Rvvup\Api\Model\Customer**](Customer.md) |  | [optional]
 **dashboard_url** | **string** | The URL to the merchant dashboard for the payment session. |
+**deposit_total** | [**\Rvvup\Api\Model\Money**](Money.md) |  | [optional]
 **discount_total** | [**\Rvvup\Api\Model\Money**](Money.md) |  | [optional]
 **external_reference** | **string** | Your reference to identify the payment session. | [optional]
 **id** | **string** | The unique ID for the payment session. |
@@ -21,6 +23,7 @@ Name | Type | Description | Notes
 **payments** | [**\Rvvup\Api\Model\Payment[]**](Payment.md) | List of payments that have been made for the payment session. |
 **requires_shipping** | **bool** | Whether the customer is required to provide a shipping address. | [optional]
 **shipping_address** | [**\Rvvup\Api\Model\Address**](Address.md) |  | [optional]
+**shipping_method** | [**\Rvvup\Api\Model\ShippingMethod**](ShippingMethod.md) |  | [optional]
 **shipping_total** | [**\Rvvup\Api\Model\Money**](Money.md) |  | [optional]
 **status** | [**\Rvvup\Api\Model\PaymentSessionStatus**](PaymentSessionStatus.md) |  |
 **tax_total** | [**\Rvvup\Api\Model\Money**](Money.md) |  | [optional]

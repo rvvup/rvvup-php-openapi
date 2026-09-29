@@ -8,6 +8,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | [**getAccountStatement()**](AccountStatementsApi.md#getAccountStatement) | **GET** /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId} | Get an account statement |
 | [**getCheckoutForAccountStatement()**](AccountStatementsApi.md#getCheckoutForAccountStatement) | **GET** /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId}/checkouts/{checkoutId} | Get a checkout for an account statement |
 | [**getThemeForAccountStatement()**](AccountStatementsApi.md#getThemeForAccountStatement) | **GET** /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId}/theme | Get the theme for an account statement |
+| [**previewAccountStatementPayment()**](AccountStatementsApi.md#previewAccountStatementPayment) | **POST** /api/2024-03-01/{merchantId}/accounts/statements/{accountStatementId}/payment-preview | Preview payment with credit note application |
 
 
 ## `createAccountStatement()`
@@ -256,6 +257,70 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `previewAccountStatementPayment()`
+
+```php
+previewAccountStatementPayment($merchant_id, $account_statement_id, $account_statement_payment_preview_input): \Rvvup\Api\Model\AccountStatementPaymentPreview
+```
+
+Preview payment with credit note application
+
+Computes the effect of applying selected credit notes against selected invoices, returning the effective per-invoice amounts and net total to pay.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: apiKey
+$config = Rvvup\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Rvvup\Api\AccountStatementsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | Merchant ID
+$account_statement_id = 'account_statement_id_example'; // string | Account Statement ID
+$account_statement_payment_preview_input = new \Rvvup\Api\Model\AccountStatementPaymentPreviewInput(); // \Rvvup\Api\Model\AccountStatementPaymentPreviewInput | The selected invoice and credit note IDs
+
+try {
+    $result = $apiInstance->previewAccountStatementPayment($merchant_id, $account_statement_id, $account_statement_payment_preview_input);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountStatementsApi->previewAccountStatementPayment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| Merchant ID | |
+| **account_statement_id** | **string**| Account Statement ID | |
+| **account_statement_payment_preview_input** | [**\Rvvup\Api\Model\AccountStatementPaymentPreviewInput**](../Model/AccountStatementPaymentPreviewInput.md)| The selected invoice and credit note IDs | |
+
+### Return type
+
+[**\Rvvup\Api\Model\AccountStatementPaymentPreview**](../Model/AccountStatementPaymentPreview.md)
+
+### Authorization
+
+[apiKey](../../README.md#apiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

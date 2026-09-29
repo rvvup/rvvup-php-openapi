@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**amount_constraint_type** | [**\Rvvup\Api\Model\CheckoutAmountConstraintType**](CheckoutAmountConstraintType.md) |  | [optional]
+**amount_range** | [**\Rvvup\Api\Model\CheckoutAmountRange**](CheckoutAmountRange.md) |  | [optional]
 **amount_type** | [**\Rvvup\Api\Model\CheckoutAmountType**](CheckoutAmountType.md) |  |
 **created_at** | **\DateTime** | The datetime when the checkout template was created. |
 **customer_fields** | [**\Rvvup\Api\Model\CheckoutCustomerFields**](CheckoutCustomerFields.md) |  | [optional]
@@ -15,6 +17,7 @@ Name | Type | Description | Notes
 **name** | **string** | The name of the checkout template. |
 **notify_customer** | **bool** | Whether the customer should be notified on payment completion. |
 **notify_merchant** | **bool** | Whether you should be notified on payment completion. |
+**payment_link_expiry_duration** | **string** | ISO 8601 duration string for payment link expiry (e.g. P30D). Null means links do not expire. | [optional]
 **payment_method_settings** | [**\Rvvup\Api\Model\CheckoutPaymentMethodSettings**](CheckoutPaymentMethodSettings.md) |  | [optional]
 **reference_type** | [**\Rvvup\Api\Model\CheckoutReferenceType**](CheckoutReferenceType.md) |  |
 **source** | [**\Rvvup\Api\Model\ApplicationSource**](ApplicationSource.md) |  |

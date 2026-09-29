@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **chaser_plan_id** | **string** | The ID of the chaser plan to use. | [optional]
 **customer_account_id** | **string** | The ID of the customer account to invoice. |
 **customer_notes** | **string** | Customer notes to be added to the invoice. This will be shown to the customer on the invoice. | [optional]
+**deposit_amount** | [**\Rvvup\Api\Model\MoneyInput**](MoneyInput.md) |  | [optional]
 **due_date** | **\DateTime** | The date invoice is due for. | [optional]
 **invoice_date** | **\DateTime** | The created date of the invoice. |
 **invoice_number** | **string** | The number of the invoice. |

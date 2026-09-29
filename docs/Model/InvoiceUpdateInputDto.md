@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **customer_notes** | **string** | Customer notes to be added to the invoice. This will be shown to the customer on the invoice. | [optional]
+**deposit_amount** | [**\Rvvup\Api\Model\MoneyInput**](MoneyInput.md) |  | [optional]
 **due_date** | **\DateTime** | The date invoice is due for. | [optional]
 **invoice_date** | **\DateTime** | The created date of the invoice. |
 **invoice_number** | **string** |  |

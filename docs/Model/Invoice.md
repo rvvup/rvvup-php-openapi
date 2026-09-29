@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **chaser_plan_id** | **string** | Chaser plan id this invoice is assigned with. | [optional]
 **customer_account** | [**\Rvvup\Api\Model\InvoiceCustomerAccount**](InvoiceCustomerAccount.md) |  |
 **customer_notes** | **string** | Notes that is shown on the invoice to the customer. | [optional]
+**deposit_amount** | [**\Rvvup\Api\Model\Money**](Money.md) |  | [optional]
 **due_date** | **\DateTime** | The date and time when the invoice is due for. | [optional]
 **id** | **string** | The unique ID of the invoice. |
 **invoice_date** | **\DateTime** | The date and time for the invoice. |
